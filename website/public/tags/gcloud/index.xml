@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>gcloud on www.paschen.ch</title>
+    <link>http://www.nephometrics.ch/tags/gcloud/</link>
+    <description>Recent content in gcloud on www.paschen.ch</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 18 Mar 2021 13:46:20 +0100</lastBuildDate>
+    
+	<atom:link href="http://www.nephometrics.ch/tags/gcloud/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>SKUs and Resources</title>
+      <link>http://www.nephometrics.ch/2021/03/skus-and-resources/</link>
+      <pubDate>Thu, 18 Mar 2021 13:46:20 +0100</pubDate>
+      
+      <guid>http://www.nephometrics.ch/2021/03/skus-and-resources/</guid>
+      <description>Reading cloud bills is hard. For illustration, below are a few lines from the bill for a small toy project of mine on GCloud.</description>
+    </item>
+    
+    <item>
+      <title>Mapping your Cloud Assets using Google&#39;s APIs in Go</title>
+      <link>http://www.nephometrics.ch/2021/02/mapping-your-cloud-assets-using-googles-apis-in-go/</link>
+      <pubDate>Thu, 11 Feb 2021 16:35:53 +0100</pubDate>
+      
+      <guid>http://www.nephometrics.ch/2021/02/mapping-your-cloud-assets-using-googles-apis-in-go/</guid>
+      <description>If you&amp;rsquo;ve used Google&amp;rsquo;s Cloud, you&amp;rsquo;ve probably encountered their commandline tool. While you can achieve many things using just the web cloud console, the gcloud command line tool is flexible, scriptable, and (once you know how to use it), quicker than the console.</description>
+    </item>
+    
+  </channel>
+</rss>

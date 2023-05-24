@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html><head>
+  <title>Serving Magenta</title>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width initial-scale=1.0">
+
+ <link rel="stylesheet" href="../../../css/basic.css"/>
+ <link rel="stylesheet" href="../../../css/syntax.css"/>
+  <meta name="google-site-verification" content="yHK1RGH0XqN4iPhXZkdWnaRxqjueVNbqgKQ6jKJ_cc4">
+</head>
+<body>
+	<div class="wrapper"><div class="header">
+<nav class="navbar">
+<ul class="LanguageRow">
+  
+ <li class="LanguageItem">
+	 <a href="http://www.nephometrics.ch/">EN</a>
+    </li>
+  
+ <li class="LanguageItem">
+	 <a href="http://www.nephometrics.ch/fr/">FR</a>
+    </li>
+  
+ <li class="LanguageItem">
+	 <a href="http://www.nephometrics.ch/de/">DE</a>
+    </li>
+  
+</ul>
+</nav>
+<div class="Logobox">
+<div class="Logo">
+	<div class="CompanyName">
+		Nephometrics
+	</div>
+	<div class="CompanyPurpose">
+		Cloud SRE Consulting
+	</div>
+</div>
+</div>
+<nav class="navbar">
+    <ul class="MenuRow">
+      
+      
+        
+          <li class="MenuItem ">
+		  <a href="../../../" title="">Home</a>
+          </li>
+	  
+      
+        
+	    <li class="MenuItem">
+		    <a href="../../../blog/">Blog</a>
+            </li>
+        
+      
+        
+	
+	
+	  
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	 
+         <li class="MenuItem">
+           <div class="dropdown">
+             <button class="dropdown-button">Tags&nbsp;&#9662;</button>
+             <div class="dropdown-content">
+              
+                
+                  <a href="../../../tags/aws/">aws</a>
+                
+              
+                
+                  <a href="../../../tags/billing/">billing</a>
+                
+              
+                
+                  <a href="../../../tags/cloud-billing/">cloud-billing</a>
+                
+              
+                
+                  <a href="../../../tags/cmake/">cmake</a>
+                
+              
+                
+                  <a href="../../../tags/cost/">cost</a>
+                
+              
+                
+                  <a href="../../../tags/dataframe/">dataframe</a>
+                
+              
+                
+                  <a href="../../../tags/dataset/">dataset</a>
+                
+              
+                
+                  <a href="../../../tags/express/">express</a>
+                
+              
+                
+                  <a href="../../../tags/gcloud/">gcloud</a>
+                
+              
+                
+                  <a href="../../../tags/gcloud-api/">gcloud-api</a>
+                
+              
+                
+                  <a href="../../../tags/golang/">golang</a>
+                
+              
+                
+                  <a href="../../../tags/lilypond/">lilypond</a>
+                
+              
+                
+                  <a href="../../../tags/linux/">linux</a>
+                
+              
+                
+                  <a href="../../../tags/magenta/">magenta</a>
+                
+              
+                
+                  <a href="../../../tags/matching-skus-to-resources/">matching-skus-to-resources</a>
+                
+              
+                
+                  <a href="../../../tags/mattermost/">mattermost</a>
+                
+              
+                
+                  <a href="../../../tags/musicocr/">musicocr</a>
+                
+              
+                
+                  <a href="../../../tags/nodejs/">nodejs</a>
+                
+              
+                
+                  <a href="../../../tags/opencv/">opencv</a>
+                
+              
+                
+                  <a href="../../../tags/parquet/">parquet</a>
+                
+              
+                
+                  <a href="../../../tags/rdd/">rdd</a>
+                
+              
+                
+                  <a href="../../../tags/resource-estimation/">resource-estimation</a>
+                
+              
+                
+                  <a href="../../../tags/resources/">resources</a>
+                
+              
+                
+                  <a href="../../../tags/scala/">scala</a>
+                
+              
+                
+                  <a href="../../../tags/sku/">sku</a>
+                
+              
+                
+                  <a href="../../../tags/spark/">spark</a>
+                
+              
+                
+                  <a href="../../../tags/tensorflow/">tensorflow</a>
+                
+              
+                
+                  <a href="../../../tags/tesseract/">tesseract</a>
+                
+              
+                
+                  <a href="../../../tags/unittests/">unittests</a>
+                
+              
+             </div>
+           </div>
+         </li>
+	 
+        
+      
+        
+          <li class="MenuItem ">
+		  <a href="../../../contact/" title="">Contact</a>
+          </li>
+	  
+      
+    </ul>
+</nav>
+</div>
+
+  <article class="content textblock">
+    <h2>Serving Magenta</h2>
+
+    
+
+    <p>
+      <a href="http://www.nephometrics.ch/2019/06/serving-magenta/">Published June 26, 2019</a>
+    </p>
+    <p>
+      
+
+<p><a href="https://magenta.tensorflow.org/">Magenta</a> is an amazing collection of ml
+models, libraries and demos. I&rsquo;m&rsquo; not a machine learning expert, but these
+things are fun to play with.</p>
+
+<p>So of course I wanted to make my own apps with it. There&rsquo;s a few things you
+can do right away starting from the <a href="https://hello-magenta.glitch.me/">demos</a>
+&mdash; this is literally as easy as copy-pasting some javascript into a .html
+file, making edits, and viewing it in your browser.<br />
+But how do you turn this into a proper web app? I&rsquo;m really a backend person.
+Even an actual web server, never mind one running Node.js, is somewhat
+outside my comfort zone.</p>
+
+<p>Based on a bit of reading around, I think there are basically three options:</p>
+
+<p><img src="../../../images/ServingMagenta.svg"
+   alt="Three ways to use a magenta model from a web page"
+   width="700"
+ /></p>
+
+<ol>
+<li>do all the work in client-side javascript</li>
+<li>use a Node.js-based server</li>
+<li>use any kind of web server and have it use TensorFlow Serving as a backend</li>
+</ol>
+
+<p>The first and second options would be built using <a href="https://github.com/tensorflow/magenta-js/">Magenta.js</a>, which is a collection of TypeScript
+libraries for interacting with Magenta models. It&rsquo;s based on <a href="https://www.tensorflow.org/js">TensorFlow.js</a>.</p>
+
+<p>The third option involves bringing up an instance of <a href="https://www.tensorflow.org/tfx/guide/serving">TensorFlow Serving</a>, which is a C++ binary implementing
+both a gRPC and an HTTP API.</p>
+
+<h3 id="everything-in-the-client">Everything in the client</h3>
+
+<p>Confusingly (for me, <a href="https://www.quora.com/What-is-node-js-Is-it-client-side-language-or-server-side">but I am not alone</a>),
+ Node.js can be used client-side. This is weird because
+Node.js is usually described as &ldquo;JavaScript on the Server&rdquo;. It can do things
+like import modules from files on the server&rsquo;s filesystem, which is not
+possible client-side without additional trickery.</p>
+
+<p>Nevertheless, here we are with the <a href="https://hello-magenta.glitch.me/">Magenta demos</a>
+all running entirely in the browser. They achieve this by loading a script:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&#34;https://cdn.jsdelivr.net/npm/@magenta/music@1.4.2&#34;</span><span class="o">&gt;&lt;</span><span class="err">/script&gt;</span>
+</code></pre></div>
+
+<p>This basically loads the entire magenta/music npm package.</p>
+
+<p>They also load model checkpoints via https:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">music_rnn</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mm</span><span class="p">.</span><span class="nx">MusicRNN</span><span class="p">(</span><span class="s1">&#39;https://storage.googleapis.com/magentadata/js/checkpoints/music_rnn/basic_rnn&#39;</span><span class="p">);</span>
+</code></pre></div>
+
+<p>I&rsquo;m a bit wary of loading scripts from external sources into my webpages. How can
+I trust the integrity of those servers, or of the data that they host? How good
+is their security? More mundanely, how much traffic can they handle and how long
+will the data be available? This is ok for prototyping, but not for a real
+web service.</p>
+
+<p>As if to prove my point, I initially loaded version 1.0.0 instead of 1.4.2 of the
+magenta package and was missing a few modules. The scripts for magenta are being
+loaded from <a href="https://www.jsdelivr.com">jsdelivr</a> and I think I could have requested
+the latest version.
+It is also possible to build a comparable package using tools such as <a href="https://webpack.js.org/guides/getting-started/">webpack</a>
+or <a href="https://github.com/substack/node-browserify">browserify</a> and host it on
+one&rsquo;s own web server for the client to retrieve.</p>
+
+<p>If the security and availability concerns don&rsquo;t convince you, there&rsquo;s also a
+performance downside: this approach requires the client to download a big npm package and a model
+checkpoint when the webpage is loaded. There is a noticeable lag; absolutely
+fine for a demo, not fine otherwise.</p>
+
+<h3 id="run-the-node-js-code-on-the-server">Run the Node.js code on the server</h3>
+
+<p>Node.js was designed to run server-side, and this is what&rsquo;s easy to do with the
+language. With the packaging/hosting solutions in the client-only approach above,
+I always felt like I was fighting against the system, trying to make it do
+ things it was not designed for. While it&rsquo;s fun sometimes to see how far you
+can push a thing outside its design boundaries, it is a lot of frustrating work, and
+leads to brittle system architectures. Just my opinion, but there you go.</p>
+
+<p>I really wanted to run the core magenta code server-side. Create a node.js app,
+import (&ldquo;require&rdquo;) the magenta modules, load the models server-side, and serve
+requests. Note that while TensorFlow.js also has capabilities for training models,
+Magenta.js only implements inference requests. Training has to happen in python.
+That&rsquo;s ok with me &ndash; the requirements for training vs. serving a model are very
+different and it would not even have occurred to me that one would want them
+to be performed by the same service until I saw this mentioned for TensorFlow.js.</p>
+
+<p>Unfortunately, it is not currently possible to run the Magenta code server-side
+because it loads a module called <code>tone.js</code> which tries to access the Audio Context
+via the global <code>window</code> variable, and that only works client-side. The latest
+version of the tone.js package apparently solves this but it has not been added
+to Magenta yet &ndash; follow <a href="https://github.com/tensorflow/magenta-js/issues/309">the open Issue</a> to see why this isn&rsquo;t
+trivial to fix.</p>
+
+<h3 id="use-tensorflow-serving">Use TensorFlow Serving</h3>
+
+<p>I think of TensorFlow Serving as the &ldquo;real&rdquo; way to serve an ML model in production.
+It&rsquo;s a standalone server whose only job is to keep a model available for you to
+send inference requests to. This makes it feasible to perform things like model
+reloading without server downtime; you could even send a fraction of requests
+to a new model to test it. Those capabilities make me happy and confident in
+my service.</p>
+
+<p>This architecture does add another box to our system diagram (we now have the
+model server separate from the web server), but I kind of like that because
+it means I can update the software on these pieces separately, and I can also
+scale them separately.</p>
+
+<p>There is a downside though. TensorFlow Serving needs to be able to load your
+model, and there isn&rsquo;t a straightforward way to do that with a magenta model.
+It looks like it&rsquo;s feasible, just not simple.</p>
+
+<h4 id="background-model-loading-and-saving">Background: model loading and saving</h4>
+
+<p>On an abstract level, a machine learning model lets you do two things:</p>
+
+<ol>
+<li>you can train it, or</li>
+<li>you can ask it questions (&lsquo;inference&rsquo;)</li>
+</ol>
+
+<p>So for example, you can train a model to predict the next notes in a sequence
+by exposing it to a lot of music; then the inference request is where you
+give the model a few notes and ask it to generate the next ones. Since training
+takes time and a significant amount of resources, you&rsquo;ll want to re-use
+your model, so you need to save it after training.</p>
+
+<p>When you save a model, you&rsquo;ll typically save at least the weights and some
+information about the graph (mainly the sequence of layers and their dimensions).</p>
+
+<p>Ideally, that information is enough to reconstruct the model for the purpose
+of inference requests. You may have custom code and additional parameters at
+training time, but it&rsquo;s great when you can do inference with just the graph and
+weights data. Maybe a tiny bit more information is ok, so long as it&rsquo;s easy to
+serialize.</p>
+
+<p>TensorFlow Serving uses a serialization format called <code>SavedModel</code> to capture
+ information about
+models. SavedModel is the default way you pass a model to TensorFlow Serving; it&rsquo;s
+a protocol buffer holding primarily checkpoints (these are the weights) and graph
+information. Magenta does not use SavedModel; they have their own format for
+saving model information (Magenta bundles), but you cannot translate those into
+SavedModels because Magenta&rsquo;s models do not implement the <code>Trackable</code>
+interface.</p>
+
+<p>Thus in order to serve a Magenta model you always have to load the class implementing
+the model, and then initialize it using the weights and graph information from the
+bundle. It is still technically possible to serve such models from TensorFlow
+ Serving by
+implementing a custom Servable for them. Servable is an interface for things that
+TensorFlow Serving can serve. Note &ldquo;technically&rdquo;: Magenta models have implementations
+in JavaScript and in Python, but TensorFlow Serving needs them in C++, so there
+is more work to be done here. I checked the <a href="https://github.com/tensorflow/magenta/issues">Magenta Issues</a> but didn&rsquo;t see anything about
+this, so it&rsquo;s possible I misread, or that I just want to do something nobody
+else has yet cared enough to try.</p>
+
+<p>I have not implemented this yet, so the TensorFlow Serving-related comments
+above are based only on reading documentation and code; I&rsquo;ll tackle the
+practical side in a followup post.</p>
+
+    </p>
+  </article>
+  <aside class="sidebar">
+    
+        <div class="container">
+          <div class="row">
+              
+	      <p><b>Previous Post:</b><br />
+                <a href="../../../2019/06/spark-many-ways-to-do-the-same-thing/">Spark: many ways to do the same thing</a>
+	      </p>
+              
+              
+	        <p><b>Next Post:</b><br />
+                <a href="../../../2019/07/magenta-app/">Magenta App</a>
+	        </p>
+              
+          </div>
+        </div>
+    
+    
+    
+  </aside>
+</article>
+<footer class="footer">
+  <div class="container"><div id="nocookies" class="NoCookieFooter">
+<hr />
+This site was built statically using <a href="https://gohugo.io">Hugo</a>
+ and sets no Cookies.
+<p>
+See also: <a href=../../../privacy>Privacy Statement</a>
+</div>
+
+  </div>
+</footer>
+</div>
+    </body>
+</html>

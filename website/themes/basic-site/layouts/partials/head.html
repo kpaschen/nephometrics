@@ -1,0 +1,14 @@
+<head>
+  <title>{{ .Title }}</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width initial-scale=1.0">
+
+ <link rel="stylesheet" href="/css/basic.css"/>
+ <link rel="stylesheet" href="/css/syntax.css"/>
+  {{ range .AlternativeOutputFormats -}}
+    {{ printf `<link rel="%s" type="%s+%s" href="%s" title="%s" />` .Rel .MediaType.Type .MediaType.Suffix .Permalink $.Site.Title | safeHTML }}
+  {{ end -}}
+
+ <meta name="google-site-verification" content="yHK1RGH0XqN4iPhXZkdWnaRxqjueVNbqgKQ6jKJ_cc4">
+</head>

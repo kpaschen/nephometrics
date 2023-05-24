@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html><head>
+  <title>Magenta App</title>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width initial-scale=1.0">
+
+ <link rel="stylesheet" href="../../../css/basic.css"/>
+ <link rel="stylesheet" href="../../../css/syntax.css"/>
+  <meta name="google-site-verification" content="yHK1RGH0XqN4iPhXZkdWnaRxqjueVNbqgKQ6jKJ_cc4">
+</head>
+<body>
+	<div class="wrapper"><div class="header">
+<nav class="navbar">
+<ul class="LanguageRow">
+  
+ <li class="LanguageItem">
+	 <a href="http://www.nephometrics.ch/">EN</a>
+    </li>
+  
+ <li class="LanguageItem">
+	 <a href="http://www.nephometrics.ch/fr/">FR</a>
+    </li>
+  
+ <li class="LanguageItem">
+	 <a href="http://www.nephometrics.ch/de/">DE</a>
+    </li>
+  
+</ul>
+</nav>
+<div class="Logobox">
+<div class="Logo">
+	<div class="CompanyName">
+		Nephometrics
+	</div>
+	<div class="CompanyPurpose">
+		Cloud SRE Consulting
+	</div>
+</div>
+</div>
+<nav class="navbar">
+    <ul class="MenuRow">
+      
+      
+        
+          <li class="MenuItem ">
+		  <a href="../../../" title="">Home</a>
+          </li>
+	  
+      
+        
+	    <li class="MenuItem">
+		    <a href="../../../blog/">Blog</a>
+            </li>
+        
+      
+        
+	
+	
+	  
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	 
+         <li class="MenuItem">
+           <div class="dropdown">
+             <button class="dropdown-button">Tags&nbsp;&#9662;</button>
+             <div class="dropdown-content">
+              
+                
+                  <a href="../../../tags/aws/">aws</a>
+                
+              
+                
+                  <a href="../../../tags/billing/">billing</a>
+                
+              
+                
+                  <a href="../../../tags/cloud-billing/">cloud-billing</a>
+                
+              
+                
+                  <a href="../../../tags/cmake/">cmake</a>
+                
+              
+                
+                  <a href="../../../tags/cost/">cost</a>
+                
+              
+                
+                  <a href="../../../tags/dataframe/">dataframe</a>
+                
+              
+                
+                  <a href="../../../tags/dataset/">dataset</a>
+                
+              
+                
+                  <a href="../../../tags/express/">express</a>
+                
+              
+                
+                  <a href="../../../tags/gcloud/">gcloud</a>
+                
+              
+                
+                  <a href="../../../tags/gcloud-api/">gcloud-api</a>
+                
+              
+                
+                  <a href="../../../tags/golang/">golang</a>
+                
+              
+                
+                  <a href="../../../tags/lilypond/">lilypond</a>
+                
+              
+                
+                  <a href="../../../tags/linux/">linux</a>
+                
+              
+                
+                  <a href="../../../tags/magenta/">magenta</a>
+                
+              
+                
+                  <a href="../../../tags/matching-skus-to-resources/">matching-skus-to-resources</a>
+                
+              
+                
+                  <a href="../../../tags/mattermost/">mattermost</a>
+                
+              
+                
+                  <a href="../../../tags/musicocr/">musicocr</a>
+                
+              
+                
+                  <a href="../../../tags/nodejs/">nodejs</a>
+                
+              
+                
+                  <a href="../../../tags/opencv/">opencv</a>
+                
+              
+                
+                  <a href="../../../tags/parquet/">parquet</a>
+                
+              
+                
+                  <a href="../../../tags/rdd/">rdd</a>
+                
+              
+                
+                  <a href="../../../tags/resource-estimation/">resource-estimation</a>
+                
+              
+                
+                  <a href="../../../tags/resources/">resources</a>
+                
+              
+                
+                  <a href="../../../tags/scala/">scala</a>
+                
+              
+                
+                  <a href="../../../tags/sku/">sku</a>
+                
+              
+                
+                  <a href="../../../tags/spark/">spark</a>
+                
+              
+                
+                  <a href="../../../tags/tensorflow/">tensorflow</a>
+                
+              
+                
+                  <a href="../../../tags/tesseract/">tesseract</a>
+                
+              
+                
+                  <a href="../../../tags/unittests/">unittests</a>
+                
+              
+             </div>
+           </div>
+         </li>
+	 
+        
+      
+        
+          <li class="MenuItem ">
+		  <a href="../../../contact/" title="">Contact</a>
+          </li>
+	  
+      
+    </ul>
+</nav>
+</div>
+
+  <article class="content textblock">
+    <h2>Magenta App</h2>
+
+    
+
+    <p>
+      <a href="http://www.nephometrics.ch/2019/07/magenta-app/">Published July 23, 2019</a>
+    </p>
+    <p>
+      
+
+<p>Continuing on from <a href="../../../2019/06/serving-magenta/">Serving Magenta</a>, I wanted
+to put a little web application together.</p>
+
+<p>What I really want is to make my phone play music by whistling into it.
+Basically, I whistle, the phone tries to match the melody against my music
+collection and plays whatever is the closest match. This might be a little
+silly, and I don&rsquo;t know that it&rsquo;ll have mass appeal (I&rsquo;m probably in a minority
+in that I still have most of my music collection in files on my computer),
+but I&rsquo;m not looking to make money from this.</p>
+
+<p>Whistling into a microphone gives me raw audio, and transcoding that into
+ common formats such as OGG Vorbis or MP3 is generally not a problem. The
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API">Web Audio API</a>
+had pretty much all the tools I wanted. However, machine-learning models in
+music seem to be typically based on MIDI inputs rather than raw audio. This makes
+intuitive sense to me; MIDI may be serving as a normalization step. There is
+software that translates various audio formats to MIDI, but it tends not to be
+free &ndash; not surprising given how much work this takes to do well. Luckily,
+Magenta have a model called <a href="https://magenta.tensorflow.org/onsets-frames">Onsets and Frames</a>
+that does &ldquo;automatic polyphonic piano music transcription&rdquo;. It is designed to
+operate on recordings of piano performances, but at least for demo purposes,
+it worked just fine on recordings of me whistling or humming, or of a cat meowing.</p>
+
+<p>If I wanted to train my own model, perhaps on a wider range of sounds, one way
+of going about it would be to take a bunch of MIDI files, convert them to
+e.g. MP3 (this is easy), and then use the MIDI/MP3 pairs as training inputs.
+It&rsquo;s easy to create MIDI files, either programmatically or e.g. by processing
+<a href="http://lilypond.org/">Lilypond</a> files; for the latter, I&rsquo;d want to check
+with the authors of the files (and of the compositions, if they&rsquo;re still alive)
+whether this is an acceptable use of their data. But this could be a fun project
+for the future.</p>
+
+<h3 id="recording">Recording</h3>
+
+<p>For now, I had some fun getting my dissonant whistles transformed into piano
+sounds. If you want to try for yourself, take a look at
+<a href="https://demos.nephometrics.com/">my demo page</a>
+or you can clone <a href="https://github.com/kpaschen/magenta-clientside.git">my github repository</a> and take it from there.</p>
+
+<p>Edited (June 9th 2020): I used to have an iframe here with a demo, but have disabled it for now
+ because I ran out of AWS starter credits. The github repository code should still work.</p>
+
+<p>As mentioned in <a href="../../../2019/06/serving-magenta/">Serving Magenta</a>, the code I linked to
+performs all the heavy lifting in the browser and it takes several seconds to
+load because it has to obtain the ML model files. Especially on mobile devices,
+this may take more time than you&rsquo;re willing to wait. For a more usable version,
+I&rsquo;ll need to do more of the work server-side.</p>
+
+<h3 id="generating-finding-music">Generating / finding music</h3>
+
+<p>The next step is using the midi inputs I just obtained and feed them into another
+ML model to get a music suggestion. Eventually, I want to use a VAE (variational
+auto encoder) model for this, but I need to train it on my own music collection
+first. So for the time being, I used the pre-trained RNN models from the
+magenta collection and wired them up with the Onsets and Frames model. This just
+asks the model to compose a continuation of my whistled melody. It&rsquo;s a little hit
+and miss in terms of musical quality, but nice enough to play with.</p>
+
+<p>One thing to note is that the RNN models have a range of pitches that they&rsquo;ll
+accept in their inputs. They&rsquo;ll throw an exception when inputs are outside their
+pitch range.  The range is quite narrow
+(e.g. 48&ndash;83 for <code>basic_rnn</code> &ndash; a piano range is 21&ndash;108) and my whistling easily
+gets up to MIDI tone 96, so I added code to transpose the inputs into the accepted
+pitch range. This was more difficult than (imho) it needed to be because the pitch
+range is hidden in the model&rsquo;s <code>dataConverter</code>, which is private; so I used <code>fetch</code>
+to obtain the <code>config.json</code> files for the models separately.</p>
+
+<h3 id="the-technical-details-aka-things-i-have-learned-from-this">The technical details (aka Things I Have Learned From This)</h3>
+
+<h4 id="accessing-the-microphone-from-a-browser">Accessing the microphone from a browser</h4>
+
+<p>You need the user&rsquo;s consent to access the microphone:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">navigator</span><span class="p">.</span><span class="nx">mediaDevices</span><span class="p">.</span><span class="nx">getUserMedia</span><span class="p">({</span> <span class="nx">audio</span><span class="o">:</span> <span class="kc">true</span> <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">stream</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// ... do things with the stream
+</span><span class="c1"></span><span class="p">});</span>
+</code></pre></div>
+
+<p>That&rsquo;s clearly a good thing. Who would want web pages to just access the microphone?
+However, at least in Chrome, navigator.mediaDevices.getUserMedia is usable only if the
+page is served over https or if it comes from localhost. So I got surprised by this
+when I wanted to move from my development environment to a web host.</p>
+
+<h4 id="processing-audio-streams-in-the-browser">Processing audio streams in the browser</h4>
+
+<p>The magenta libraries use a MediaRecorder object, which gets initialized with the
+audio stream obtained from <code>getUserMedia</code>. This can listen to a <code>dataavailable</code> event
+where it gets new audio chunks. The frequency with which dataavailable events are
+sent is configurable via a parameter to the <code>start()</code> method on the MediaRecorder.</p>
+
+<p>However, a lot of examples and documentation on the web use the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API">Web Audio API</a>. I made a few attempts
+to use audio data obtained through the Web Audio API as inputs to the Onsets and Frames
+model&rsquo;s <code>transcribeFromX</code> methods, but always ended up with error messages complaining
+of undecodable audio. It would have been nice to get the model to start transcribing
+as soon as enough audio is available instead of waiting for recording to end; and it
+would also have been nice to use the same framework for both the Onsets and Frames
+inputs and the fft visualization that I added to the page, but after a while, I decided
+it wasn&rsquo;t worth pouring more time into. The visualization is kind of nice
+because it shows whether the microphone is picking up sounds at all, so I kept it and
+the code just contains two separate objects that process the same stream.</p>
+
+<h4 id="running-on-aws">Running on AWS</h4>
+
+<p>I decided that I wanted to host a demo, but my regular web page is all static. So I
+brought up an instance on AWS because why not. Initially, I just created the instance,
+logged into it using ssh (and realising eventually that the username for Ubuntu instances
+is <code>ubuntu</code>, not <code>ec2_user</code>), installed npm there, transferred my code as a <code>.tgz</code> file,
+unpacked it, ran <code>npm install</code> (because I had excluded <code>node_modules/</code> from my tar file),
+and brought up the server. That worked insofar as the web page got served, but of
+course recording did not work because I was not using https.</p>
+
+<p>So I wanted to achieve two things:</p>
+
+<ol>
+<li>Be able to use https</li>
+<li>Make the installation and update process less manual</li>
+</ol>
+
+<p>These are clearly both solved problems, otherwise AWS would not be in business. They still
+cost me time, so here you go.</p>
+
+<h5 id="https-on-aws">HTTPS on AWS</h5>
+
+<p>A bit of reading convinced me that the best (only? probably not the only) way to serve my
+content via https was to set up a load balancer and acquire a certificate for it. A load
+balancer needs a &ldquo;Target Group&rdquo; &ndash; the set of instances to balance amongst. I think
+an ELB (Elastic Load Balancer) needs to have at least two instances. I&rsquo;m still not sure,
+but I set up a second instance anyway because why run on AWS if you&rsquo;re going to be single
+homed?</p>
+
+<p>I did not want to repeat the manual process, so I decided to use an AMI.
+I created an AMI from my first instance; then (because of the documentation) I thought I
+had to register it, which I could not do because I did not know the manifest path. Apparently,
+maybe because I created the AMI directly from an EC2 instance, it was already registered.
+The documentation and the few questions I found about this on Stackoverflow were
+uncharacteristically unhelpful; I had the impression that maybe there had been several
+versions of this feature over time. Or maybe I just did not have enough patience.</p>
+
+<p>At any rate, I got the second instance started, set up a load balancer, which worked once
+I wired it up to talk to the correct ports (the node webservers I bring up listen on port
+3000 by default). Then I asked for a certificate via the AWS console. I used a domain
+I own (nephometrics.com) and obtained a certificate for demos.nephometrics.com. Then,
+in my domain&rsquo;s settings, I created a <code>CNAME</code> entry making <code>demos.nephometrics.com</code>
+an alias for the load balancer&rsquo;s external IP. This resulted in a few hilarious (not)
+hassles with the DNS settings related to my web hoster and I learned more than I
+ever wanted to know about whether/how/why Linux caches DNS lookup results.</p>
+
+<p>I also wanted to be able to test locally using https. Interestingly, I could not get the
+recording to work in the iframe on this blog while running a local server so long as the
+local server was using http rather than https. <a href="https://gohugo.io/commands/hugo_server/">Hugo</a>
+does not come with a local https mode. So I went and created my own localhost openssl
+certificate and brought up a little node.js server locally. Chrome refused to accept
+my certificate but Firefox allowed me to create a security exception. I think in order
+to get this to work with Chrome <a href="https://stackoverflow.com/questions/10175812/how-to-create-a-self-signed-certificate-with-openssl">I should have created a local CA</a>, but I decided I&rsquo;d been deep enough into the rabbit hole by now. The discussion on
+Stackoverflow was very good though, and really helped me clarify how certificates
+work.</p>
+
+<h5 id="docker-vs-codedeploy">Docker vs. CodeDeploy</h5>
+
+<p>I wanted to update the code running on my instances without logging into
+ them via ssh. Updating the AMI every time I fix a bug seemed like a lot of work. Indeed,
+I think the right tool for this would be <a href="https://aws.amazon.com/getting-started/tutorials/deploy-code-vm/">CodeDeploy</a> but I had been working through so many tutorials that all I wanted
+was to use Docker and be done.</p>
+
+<p>Most documentation around using AWS with Docker is for ECS, not EC2. Of course nothing
+prevents you from installing Docker on your EC2 instances anyway, but I also wanted to
+run locally built Docker images rather than publishing them to a registry (my demo code
+does not need to be published to a registry). I ended up using <a href="https://docs.docker.com/machine/overview/">docker machine</a>, which
+lets me create EC2 instances and run docker images on them using my IAM credentials.</p>
+
+    </p>
+  </article>
+  <aside class="sidebar">
+    
+        <div class="container">
+          <div class="row">
+              
+	      <p><b>Previous Post:</b><br />
+                <a href="../../../2019/06/serving-magenta/">Serving Magenta</a>
+	      </p>
+              
+              
+	        <p><b>Next Post:</b><br />
+                <a href="../../../2020/03/catflap/">Catflap</a>
+	        </p>
+              
+          </div>
+        </div>
+    
+    
+    
+    <div class="container">
+      <b>See also:</b>
+      	
+          <a class="text-body" href="../../../2019/06/serving-magenta/">Serving Magenta</a>
+          <div>Magenta is an amazing collection of ml models, libraries and demos. I&rsquo;m&rsquo; not a machine learning expert, but these things are fun to play with.
+		    <br /><a href="../../../2019/07/magenta-app/">...</a>
+	  </div>
+        
+    </div>
+    
+  </aside>
+</article>
+<footer class="footer">
+  <div class="container"><div id="nocookies" class="NoCookieFooter">
+<hr />
+This site was built statically using <a href="https://gohugo.io">Hugo</a>
+ and sets no Cookies.
+<p>
+See also: <a href=../../../privacy>Privacy Statement</a>
+</div>
+
+  </div>
+</footer>
+</div>
+    </body>
+</html>

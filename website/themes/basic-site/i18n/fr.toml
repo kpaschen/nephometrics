@@ -1,0 +1,12 @@
+[this-site-built]
+  other = "Ce site est généré statiquement par "
+
+[and-sets-no-cookies]
+  other = " et n'enregistre pas de Cookies"
+
+[see-also]
+  other = "Voir aussi: "
+
+[privacy-statement]
+  other = "Politique de confidentialité"
+

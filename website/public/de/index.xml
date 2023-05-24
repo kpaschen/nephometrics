@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SRE als Service on www.paschen.ch</title>
+    <link>http://www.nephometrics.ch/de/</link>
+    <description>Recent content in SRE als Service on www.paschen.ch</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	<atom:link href="http://www.nephometrics.ch/de/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Administratives</title>
+      <link>http://www.nephometrics.ch/de/contact/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.nephometrics.ch/de/contact/</guid>
+      <description>Ich arbeite wahlweise auf Aufwandsbasis (Abrechnung nach Stunden- oder Tagess&amp;auml;tzen) oder auf Festpreisbasis.
+F&amp;uuml;r Eins&amp;auml;tze, die mehrmals pro Woche Anwesenheit beim Kunden erfordern, bevorzuge ich die Region Z&amp;uuml;rich/Winterthur.</description>
+    </item>
+    
+    <item>
+      <title>Datenschutzerklärung</title>
+      <link>http://www.nephometrics.ch/de/privacy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.nephometrics.ch/de/privacy/</guid>
+      <description>Meine Webseiten sind mittels Hugo statisch erzeugt und setzen keine Cookies. Ich verwende keine Social Media-Einbindung und schalte keine Anzeigen.</description>
+    </item>
+    
+  </channel>
+</rss>

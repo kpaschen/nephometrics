@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>dataframe on www.paschen.ch</title>
+    <link>http://www.nephometrics.ch/tags/dataframe/</link>
+    <description>Recent content in dataframe on www.paschen.ch</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 17 Jun 2019 16:54:41 +0200</lastBuildDate>
+    
+	<atom:link href="http://www.nephometrics.ch/tags/dataframe/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Spark: many ways to do the same thing</title>
+      <link>http://www.nephometrics.ch/2019/06/spark-many-ways-to-do-the-same-thing/</link>
+      <pubDate>Mon, 17 Jun 2019 16:54:41 +0200</pubDate>
+      
+      <guid>http://www.nephometrics.ch/2019/06/spark-many-ways-to-do-the-same-thing/</guid>
+      <description>Spark lets you do things in many different ways &amp;ndash; Scala, Python, or Java; RDDs, Dataframes, Datasets, SparkSQL each have their own APIs and idioms; you can fiddle with a bunch of parameters, and of course you can decide to pre-process your data.</description>
+    </item>
+    
+  </channel>
+</rss>

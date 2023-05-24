@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html><head>
+  <title>Spark: many ways to do the same thing</title>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width initial-scale=1.0">
+
+ <link rel="stylesheet" href="../../../css/basic.css"/>
+ <link rel="stylesheet" href="../../../css/syntax.css"/>
+  <meta name="google-site-verification" content="yHK1RGH0XqN4iPhXZkdWnaRxqjueVNbqgKQ6jKJ_cc4">
+</head>
+<body>
+	<div class="wrapper"><div class="header">
+<nav class="navbar">
+<ul class="LanguageRow">
+  
+ <li class="LanguageItem">
+	 <a href="http://www.nephometrics.ch/">EN</a>
+    </li>
+  
+ <li class="LanguageItem">
+	 <a href="http://www.nephometrics.ch/fr/">FR</a>
+    </li>
+  
+ <li class="LanguageItem">
+	 <a href="http://www.nephometrics.ch/de/">DE</a>
+    </li>
+  
+</ul>
+</nav>
+<div class="Logobox">
+<div class="Logo">
+	<div class="CompanyName">
+		Nephometrics
+	</div>
+	<div class="CompanyPurpose">
+		Cloud SRE Consulting
+	</div>
+</div>
+</div>
+<nav class="navbar">
+    <ul class="MenuRow">
+      
+      
+        
+          <li class="MenuItem ">
+		  <a href="../../../" title="">Home</a>
+          </li>
+	  
+      
+        
+	    <li class="MenuItem">
+		    <a href="../../../blog/">Blog</a>
+            </li>
+        
+      
+        
+	
+	
+	  
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	 
+         <li class="MenuItem">
+           <div class="dropdown">
+             <button class="dropdown-button">Tags&nbsp;&#9662;</button>
+             <div class="dropdown-content">
+              
+                
+                  <a href="../../../tags/aws/">aws</a>
+                
+              
+                
+                  <a href="../../../tags/billing/">billing</a>
+                
+              
+                
+                  <a href="../../../tags/cloud-billing/">cloud-billing</a>
+                
+              
+                
+                  <a href="../../../tags/cmake/">cmake</a>
+                
+              
+                
+                  <a href="../../../tags/cost/">cost</a>
+                
+              
+                
+                  <a href="../../../tags/dataframe/">dataframe</a>
+                
+              
+                
+                  <a href="../../../tags/dataset/">dataset</a>
+                
+              
+                
+                  <a href="../../../tags/express/">express</a>
+                
+              
+                
+                  <a href="../../../tags/gcloud/">gcloud</a>
+                
+              
+                
+                  <a href="../../../tags/gcloud-api/">gcloud-api</a>
+                
+              
+                
+                  <a href="../../../tags/golang/">golang</a>
+                
+              
+                
+                  <a href="../../../tags/lilypond/">lilypond</a>
+                
+              
+                
+                  <a href="../../../tags/linux/">linux</a>
+                
+              
+                
+                  <a href="../../../tags/magenta/">magenta</a>
+                
+              
+                
+                  <a href="../../../tags/matching-skus-to-resources/">matching-skus-to-resources</a>
+                
+              
+                
+                  <a href="../../../tags/mattermost/">mattermost</a>
+                
+              
+                
+                  <a href="../../../tags/musicocr/">musicocr</a>
+                
+              
+                
+                  <a href="../../../tags/nodejs/">nodejs</a>
+                
+              
+                
+                  <a href="../../../tags/opencv/">opencv</a>
+                
+              
+                
+                  <a href="../../../tags/parquet/">parquet</a>
+                
+              
+                
+                  <a href="../../../tags/rdd/">rdd</a>
+                
+              
+                
+                  <a href="../../../tags/resource-estimation/">resource-estimation</a>
+                
+              
+                
+                  <a href="../../../tags/resources/">resources</a>
+                
+              
+                
+                  <a href="../../../tags/scala/">scala</a>
+                
+              
+                
+                  <a href="../../../tags/sku/">sku</a>
+                
+              
+                
+                  <a href="../../../tags/spark/">spark</a>
+                
+              
+                
+                  <a href="../../../tags/tensorflow/">tensorflow</a>
+                
+              
+                
+                  <a href="../../../tags/tesseract/">tesseract</a>
+                
+              
+                
+                  <a href="../../../tags/unittests/">unittests</a>
+                
+              
+             </div>
+           </div>
+         </li>
+	 
+        
+      
+        
+          <li class="MenuItem ">
+		  <a href="../../../contact/" title="">Contact</a>
+          </li>
+	  
+      
+    </ul>
+</nav>
+</div>
+
+  <article class="content textblock">
+    <h2>Spark: many ways to do the same thing</h2>
+
+    
+
+    <p>
+      <a href="http://www.nephometrics.ch/2019/06/spark-many-ways-to-do-the-same-thing/">Published June 17, 2019</a>
+    </p>
+    <p>
+      
+
+<p>Spark lets you do things in many different ways &ndash; Scala, Python, or Java;
+RDDs, Dataframes, Datasets, SparkSQL each have their own APIs and idioms;
+you can fiddle with a bunch of parameters, and of course you can decide to
+pre-process your data. And that&rsquo;s not a full list.</p>
+
+<p>I thought I&rsquo;d do several implementations of the same data transformation and
+compare them, mainly for how easy they were to develop and debug.</p>
+
+<p>Below, I outline one Scala- and two Python-based implementations, and I provide
+basic observations of performance using json or parquet input formats. I focus
+on the APIs more than on performance because I have not done a full performance
+evaluation (and because frankly, the posting is already way too long).</p>
+
+<p>I&rsquo;ve included code snippets throughout; the full code is available from
+<a href="https://github.com/kpaschen/spark/tree/master/dblp">my github</a>.</p>
+
+<h3 id="background-for-the-code">Background for the code</h3>
+
+<p>As before, I use a data dump obtained from
+<a href="http://dblp.uni-trier.de">dblp</a>. <a href="https://dblp.uni-trier.de/faq/1474677.html">DBLP make their data available</a> under an Open Data Commons ODC-By 1.0 License.</p>
+
+<p>I got the data in json format. There&rsquo;s about 4.1 GB of it, split into four files.
+The fields I use are:</p>
+
+<ul>
+<li>year (the year the paper was published)</li>
+<li>id (a string id for the publication)</li>
+<li>references (a list of publication ids, can be null)</li>
+</ul>
+
+<p>I wanted to see how the number of citations that a paper attracts develops over
+time. So I wrote three spark programs that turn the input data into</p>
+
+<ul>
+<li>id</li>
+<li>a list of (age, citation count) pairs</li>
+</ul>
+
+<p>where &lsquo;age&rsquo; ranges from 0 (the year the paper was published) to whenever the
+latest citation was. For example, if a paper was published in 2002 and got cited twice in 2003, four times in 2004, never in 2005, and once in 2006, and then never again, it would get this list:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span></code></pre></div>
+
+<p>and then I turn that into</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span></code></pre></div>
+
+<p>for plotting.</p>
+
+<p>I include years with no citations to make it easier to plot.</p>
+
+<p>There are some more or less obvious issues with the data.
+ One is that some publications
+are cited before they are published; sometimes this is because of the way the
+publication process works (e.g. the paper was available as a preprint and the
+people citing it knew it was accepted for publication in a given venue, so they
+cited the peer-reviewed version rather than the preprint). Sometimes this is because
+of a merging bug or artefact in DBLP (usually this is a famous paper that got
+re-issued in a collection and DBLP merged the two publication records using the
+later date).</p>
+
+<p>This should be cleaned up (not least because some of the affected papers have
+a lot of citations), but for this post, I just ignore &ldquo;time-traveling&rdquo;
+citations. This is because handling them makes the code more complex without
+adding insights about the API or performance differences I want to cover.</p>
+
+<h3 id="transformation-outline">Transformation outline</h3>
+
+<p>The general transformation is the same for each version:</p>
+
+<p><img src="../../../images/dblpoutline.svg"
+   alt="An outline of the dblp data transformations"
+   width="700"
+ /></p>
+
+<p>In a first step, I extract references and years from the base data; the years
+now represent the year the reference was cited. I count the number of citations
+per reference and year. This gets me the <code>idYearCount</code> table.</p>
+
+<p>Then I join that table with the original data to get the publication years for
+the references. I subtract the publication year from the citation year to get
+the <code>citation age</code>. This gets me the <code>idAgeCount</code> table.
+After that, I group by id and collect pairs of citation age and citation count into
+lists, which I flatten to get just arrays where the <code>n</code>th entry is the number
+of citations in the <code>n</code>th year after publication.</p>
+
+<h3 id="conclusions">Conclusions</h3>
+
+<h4 id="apis">APIs</h4>
+
+<p>I found plain RDDs in Python easy to develop for. The <code>map</code> and <code>reduceByKey</code>
+calls are really powerful. However, the limitation of joins to pair RDDs makes
+for some awkward extra operations.</p>
+
+<p>The DataFrame API is much richer.
+However, compared to RDDs, I found it harder to get a general picture of the
+available methods for Dataframes in pyspark. Of course there is
+<a href="https://spark.apache.org/docs/latest/api/python/index.html">API documentation</a>
+but it generally took some work to figure out the different options for achieving
+what I wanted, for example, how to aggregate into a list (<code>collect_list</code>), or
+what a ZippedPartitionsRDD does.</p>
+
+<p>The Dataset API (available for Scala but not for Python) is even richer than
+the one for DataFrames, but similarly confusing in terms of the available
+documentation, for example around joins.</p>
+
+<p>For both DataFrames and Datasets, there is API documentation on the apache
+spark homepage, but this tends to be limited to what&rsquo;s been extracted from
+Javadoc, with a few examples thrown in here and there. There is also a lot of
+blog posts and stack overflow questions/answers around various topics, with
+wildly varying degrees of usefulness; particularly aggravating are the sites
+that seek to monetize spark &ldquo;tips&rdquo; with a lot of ads.</p>
+
+<p>I did not try a SparkSQL-centric variant; maybe that would have allowed the
+optimizer to really shine? I&rsquo;d have to use a larger dataset and more
+complex operations for that though.</p>
+
+<p>Both DataFrames and Datasets make it easy to rename columns and to ensure they
+have the right types. I find this useful; it is very annoying for operations
+on columns to fail or give the wrong answer because the data types are not
+correct, or for e.g. joins to degenerate because <code>col(&quot;_2&quot;)</code> is a different value
+from what you thought it was, maybe because you changed a &ldquo;select&rdquo; statement
+several lines above.</p>
+
+<p>I wrote unit tests for all variants; once you know how to get a spark context
+in your unit tests, this is doable. Of course I ran into the fact that
+in Python, operations on DataFrames need a spark session to have been
+initialized as well, and of course there is no straightforward error message
+when you don&rsquo;t &ndash; I got a stack trace, pasted that into Google
+and got a StackOverflow posting that told me what I needed to do. But I&rsquo;m
+afraid I have become used to that.</p>
+
+<h4 id="performance">Performance</h4>
+
+<p>Here is a table with the running times I measured (in minutes):</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Scala</th>
+<th>Python RDD</th>
+<th>Python DF</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>json</td>
+<td>4.4</td>
+<td>8.4</td>
+<td>5.4</td>
+</tr>
+
+<tr>
+<td>parquet</td>
+<td>3.9</td>
+<td>7.2</td>
+<td>4.2</td>
+</tr>
+</tbody>
+</table>
+
+<p>I used the spark history server to evaluate overall running times and to
+investigate where time was being spent. Of course the actual numbers are
+meaningless because they depend on the machine(s) you&rsquo;re running on, and anyway,
+this is a small workload that I ran on a single machine. I&rsquo;ve not run
+on a cluster because I need a bigger workload for that (with a small workload,
+I think I&rsquo;d be primarily measuring the overhead of running on a cluster).
+ I&rsquo;ve got a few things in mind.</p>
+
+<p>With the dataset and code I explored here, most of the time was being spent
+reading the data from disk. This happens twice, once to populate <code>idYearCount</code>,
+and once to join <code>idYearCount</code> with the original table. There&rsquo;s really no way
+around this join because you need the <code>year</code> column twice in two different
+&ldquo;roles&rdquo; (once as the publication year and once as the citation year).</p>
+
+<p>The very first version of the code was in a Jupyter notebook (not shown here),
+and it took about 20 minutes to run. Running Python or Scala code with
+<code>spark-submit</code> cut this down significantly (to between 4 and 8 minutes).</p>
+
+<p>Reading from json, it made no difference for performance whether I specified
+a schema. Reading the full 4.1GB from disk took a bit over two minutes on
+my computer, and this happens twice for the program, meaning you can&rsquo;t get
+running times below 4.x minutes. I don&rsquo;t actually use most of the 4.1GB
+read there, so I figured I would try parquet, which is a columnar data format
+and should allow spark to avoid reading so much unnecessary data.</p>
+
+<p>I converted the json data to parquet format. I was lazy and did this via the
+spark shell:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="k">val</span> <span class="n">df1</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">json</span><span class="o">(</span><span class="s">&#34;/tmp/dblp-ref/dblp-ref-*.json&#34;</span><span class="o">)</span>
+<span class="n">df1</span><span class="k">:</span> <span class="kt">org.apache.spark.sql.DataFrame</span> <span class="o">=</span> <span class="o">[</span><span class="kt">abstract:</span> <span class="kt">string</span>, <span class="kt">authors:</span> <span class="kt">array&lt;string&gt;</span> <span class="kt">...</span> <span class="err">6</span> <span class="kt">more</span> <span class="kt">fields</span><span class="o">]</span>
+
+<span class="n">scala</span><span class="o">&gt;</span> <span class="n">df1</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">parquet</span><span class="o">(</span><span class="s">&#34;/tmp/dblp-ref/dblp.ref.parquet&#34;</span><span class="o">)</span></code></pre></div>
+
+<p>I could have done more pre-processing here (e.g. only write the fields that
+the program actually uses), but that&rsquo;s mostly redundant because parquet will
+store the columns of the data in separate files anyway.</p>
+
+<p>Once I read from parquet in Python, I could see that the first read (for <code>idYearCount</code>)
+accessed 975.9MB and the second one (for the join) just 104.8 MB. The time
+spent reading the data was still around 2 minutes for each read, but the
+amount of data in subsequent shuffles went down. I&rsquo;m not entirely sure how that
+happens given that the shuffle inputs should be based on the data I join,
+and that is always based on the same selection from the input data; maybe some
+kind of operation push-down?</p>
+
+<p>In Scala, reading from Parquet had a more dramatic effect, with only 1.3 minutes
+being spent reading the data for <code>idYearCount</code>, and only 37s for the second read.
+Bear in mind that these numbers are based on a small number of measurements on one
+machine; at best, they are indicators that using parquet is really worth it if
+you only need some of the columns of your data (which I assume you already knew).</p>
+
+<p>Otherwise, perhaps the largest improvement in going from Python with RDDs to
+Python with DataFrames is getting rid of the second join. Moreover, it looks to me
+as though joins on RDDs in pyspark always end up being implemented using a
+Union (I tried this experimentally from the pyspark shell as well), whereas
+with the DataFrame-based joins, depending on the details of the code, sometimes
+I see a SortMergeJoin, and sometimes I only see a ZippedPartitionsRDD.
+I couldn&rsquo;t find documentation for this and have not looked at the spark source
+ code to confirm, though.</p>
+
+<p>There is not much performance difference between my Python with DataFrames
+ implementation
+and Scala; I don&rsquo;t think this means Scala isn&rsquo;t worth it. I&rsquo;m definitely more
+familiar with Python than with Scala, so I wouldn&rsquo;t rule out my code being
+suboptimal; and moreover, it&rsquo;s very plausible that better optimization
+ capabilities etc. won&rsquo;t really shine until I try larger datasets and more
+complex transformations. Stay tuned. One thing to be aware of with Scala vs.
+Python is that Scala will consume a lot more memory given a chance, and on
+a low-memory machine, that can lead to garbage collection and swapping effects.
+This would be more controllable in a cluster environment, it just explains why
+it&rsquo;s more fun for me to develop locally using Python than Scala.</p>
+
+<h3 id="implementation-details">Implementation details</h3>
+
+<h4 id="getting-a-count-of-citations-by-year">Getting a count of citations by year</h4>
+
+<p>This is the first step in the diagram above, where I obtain <code>idYearCount</code>.</p>
+
+<p>One of the first programming books I read (the &ldquo;pink camel&rdquo; edition of
+<a href="https://en.wikipedia.org/wiki/Programming_Perl">Programming Perl</a>) called this
+kind of operation &ldquo;inverting on a secondary key&rdquo; (or at least that&rsquo;s what I
+remember) &ndash; you have data keyed by one field and you re-arrange the data so
+a different field becomes the primary key. So I have rows like this:</p>
+
+<pre><code>id0, 2013, [id3]
+id1, 2013, [id3, id4]
+id2, 2014, [id1, id4]
+</code></pre>
+
+<p>And I want to turn them into this:</p>
+
+<pre><code>id1, 2014, 1
+id3, 2013, 2
+id4, 2013, 1
+id4, 2014, 1
+</code></pre>
+
+<p><strong>With basic RDDS in Python:</strong></p>
+
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># df = &lt;read data from json or parquet&gt;</span>
+<span class="n">dd</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&#34;id&#34;</span><span class="p">,</span> <span class="s2">&#34;references&#34;</span><span class="p">,</span> <span class="s2">&#34;year&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s2">&#34;references is not NULL&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">rdd</span>
+<span class="n">docsplit</span> <span class="o">=</span> <span class="n">dd</span><span class="o">.</span><span class="n">flatMap</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="p">[(</span><span class="s1">&#39;{}.{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ref</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">ref</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">idYearCount</span> <span class="o">=</span> <span class="n">docsplit</span><span class="o">.</span><span class="n">reduceByKey</span><span class="p">(</span><span class="k">lambda</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span> <span class="n">c</span> <span class="o">+</span> <span class="n">d</span><span class="p">)</span></code></pre></div>
+
+<p>Note I could have chained all three lines together into one, it would just get harder to read. This makes no difference to how spark executes the code.
+<code>docsplit</code> has keys of the form <code>&lt;reference ID&gt;.&lt;yearCited&gt;</code> so that I can count
+citations and group by both reference ID and yearCited. This is because
+<code>reduceByKey</code> expects there to be one field that is the primary key for the
+reduce operation.</p>
+
+<p><strong>With DataFrames in Python:</strong></p>
+
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># df = &lt;read data from json or parquet&gt;</span>
+<span class="n">dd</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&#34;id&#34;</span><span class="p">,</span> <span class="s2">&#34;references&#34;</span><span class="p">,</span> <span class="s2">&#34;year&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s2">&#34;references is not NULL&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">rdd</span>
+<span class="n">docsplit</span> <span class="o">=</span> <span class="n">dd</span><span class="o">.</span><span class="n">flatMap</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="p">[(</span><span class="n">ref</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">ref</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">idYearCount</span> <span class="o">=</span> <span class="n">docsplit</span><span class="o">.</span><span class="n">toDF</span><span class="p">()</span><span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s1">&#39;_1&#39;</span><span class="p">,</span> <span class="s1">&#39;_2&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;_3&#39;</span><span class="p">:</span> <span class="s1">&#39;sum&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">withColumnRenamed</span><span class="p">(</span>
+   <span class="s1">&#39;sum(_3)&#39;</span><span class="p">,</span> <span class="s1">&#39;citationCount&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">withColumnRenamed</span><span class="p">(</span><span class="s1">&#39;_1&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
+     <span class="s1">&#39;yearCited&#39;</span><span class="p">,</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;_2&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">IntegerType</span><span class="p">()))</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;_2&#39;</span><span class="p">)</span></code></pre></div>
+
+<p>This avoids the awkward concatenation of id and year in <code>docsplit</code> because
+<code>groupBy</code> can take multiple columns. I&rsquo;ve also taken advantage of column
+operations to rename and cast &ndash; it makes no real difference here, but I like
+having my columns named sensibly and I also did not want the &lsquo;year&rsquo; columns
+to have a bigint type.</p>
+
+<p><strong>With Scala and Datasets:</strong></p>
+
+<p>I wanted to use Datasets but not primarily the SQL API. No technical reason,
+I just wanted to explore the Dataset API. I ended up using Dataframes
+ quite a bit because some operations on Datasets (such as joins) return
+ Dataframes.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="k">case</span> <span class="k">class</span> <span class="nc">BasePublication</span><span class="o">(</span><span class="n">id</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">references</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">],</span> <span class="n">year</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span>
+
+<span class="c1">// baseData: DataFrame is the data we read from disk. I processed this to
+</span><span class="c1">// cast &#39;year&#39; to an Int because I didn&#39;t want it to be a Long. With the
+</span><span class="c1">// json data this can be done by specifying a schema to the read; with
+</span><span class="c1">// parquet, I use a `withColumn` statement.
+</span><span class="c1"></span><span class="k">val</span> <span class="n">publications</span> <span class="k">=</span> <span class="n">baseData</span><span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="s">&#34;id&#34;</span><span class="o">,</span> <span class="s">&#34;references&#34;</span><span class="o">,</span> <span class="s">&#34;year&#34;</span><span class="o">)</span>
+  <span class="o">.</span><span class="n">filter</span><span class="o">(</span><span class="s">&#34;references is not NULL&#34;</span><span class="o">).</span><span class="n">as</span><span class="o">[</span><span class="kt">BasePublication</span><span class="o">]</span></code></pre></div>
+
+<p>I use a case class for the publication data I extract from the raw source
+because why not &ndash; it adds a small amount of readability and self-documentation.</p>
+
+<p>Then I looked at how to turn the reference ids into keys and count. My first
+attempt mirrored the RDD-based solution because I ended up concatenating
+id and year so I could use <code>groupByKey</code> and <code>reduceGroups</code>:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="k">val</span> <span class="n">idYearCount</span> <span class="k">=</span> <span class="n">publications</span>
+  <span class="o">.</span><span class="n">flatMap</span><span class="o">(</span><span class="n">row</span> <span class="k">=&gt;</span> <span class="k">for</span><span class="o">(</span><span class="n">b</span> <span class="k">&lt;-</span> <span class="n">row</span><span class="o">.</span><span class="n">references</span><span class="o">)</span> <span class="k">yield</span> <span class="o">(</span><span class="n">b</span> <span class="o">+</span> <span class="s">&#34;.&#34;</span> <span class="o">+</span> <span class="n">row</span><span class="o">.</span><span class="n">year</span><span class="o">,</span> <span class="mi">1</span><span class="o">))</span>
+  <span class="o">.</span><span class="n">groupByKey</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">_1</span><span class="o">)</span>
+  <span class="o">.</span><span class="n">reduceGroups</span><span class="o">((</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="n">_1</span><span class="o">,</span> <span class="n">a</span><span class="o">.</span><span class="n">_2</span> <span class="o">+</span> <span class="n">b</span><span class="o">.</span><span class="n">_2</span><span class="o">))</span>
+  <span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">_2</span><span class="o">)</span></code></pre></div>
+
+<p>The final <code>map(_._2)</code> call is just to drop an extra instance
+of the id because we get the same key from <code>groupByKey</code> and <code>reduceGroups</code>.</p>
+
+<p>Alternatively, because we&rsquo;re not limited to RDD operations:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="k">val</span> <span class="n">citedPublications</span> <span class="k">=</span> <span class="n">publications</span><span class="o">.</span><span class="n">flatMap</span><span class="o">(</span><span class="n">row</span> <span class="k">=&gt;</span> <span class="k">for</span><span class="o">(</span><span class="n">b</span> <span class="k">&lt;-</span> <span class="n">row</span><span class="o">.</span><span class="n">references</span><span class="o">)</span> <span class="k">yield</span> <span class="o">(</span><span class="n">b</span><span class="o">,</span> <span class="n">row</span><span class="o">.</span><span class="n">year</span><span class="o">,</span> <span class="mi">1</span><span class="o">))</span>
+<span class="k">val</span> <span class="n">x</span> <span class="k">=</span> <span class="n">citedPublications</span><span class="o">.</span><span class="n">groupBy</span><span class="o">(</span><span class="s">&#34;_1&#34;</span><span class="o">,</span> <span class="s">&#34;_2&#34;</span><span class="o">).</span><span class="n">agg</span><span class="o">(</span><span class="n">sum</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&#34;_3&#34;</span><span class="o">))).</span><span class="n">withColumnRenamed</span><span class="o">(</span><span class="s">&#34;sum(_3)&#34;</span><span class="o">,</span> <span class="s">&#34;tmp&#34;</span><span class="o">)</span>
+<span class="k">val</span> <span class="n">idYearCount</span> <span class="k">=</span> <span class="n">x</span><span class="o">.</span><span class="n">withColumn</span><span class="o">(</span><span class="s">&#34;citationCount&#34;</span><span class="o">,</span> <span class="n">x</span><span class="o">(</span><span class="s">&#34;tmp&#34;</span><span class="o">).</span><span class="n">cast</span><span class="o">(</span><span class="nc">IntegerType</span><span class="o">)).</span><span class="n">drop</span><span class="o">(</span><span class="s">&#34;tmp&#34;</span><span class="o">)</span></code></pre></div>
+
+<p>This avoids the string concatenation (and hence also the subsequent string splitting).
+Performance effects from this change were not particularly visible, but I assume
+they would be visible at greater scale (saving a large number of string operations
+tends to be worth it). I don&rsquo;t do a lot of shuffling or re-partitioning in
+this example, but if I did, that would be another reason to be wary of
+modifying the keys of my data sets.</p>
+
+<p>I&rsquo;ve included code to rename and cast the citation count here because I wanted
+it to be an Integer rather than a Long. That&rsquo;s just cosmetic, though.</p>
+
+<h4 id="joining-to-get-both-the-year-of-publication-and-the-year-of-citation">Joining to get both the year of publication and the year of citation</h4>
+
+<p>Next, I join <code>idYearCount</code> with a table of publication ids and publication
+years selected from the original data, so that I can compare the year(s) a
+ publication was cited and the year it was published.</p>
+
+<p><strong>With Python and RDDs:</strong></p>
+
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">ddpairs</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&#34;id&#34;</span><span class="p">,</span> <span class="s2">&#34;year&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">rdd</span>
+<span class="n">idYear</span> <span class="o">=</span> <span class="n">idYearCount</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">][:</span><span class="o">-</span><span class="mi">5</span><span class="p">],</span> <span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">4</span><span class="p">:])))</span>
+<span class="n">idYearAge</span> <span class="o">=</span> <span class="n">idYear</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ddpairs</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+  <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;{}.{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])))</span>
+
+<span class="n">idAgeCount</span> <span class="o">=</span> <span class="n">idYearAge</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">idYearCount</span><span class="p">)</span></code></pre></div>
+
+<p>As before, <code>df</code> is the data read from disk. I select <code>ddpairs</code> without the
+<code>references is not NULL</code> clause because some references may not cite references
+themselves, but I still want to be able to find their publication years.</p>
+
+<p>The <code>idYear</code> line splits just the <code>id</code> and <code>yearCited</code> fields out of
+<code>idYearCount</code>. Then I join with <code>ddpairs</code> to get an RDD of <code>id</code> and <code>age</code>,
+the <code>filter</code> statement drops those &ldquo;time-traveling&rdquo; citations that are due to
+bad data, and then I re-format to get keys of the form <code>id.year</code> and values
+representing the citation age. This is so I can join with idYearCount and get
+the citation counts back.</p>
+
+<p>You&rsquo;ll notice this is really awkward, and that&rsquo;s basically because RDDs
+only support joins on <code>pair RDDs</code>. This means
+whenever I want to join, I need to have two RDDs that are just collections of
+key-value pairs. There&rsquo;s a few different ways that I could have finagled this
+here, and I chose the approach above. Whichever way you look at it though, it&rsquo;s
+not pretty.</p>
+
+<p><strong>With Python and DataFrames:</strong></p>
+
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">dfpairs</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&#34;id&#34;</span><span class="p">,</span> <span class="s2">&#34;year&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
+  <span class="s2">&#34;year&#34;</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s2">&#34;year&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">IntegerType</span><span class="p">()))</span>
+
+<span class="n">idAgeCount</span> <span class="o">=</span> <span class="n">idYearCount</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dfpairs</span><span class="p">,</span>
+   <span class="n">idYearCount</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">dfpairs</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
+     <span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;yearCited&#39;</span><span class="p">)</span> <span class="o">-</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">dfpairs</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">])</span></code></pre></div>
+
+<p>This is clearly way easier than the RDD version. And it&rsquo;s just one
+join, too.</p>
+
+<p><strong>With Scala:</strong></p>
+
+<p>Assume I&rsquo;m using the second version of the code above (no concatenation
+of publication id and year). We have <code>idYearCount</code>, which is a DataFrame
+containing Rows with <code>string</code>, <code>int</code>, <code>int</code>.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="k">case</span> <span class="k">class</span> <span class="nc">CitedPublication</span><span class="o">(</span><span class="n">id</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">yearCited</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">Int</span><span class="o">],</span>
+  <span class="n">age</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">Int</span><span class="o">],</span> <span class="n">count</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">Int</span><span class="o">])</span>
+
+<span class="k">val</span> <span class="n">ddpairs</span> <span class="k">=</span> <span class="n">baseTable</span><span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="s">&#34;id&#34;</span><span class="o">,</span> <span class="s">&#34;year&#34;</span><span class="o">)</span>
+<span class="n">idAgeCount</span> <span class="k">=</span> <span class="n">idYearCount</span>
+  <span class="o">.</span><span class="n">join</span><span class="o">(</span><span class="n">ddpairs</span><span class="o">,</span> <span class="n">idYearCount</span><span class="o">(</span><span class="s">&#34;_1&#34;</span><span class="o">)</span> <span class="o">===</span> <span class="n">ddpairs</span><span class="o">(</span><span class="s">&#34;id&#34;</span><span class="o">),</span> <span class="n">joinType</span><span class="o">=</span><span class="s">&#34;right_outer&#34;</span><span class="o">)</span>
+  <span class="o">.</span><span class="n">drop</span><span class="o">(</span><span class="s">&#34;_1&#34;</span><span class="o">)</span>
+  <span class="o">.</span><span class="n">withColumn</span><span class="o">(</span><span class="s">&#34;age&#34;</span><span class="o">,</span> <span class="n">when</span><span class="o">(</span><span class="n">$</span><span class="s">&#34;_2&#34;</span><span class="o">.</span><span class="n">isNotNull</span><span class="o">,</span> <span class="n">$</span><span class="s">&#34;_2&#34;</span> <span class="o">-</span> <span class="n">$</span><span class="s">&#34;year&#34;</span><span class="o">).</span><span class="n">otherwise</span><span class="o">(</span><span class="n">lit</span><span class="o">(</span><span class="mi">0</span><span class="o">)))</span>
+  <span class="o">.</span><span class="n">drop</span><span class="o">(</span><span class="s">&#34;year&#34;</span><span class="o">)</span>
+  <span class="o">.</span><span class="n">toDF</span><span class="o">(</span><span class="s">&#34;yearCited&#34;</span><span class="o">,</span> <span class="s">&#34;count&#34;</span><span class="o">,</span> <span class="s">&#34;id&#34;</span><span class="o">,</span> <span class="s">&#34;age&#34;</span><span class="o">)</span>
+  <span class="o">.</span><span class="n">as</span><span class="o">[</span><span class="kt">CitedPublication</span><span class="o">]</span></code></pre></div>
+
+<p>I decided to get fancy and used a right outer join so I&rsquo;d also get entries
+for publications that were never cited. That is why the <code>age</code> column clause
+has to handle the case when there was no left join partner, so <code>_2</code> is null.</p>
+
+<p>I actually left out the filter for negative age in the Scala code because
+the subsequent code makes it unnecessary.</p>
+
+<h3 id="aggregate-and-flatten-into-plottable-lists">Aggregate and flatten into plottable lists</h3>
+
+<p><strong>With Python and RDDs:</strong></p>
+
+<p>Now I collect the ages and citation counts into lists like so:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">ageCountLists</span> <span class="o">=</span> <span class="n">idAgeCount</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+  <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">][:</span><span class="o">-</span><span class="mi">5</span><span class="p">],</span> <span class="p">[(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])]))</span><span class="o">.</span><span class="n">reduceByKey</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span> <span class="n">c</span> <span class="o">+</span> <span class="n">d</span><span class="p">)</span></code></pre></div>
+
+<p>The <code>map</code> removes the <code>year</code> appended to the key and turns the age and
+ citation count data into a list with one pair.
+ Then <code>reduceByKey</code> appends all the lists for the same publication together.</p>
+
+<p>This gives us rows like this:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">publicationId</span><span class="p">,</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span></code></pre></div>
+
+<p>which means: The publication <code>publicationId</code> was cited once in the year it
+was published, never in the following year, four times in the second year
+after its publication, etc.</p>
+
+<p>Now I want to turn that into an array of citation counts where the nth entry
+in the array is the number of citations n years after publication.</p>
+
+<p>I implemented a helper method for this, but did not use a UDF.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">pairsToArrayHelper</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">pairsToArray</span><span class="p">(</span><span class="n">pairs</span><span class="p">):</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">pairs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="ow">in</span> <span class="n">d</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span></code></pre></div>
+
+<p>And then call it like this:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">p2Afunc</span> <span class="o">=</span> <span class="n">pairsToArrayHelper</span><span class="o">.</span><span class="n">pairsToArray</span>
+<span class="n">citationCountArrays</span> <span class="o">=</span> <span class="n">ageCountLists</span><span class="o">.</span><span class="n">mapValues</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">p2Afunc</span><span class="p">(</span><span class="n">x</span><span class="p">))</span></code></pre></div>
+
+<p>The reason I put <code>pairsToArray</code> in its own class is serialization. If you want
+to use a function in a mapper, the code needs to be transmitted to the mapper.
+This usually means the object defining the function must be serialized, which
+is difficult when it&rsquo;s also the object that holds e.g. your SparkSession.</p>
+
+<p><strong>With Python and DataFrames:</strong></p>
+
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># idAgeCount contains citationCount, id, yearCited, year, age</span>
+<span class="c1"># combine &#39;age&#39; and &#39;citationCount&#39; into pairs, then drop everything</span>
+<span class="c1"># except for &#39;id&#39; and those pairs, group by id and make lists of the pairs.</span>
+<span class="n">tmp</span> <span class="o">=</span> <span class="n">idAgeCount</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;_1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+     <span class="n">col</span><span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">&#39;ageCountPair&#39;</span><span class="p">,</span> <span class="n">struct</span><span class="p">(</span>
+         <span class="n">idAgeCount</span><span class="o">.</span><span class="n">age</span><span class="p">,</span> <span class="n">idAgeCount</span><span class="o">.</span><span class="n">citationCount</span><span class="p">))</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span>
+             <span class="s1">&#39;citationCount&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+                 <span class="n">collect_list</span><span class="p">(</span><span class="s1">&#39;ageCountPair&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;ageCountPairs&#39;</span><span class="p">))</span>
+
+<span class="c1"># now tmp rows have an id and a list of ageCountPairs, and each ageCountPair</span>
+<span class="c1"># is a Row with age and citationCount. At this point, we can either</span>
+<span class="c1"># continue processing the data using udfs or various array or map functions</span>
+<span class="c1"># on dataframes, or just convert tmp to an rdd and use mapValues on it.</span>
+<span class="c1"># I ended up doing the latter since it seems way easier and is probably no </span>
+<span class="c1"># less efficient than using a udf from python.</span>
+<span class="n">p2Afunc</span> <span class="o">=</span> <span class="n">pairsToArrayHelper</span><span class="o">.</span><span class="n">pairsToArray</span>
+<span class="n">citationCountArrays</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">&#39;ageCountMap&#39;</span><span class="p">,</span>
+     <span class="n">pyspark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">functions</span><span class="o">.</span><span class="n">map_from_entries</span><span class="p">(</span><span class="s1">&#39;ageCountPairs&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span>
+         <span class="s1">&#39;ageCountPairs&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rdd</span><span class="o">.</span><span class="n">mapValues</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">p2Afunc</span><span class="p">(</span><span class="n">x</span><span class="p">))</span></code></pre></div>
+
+<p>Because I wasn&rsquo;t joining pair RDDs here, I have a lot more columns in
+ <code>idAgeCount</code>, which I clean up. Otherwise, the code is substantially similar
+to the RDD-based variant (and I drop into <code>rdd.mapValues()</code> to apply the
+pairsToArray function to each row).</p>
+
+<p><strong>With Scala:</strong></p>
+
+<p><code>idAgeCount</code> is the Dataset of CitedPublications obtained above.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="c1">// Map publication id to a list of citation counts by age.
+</span><span class="c1">// The ith entry in the history is the number of citations i years after
+</span><span class="c1">// publication.
+</span><span class="c1"></span><span class="k">case</span> <span class="k">class</span> <span class="nc">CitationHistory</span><span class="o">(</span><span class="n">id</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">history</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">Int</span><span class="o">])</span>
+
+<span class="k">val</span> <span class="n">tmp</span> <span class="k">=</span> <span class="n">idAgeCount</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">row</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">row</span><span class="o">.</span><span class="n">id</span><span class="o">,</span> <span class="n">row</span><span class="o">.</span><span class="n">count</span> <span class="k">match</span> <span class="o">{</span>
+      <span class="k">case</span> <span class="nc">Some</span><span class="o">(</span><span class="n">x</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nc">Array</span><span class="o">[</span><span class="kt">Tuple2</span><span class="o">[</span><span class="kt">Int</span>, <span class="kt">Int</span><span class="o">]]((</span><span class="n">row</span><span class="o">.</span><span class="n">age</span> <span class="n">getOrElse</span> <span class="mi">0</span><span class="o">,</span> <span class="n">x</span><span class="o">))</span>
+      <span class="k">case</span> <span class="nc">None</span> <span class="k">=&gt;</span> <span class="nc">Array</span><span class="o">[</span><span class="kt">Tuple2</span><span class="o">[</span><span class="kt">Int</span>, <span class="kt">Int</span><span class="o">]]()</span>
+    <span class="o">})).</span><span class="n">groupByKey</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">_1</span><span class="o">).</span><span class="n">reduceGroups</span><span class="o">(</span>
+      <span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="n">_1</span><span class="o">,</span> <span class="n">a</span><span class="o">.</span><span class="n">_2</span> <span class="o">++</span> <span class="n">b</span><span class="o">.</span><span class="n">_2</span><span class="o">)).</span><span class="n">map</span><span class="o">(</span><span class="n">row</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">row</span><span class="o">.</span><span class="n">_2</span><span class="o">.</span><span class="n">_1</span><span class="o">,</span> <span class="n">row</span><span class="o">.</span><span class="n">_2</span><span class="o">.</span><span class="n">_2</span><span class="o">.</span><span class="n">toMap</span><span class="o">))</span>
+    <span class="n">tmp</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">row</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">row</span><span class="o">.</span><span class="n">_1</span><span class="o">,</span> <span class="o">{</span>
+      <span class="k">var</span> <span class="n">l</span> <span class="k">=</span> <span class="nc">Array</span><span class="o">[</span><span class="kt">Int</span><span class="o">]()</span>
+      <span class="k">if</span> <span class="o">(!</span><span class="n">row</span><span class="o">.</span><span class="n">_2</span><span class="o">.</span><span class="n">isEmpty</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">val</span> <span class="n">mx</span> <span class="k">=</span> <span class="n">row</span><span class="o">.</span><span class="n">_2</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">max</span>
+        <span class="k">for</span> <span class="o">(</span><span class="n">a</span> <span class="k">&lt;-</span> <span class="mi">0</span> <span class="n">to</span> <span class="n">mx</span><span class="o">)</span> <span class="o">{</span>
+          <span class="n">l</span> <span class="k">:</span><span class="kt">+=</span> <span class="kt">row.</span><span class="k">_</span><span class="err">2</span> <span class="kt">getOrElse</span><span class="o">(</span><span class="kt">a</span><span class="o">,</span> <span class="err">0</span><span class="o">)</span>
+        <span class="o">}</span>
+      <span class="o">};</span> <span class="n">l</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="o">)).</span><span class="n">toDF</span><span class="o">(</span><span class="s">&#34;id&#34;</span><span class="o">,</span> <span class="s">&#34;history&#34;</span><span class="o">).</span><span class="n">as</span><span class="o">[</span><span class="kt">CitationHistory</span><span class="o">]</span></code></pre></div>
+
+<p>Here I use an anonymous function instead of the pairsToArray helper I had
+for the Python code. Because i used <code>Option</code> types in <code>CitedPublication</code>,
+I have to handle the case when e.g. the <code>count</code> column is None.</p>
+
+<h3 id="summary">Summary</h3>
+
+<p>Thanks for reading this far! Overall, this was a fun exercise, and I look forward
+to trying a larger workload next.</p>
+
+    </p>
+  </article>
+  <aside class="sidebar">
+    
+        <div class="container">
+          <div class="row">
+              
+	      <p><b>Previous Post:</b><br />
+                <a href="../../../2019/05/unit-testing-spark-scala-code/">Unit testing Spark Scala code</a>
+	      </p>
+              
+              
+	        <p><b>Next Post:</b><br />
+                <a href="../../../2019/06/serving-magenta/">Serving Magenta</a>
+	        </p>
+              
+          </div>
+        </div>
+    
+    
+    
+    <div class="container">
+      <b>See also:</b>
+      	
+          <a class="text-body" href="../../../2019/05/unit-testing-spark-scala-code/">Unit testing Spark Scala code</a>
+          <div>Unit tests. They&rsquo;re a good thing. I use them even in single-person projects, because I like being able to double-check my own logic, and because it&rsquo;s less effort to run a couple tests than to remember the way my code interacts with my other code every time I make a change.
+		    <br /><a href="../../../2019/06/spark-many-ways-to-do-the-same-thing/">...</a>
+	  </div>
+        
+    </div>
+    
+  </aside>
+</article>
+<footer class="footer">
+  <div class="container"><div id="nocookies" class="NoCookieFooter">
+<hr />
+This site was built statically using <a href="https://gohugo.io">Hugo</a>
+ and sets no Cookies.
+<p>
+See also: <a href=../../../privacy>Privacy Statement</a>
+</div>
+
+  </div>
+</footer>
+</div>
+    </body>
+</html>

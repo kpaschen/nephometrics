@@ -1,0 +1,293 @@
+/* roboto-regular - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/roboto-v19-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Roboto'), local('Roboto-Regular'),
+       url('../fonts/roboto-v19-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/roboto-v19-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/roboto-v19-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/roboto-v19-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/roboto-v19-latin-regular.svg#Roboto') format('svg'); /* Legacy iOS */
+}
+
+/* roboto-mono-regular - latin */
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/roboto-mono-v6-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Roboto Mono'), local('RobotoMono-Regular'),
+       url('../fonts/roboto-mono-v6-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/roboto-mono-v6-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/roboto-mono-v6-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/roboto-mono-v6-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/roboto-mono-v6-latin-regular.svg#RobotoMono') format('svg'); /* Legacy iOS */
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+body {
+  background-color: #eaf1f8;
+  color: black;
+  font-family: roboto, verdana, arial;
+  margin: 1em;
+}
+
+.Logobox {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+}
+
+.Logo {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 0;
+	flex-basis: 40%;
+	margin: 0;
+	border: 0;
+	padding: 0px;
+}
+
+.CompanyName {
+  color: #0000aa;
+  background-color: #eaf1f8;
+
+  font-size: 2.0rem;
+  font-weight: bolder;
+  padding: 10px;
+  text-align: left;
+  margin: 0;
+  border: 0;
+}
+
+.CompanyPurpose {
+  color: #0000aa;
+  background-color: #eaf1f8;
+
+  font-size: 1.0rem;
+  font-weight: normal;
+  padding-left: 10px;
+  padding-bottom: 0.4em;
+}
+
+.Feed {
+  margin-left: 3px;
+  padding: 0 0 0 19px;
+  background: url("../images/feed-icon-14x14.png") no-repeat 0 50%;
+}
+
+.LanguageRow {
+  background-color: #0000aa;
+  color: #eeeeff;
+  list-style: none;
+  justify-content: flex-end;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.LanguageItem {
+  padding: 0em 0.4em 0em 1em;
+}
+
+.LanguageItem a {
+  color: #eeeeff;
+  text-decoration: none;
+}
+ 
+.MenuRow {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+
+  background-color: #0000aa;
+  color: #eeeeff;
+}
+
+.MenuItem {
+  color: inherit;
+  font-size: 1.0rem;
+  background-color: inherit;
+  font-family: inherit;
+  border: none;
+  outline: none;
+  margin: 0;
+  padding: 0.1em 0.4em 0em 1em;
+}
+
+.MenuItem a {
+  color: white;
+  text-decoration: none;
+}
+
+.Menu-item--title {
+}
+
+.Offeringsbox {
+	display: flex;
+	flex-direction: column;
+}
+
+.Offering {
+	margin: 0;
+	border: 0;
+	padding: 0px;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown-button {
+  padding: 0;
+  color: inherit;
+  background-color: inherit;
+  font-size: inherit;
+  border-style: none;
+  font: inherit;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #eeeeff;
+  color: black;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  text-decoration: none;
+  align: left;
+  text-align: left;
+  display: block;
+  font-size: 1.0em;
+  padding: 0.4em 0.7em;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.NoCookieFooter {
+  text-align: right;
+  font-size: 0.8em;
+}
+
+code {
+  font-size: 1.2em;
+}
+
+h1 {
+  font-size: 2.0em;
+}
+
+.textblock {
+  padding-left: 0.5em;
+}
+
+.wrapper {
+  border-radius: 0.1em; 
+  padding: 1em;
+}
+
+.rsslink {
+  float: right;
+  color: #0000aa;
+  background-color: #eaf1f8;
+}
+
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  text-align: justify;
+}
+
+@media screen and (min-width: 800px) {
+  .content {
+    float: left;
+    max-width: 720px;
+  }
+
+  .sidebar {
+    float: right;
+    max-width: 250px;
+  }
+
+  .wrapper {
+    max-width: 1050px;
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .header, .footer {
+    max-width: 1050px;
+    grid-column: 1 / -1;
+    clear: both;
+  }
+}
+
+@supports (display: grid) {
+  .wrapper {
+    display: grid;
+    grid-gap: 1em;
+  }
+}
+
+/* tablet */
+@media handheld, screen and (max-width: 799px) {
+  .content {
+    max-width: 720px;
+  }
+  .header, .footer {
+    max-width: 720px;
+  }
+  .wrapper {
+    grid-template-columns: 1 / -1;
+  }
+}
+
+/* big phone */
+@media handheld, screen and (max-width: 450px) {
+  .content {
+    max-width: 365px;
+  }
+  .header, .footer {
+    max-width: 375px;
+  }
+  .MenuItem {
+	  font-size: 0.9em;
+  }
+  .LanguageItem {
+	  font-size: 0.9em;
+  }
+  body {
+    margin: 0.5em;
+  }
+  .wrapper {
+    padding: 0.5em;
+  }
+  .textblock {
+    padding-left: 0.0em;
+  }
+}
+
+/* small phone */
+@media handheld, screen and (max-width: 370px) {
+  .content {
+    max-width: 325px;
+  }
+  .header, .footer {
+    max-width: 335px;
+  }
+}

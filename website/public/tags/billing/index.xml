@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>billing on www.paschen.ch</title>
+    <link>http://www.nephometrics.ch/tags/billing/</link>
+    <description>Recent content in billing on www.paschen.ch</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 18 Mar 2021 13:46:20 +0100</lastBuildDate>
+    
+	<atom:link href="http://www.nephometrics.ch/tags/billing/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>SKUs and Resources</title>
+      <link>http://www.nephometrics.ch/2021/03/skus-and-resources/</link>
+      <pubDate>Thu, 18 Mar 2021 13:46:20 +0100</pubDate>
+      
+      <guid>http://www.nephometrics.ch/2021/03/skus-and-resources/</guid>
+      <description>Reading cloud bills is hard. For illustration, below are a few lines from the bill for a small toy project of mine on GCloud.</description>
+    </item>
+    
+  </channel>
+</rss>

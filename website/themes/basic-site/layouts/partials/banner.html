@@ -1,0 +1,13 @@
+<nav class="DarkBackground">
+    <ul class="MenuRow">
+      <li class="Menu-item--title">
+        <a class="Menu-link DarkBackground-clickable" href="{{ "" | absLangURL }}">{{ site.Title }}</a>
+      </li>
+      {{ range site.Menus.nav }}
+      <li class="Menu-item">
+        <a class="Menu-link DarkBackground-clickable" href="{{ .Permalink | absLangURL }}">{{ .Name }}</a>
+      </li>
+      {{ end }}
+    </ul>
+</nav>
+

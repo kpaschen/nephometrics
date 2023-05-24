@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>magenta on www.paschen.ch</title>
+    <link>http://www.nephometrics.ch/tags/magenta/</link>
+    <description>Recent content in magenta on www.paschen.ch</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 23 Jul 2019 12:10:58 +0200</lastBuildDate>
+    
+	<atom:link href="http://www.nephometrics.ch/tags/magenta/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Magenta App</title>
+      <link>http://www.nephometrics.ch/2019/07/magenta-app/</link>
+      <pubDate>Tue, 23 Jul 2019 12:10:58 +0200</pubDate>
+      
+      <guid>http://www.nephometrics.ch/2019/07/magenta-app/</guid>
+      <description>Continuing on from Serving Magenta, I wanted to put a little web application together.
+What I really want is to make my phone play music by whistling into it.</description>
+    </item>
+    
+    <item>
+      <title>Serving Magenta</title>
+      <link>http://www.nephometrics.ch/2019/06/serving-magenta/</link>
+      <pubDate>Wed, 26 Jun 2019 13:43:06 +0200</pubDate>
+      
+      <guid>http://www.nephometrics.ch/2019/06/serving-magenta/</guid>
+      <description>Magenta is an amazing collection of ml models, libraries and demos. I&amp;rsquo;m&amp;rsquo; not a machine learning expert, but these things are fun to play with.</description>
+    </item>
+    
+  </channel>
+</rss>

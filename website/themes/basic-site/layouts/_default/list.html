@@ -1,0 +1,25 @@
+{{ define "main" }}
+<!-- this is just for formatting -->
+<span style="height: 0.1em; margin: 0px;"></span>
+  <aside class="rsslink">
+  <div style="justify-content:flex-end;display:flex;">
+      <a href="index.xml" class="Feed">RSS link</a>
+    </div>
+  </aside>
+  <div class="content textblock">
+    <article>
+      <header>
+        <h1> {{ .Title }} </h1>
+      </header>
+      {{ .Content }}
+    </article>
+    {{ range .Pages }}
+      <div class="row">
+        <time class="post-date" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+        <div style="padding-top: 5px; padding-bottom: 5px; padding-left: 2%";>
+          <a href="{{ .Permalink | relURL }}">{{ if .Draft }}DRAFT: {{end}}{{ .Title | markdownify }}</a>
+        </div>
+      </div>
+    {{ end }}
+  </div>
+{{ end }}

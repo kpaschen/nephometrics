@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html><head>
+  <title>SKUs and Resources</title>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width initial-scale=1.0">
+
+ <link rel="stylesheet" href="../../../css/basic.css"/>
+ <link rel="stylesheet" href="../../../css/syntax.css"/>
+  <meta name="google-site-verification" content="yHK1RGH0XqN4iPhXZkdWnaRxqjueVNbqgKQ6jKJ_cc4">
+</head>
+<body>
+	<div class="wrapper"><div class="header">
+<nav class="navbar">
+<ul class="LanguageRow">
+  
+ <li class="LanguageItem">
+	 <a href="http://www.nephometrics.ch/">EN</a>
+    </li>
+  
+ <li class="LanguageItem">
+	 <a href="http://www.nephometrics.ch/fr/">FR</a>
+    </li>
+  
+ <li class="LanguageItem">
+	 <a href="http://www.nephometrics.ch/de/">DE</a>
+    </li>
+  
+</ul>
+</nav>
+<div class="Logobox">
+<div class="Logo">
+	<div class="CompanyName">
+		Nephometrics
+	</div>
+	<div class="CompanyPurpose">
+		Cloud SRE Consulting
+	</div>
+</div>
+</div>
+<nav class="navbar">
+    <ul class="MenuRow">
+      
+      
+        
+          <li class="MenuItem ">
+		  <a href="../../../" title="">Home</a>
+          </li>
+	  
+      
+        
+	    <li class="MenuItem">
+		    <a href="../../../blog/">Blog</a>
+            </li>
+        
+      
+        
+	
+	
+	  
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	 
+         <li class="MenuItem">
+           <div class="dropdown">
+             <button class="dropdown-button">Tags&nbsp;&#9662;</button>
+             <div class="dropdown-content">
+              
+                
+                  <a href="../../../tags/aws/">aws</a>
+                
+              
+                
+                  <a href="../../../tags/billing/">billing</a>
+                
+              
+                
+                  <a href="../../../tags/cloud-billing/">cloud-billing</a>
+                
+              
+                
+                  <a href="../../../tags/cmake/">cmake</a>
+                
+              
+                
+                  <a href="../../../tags/cost/">cost</a>
+                
+              
+                
+                  <a href="../../../tags/dataframe/">dataframe</a>
+                
+              
+                
+                  <a href="../../../tags/dataset/">dataset</a>
+                
+              
+                
+                  <a href="../../../tags/express/">express</a>
+                
+              
+                
+                  <a href="../../../tags/gcloud/">gcloud</a>
+                
+              
+                
+                  <a href="../../../tags/gcloud-api/">gcloud-api</a>
+                
+              
+                
+                  <a href="../../../tags/golang/">golang</a>
+                
+              
+                
+                  <a href="../../../tags/lilypond/">lilypond</a>
+                
+              
+                
+                  <a href="../../../tags/linux/">linux</a>
+                
+              
+                
+                  <a href="../../../tags/magenta/">magenta</a>
+                
+              
+                
+                  <a href="../../../tags/matching-skus-to-resources/">matching-skus-to-resources</a>
+                
+              
+                
+                  <a href="../../../tags/mattermost/">mattermost</a>
+                
+              
+                
+                  <a href="../../../tags/musicocr/">musicocr</a>
+                
+              
+                
+                  <a href="../../../tags/nodejs/">nodejs</a>
+                
+              
+                
+                  <a href="../../../tags/opencv/">opencv</a>
+                
+              
+                
+                  <a href="../../../tags/parquet/">parquet</a>
+                
+              
+                
+                  <a href="../../../tags/rdd/">rdd</a>
+                
+              
+                
+                  <a href="../../../tags/resource-estimation/">resource-estimation</a>
+                
+              
+                
+                  <a href="../../../tags/resources/">resources</a>
+                
+              
+                
+                  <a href="../../../tags/scala/">scala</a>
+                
+              
+                
+                  <a href="../../../tags/sku/">sku</a>
+                
+              
+                
+                  <a href="../../../tags/spark/">spark</a>
+                
+              
+                
+                  <a href="../../../tags/tensorflow/">tensorflow</a>
+                
+              
+                
+                  <a href="../../../tags/tesseract/">tesseract</a>
+                
+              
+                
+                  <a href="../../../tags/unittests/">unittests</a>
+                
+              
+             </div>
+           </div>
+         </li>
+	 
+        
+      
+        
+          <li class="MenuItem ">
+		  <a href="../../../contact/" title="">Contact</a>
+          </li>
+	  
+      
+    </ul>
+</nav>
+</div>
+
+  <article class="content textblock">
+    <h2>SKUs and Resources</h2>
+
+    
+
+    <p>
+      <a href="http://www.nephometrics.ch/2021/03/skus-and-resources/">Published March 18, 2021</a>
+    </p>
+    <p>
+      
+
+<p>Reading cloud bills is hard.
+For illustration, below are a few lines from the bill for a small toy project of mine on GCloud. I don&rsquo;t want to
+single Google out here&mdash;AWS and Azure bills are also difficult to read. In the following, all details are taken from
+Google Cloud, but I point to related AWS or Azure features when I think it&rsquo;s useful.</p>
+
+<p>Some of the trouble with reading the bill comes from how the resources
+I have (such as virtual machines) translate to the entities that the provider bills me for.</p>
+
+<table>
+<thead>
+<tr style="background:white;">
+<th align="left">SKU</th><th align="left">SKU ID</th><th align="left">Usage</th><th align="right">Cost in CHF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Storage PD Capacity</td><td align="left">D973-5D65-BAB2</td><td align="left">51.24 gibibyte month</td><td align="right">0.77</td>
+</tr>
+<tr style="background-color:#fbf2f9;">
+<td align="left">Storage PD Capacity in Netherlands</td><td align="left">AE8C-46C3-4994</td><td align="left">2.94 gibibyte month</td><td align="right">0.12</td>
+</tr>
+<tr>
+<td align="left">N1 Predefined Instance Core running in EMEA</td><td align="left">9431-52B1-2C4F</td><td align="left">2.67 hour</td><td align="right">0.08</td>
+</tr>
+<tr style="background-color:#fbf2f9;">
+<td align="left">N1 Predefined Instance Ram running in EMEA</td><td align="left">39F4-0112-6F39</td><td align="left">10.01 gibibyte hour</td><td align="right">0.04</td>
+</tr>
+</tbody>
+</table>
+
+<p>This only shows the first few lines out of a total of 61.</p>
+
+<p>I&rsquo;ll go over what the entries mean next, starting with the meaning of &ldquo;SKU&rdquo;. Then comes a bit about how to labels
+or tags can make this bill more meaningful, and at the end I&rsquo;ll use all this information to try and solve a little mystery.</p>
+
+<h3 id="what-is-a-sku">What is a SKU?</h3>
+
+<p><em>SKU</em> stands for <em>Stock Keeping Unit</em> (at least that&rsquo;s what I found on the Internet). AWS, Azure and Google all use
+SKUs in their billing systems. I find it easiest to think of a SKU as a billing code&mdash;it identifies a category of things
+that a cloud provider charges me for. These categories are very fine-grained, they are
+(of course) not consistent across cloud providers, and matching Resources to SKUs is not straightforward.</p>
+
+<p>I used a VM of the N1
+<a href="https://cloud.google.com/compute/docs/machine-types">machine type</a>. The breakdown
+shows costs incurred between Mar 1st and Mar 16th. The VM only ran for a few hours, and I got
+billed by the hour. I use the N1 instance for running <em>minikube</em> because sometimes I need
+to run unit tests that use it and bringing up minikube on my personal computer is a pain in the neck.
+Google has separate SKUs for CPU and Ram used by my N1 instance. For machine types that support them, there is
+another SKU for GPUs.</p>
+
+<p>For the storage costs, there are two disks (the <em>PD Capacity</em> lines; <em>PD</em> stands for <em>Persistent Disk</em>).
+ One of them was a <em>zonal</em> disk, the other
+a <em>regional</em> disk. I deleted the regional disk soon after creating it.
+The zonal disk has existed since before Mar 1st and it has a size of 100GB. I am getting billed for <em>51.24 gibibyte month</em>,
+which makes sense: using the disk for a full month would be 100 gibibytes, we&rsquo;re on the 16th, the
+bill is based on a snapshot taken some time earlier this day, hence 51.24. Indeed, the bill for a full
+month comes to 100 gibibyte. <em>Gibibyte</em> is an extra piece of precision here&mdash;often, when specifying data volumes, people
+use <em>Gigabyte</em> as shorthand for &ldquo;1000 or 1024 Megabytes, not sure and don&rsquo;t care which&rdquo;. In billing, the distinction does
+matter at some point (though not in this example).</p>
+
+<p>Not shown but also interesting:</p>
+
+<ul>
+<li>License costs for Ubuntu. These costs are always 0, they just show up on the bill breakdown, maybe for completeness&rsquo; sake?</li>
+<li><em>External IP Charge on a Standard VM</em>&mdash;when you create a VM, by default you get an external IP associated with it. This is an <em>ephemeral</em> IP address, it is released when you stop or destroy the VM. If you request a permanent (<em>static</em>) IP, there&rsquo;s a separate charge for that.</li>
+<li>There are a lot of separate lines for Network Ingress and Egress. My project has 0 usage for most of them, and some of them are either always free or have a very high free tier. At some point, I&rsquo;ll write a separate blog post about network billing, but it&rsquo;ll be lengthy.</li>
+</ul>
+
+<p>Each of the assets (VM, Disk) I create for my project relates to one or more SKUs that I get billed for.
+ Some assets, like the VM, imply
+other assets (such as an address, a license, a boot disk). The SKUs reflect the
+billing structure that Google applies to my assets, but lining up the assets as I see them and the SKUs that say how much
+I pay for them is harder than it looks.</p>
+
+<p>This is because:</p>
+
+<ul>
+<li>The same SKU will apply to multiple assets (for example, IP addresses).</li>
+<li>Some assets correspond to more than one SKU.</li>
+</ul>
+
+<p>Experience helps in dealing with this, but so do labels (or tags if you&rsquo;re using AWS or Azure).</p>
+
+<h2 id="aligning-your-bill-with-your-asset-inventory-via-labels-or-tags">Aligning your bill with your asset inventory via labels or tags.</h2>
+
+<p>The GCloud billing console lets you break down costs by Project, Service, or SKU.
+<em>Service</em> refers to the Google cloud service (like <em>Compute</em> or <em>Kubernetes Engine</em>; the equivalents
+for AWS would be <em>EC2</em> or <em>EKS</em>), and I tend to scan costs service by service. Breaking down by SKU involves a lot of scrolling and clicking; I&rsquo;d really like a category in between <em>service</em> and <em>SKU</em> here. Google also lets you filter by location
+(region or zone) and by <em>label</em>. Labels are user-defined key-value pairs that you can attach to resources.</p>
+
+<p>I&rsquo;ll focus on Google Cloud&rsquo;s
+ <a href="https://cloud.google.com/resource-manager/docs/creating-managing-labels">labels</a>
+here.
+ AWS has <a href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html">cost allocation tags</a>,
+and Azure has <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support">tags</a>. Those are
+all really cool and useful, but this post got long enough just writing about Google that AWS and Azure will have to wait for now.</p>
+
+<p>The bottom-right corner of the billing console has a drop-down for label keys.
+That drop-down is populated based on stackdriver monitoring time series that contain data with that label.
+So what this means is, after you create a resource with a given label, you have to wait until there is monitoring data
+for that resource, and then the label should show up in the drop-down. This way, you can get the console to show you costs for resources with a particular value for that label. When you do that, you can see that the label applies
+to &ldquo;dependent&rdquo; resources as well&mdash;for example, I only labeled a VM, but the cost report for that label value also
+shows costs for the IP address, network egress, and OS license.</p>
+
+<p>This is nice, but if you want to do grouping by labels and see costs for several different label values at
+once, I don&rsquo;t think there&rsquo;s a way to do that without <a href="https://cloud.google.com/billing/docs/how-to/export-data-bigquery">exporting to BigQuery</a>.
+ AWS have a similar feature where you can export your bill
+to S3 and then either view it there or import it into e.g. Athena. I haven&rsquo;t tried this with Azure yet, but
+they have a pretty comprehensive <a href="https://docs.microsoft.com/en-us/azure/cost-management-billing/understand/download-azure-daily-usage">cost management toolset</a>.</p>
+
+<p>As far as I know, labels do not apply to costs retroactively. Thus if you have a VM and label it halfway through the
+month, I wouldn&rsquo;t rely on all the costs related to that VM for that month having the label.</p>
+
+<h2 id="skus-and-prices">SKUs and prices</h2>
+
+<p>Once you have a SKU, you can look up how much you&rsquo;ll get charged. Google have a
+<a href="https://cloud.google.com/skus/?currency=USD&amp;filter=9431-52B1-2C4F">SKU explorer</a> that shows you the
+description (<em>N1 Predefined Instance Core running in EMEA</em>), the price (0.034773 USD per hour) and the regions
+(<em>europe-west1</em> &ndash; this means the description should really be &ldquo;in Belgium&rdquo; rather than &ldquo;in EMEA&rdquo;, since
+there are other SKUs for N1 Cores running in the Netherlands for example).</p>
+
+<p>If you want to know more about your SKUs (and who wouldn&rsquo;t), Google&rsquo;s <a href="https://cloud.google.com/billing/docs/apis">billing APIs</a> let you query SKUs programmatically.
+ You do need to put a <em>SKU Service Name</em> into the API request. You can see the service name in the <em>Cost table</em> on the billing
+console, but not in the <em>Cost breakdown</em> page.
+Another way is to query the
+SKU explorer for a SKU (for example one that showed up on your bill). The explorer shows the SKU
+service name (6F81-5844-456A for <em>Compute Engine</em> in this example) in the blue bar at the top of its results.
+Compute Engine is one of the largest SKU services, and it contains a lot of the SKUs I care about in my work.</p>
+
+<p>When you request a SKU via the API, you get back a protocol buffer including a field called <a href="https://cloud.google.com/billing/docs/reference/rpc/google.cloud.billing.v1#google.cloud.billing.v1.PricingExpression">PricingExpression</a>.
+ This encodes how the price is calculated. It&rsquo;s not super easy to read, but the documentation is good.</p>
+
+<p>Amazon also offers an <a href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/using-ppslong.html">API</a>
+ for obtaining price information. Theirs is arguably more convenient than Google&rsquo;s because you don&rsquo;t even need to be authenticated to use the bulk download. If you request pricing information for their compute service (<code>EC2</code>),
+you&rsquo;ll get about a Gigabyte&rsquo;s worth of JSON or CSV (your choice). I find the entries a little difficult to interpret but this, too, will have to wait for another blog post.</p>
+
+<p>Azure has a comparable <a href="https://docs.microsoft.com/en-us/rest/api/cost-management/retail-prices/azure-retail-prices">API</a> as well.</p>
+
+<p>Ideally, I&rsquo;d like to obtain SKUs (or price information, actually) based on the assets I&rsquo;ve got. So I&rsquo;d put an asset
+specification into a request and ask an API for the SKUs that apply to this asset. As far as I know, Google does
+not offer this as an API service (if they do, please let me know!).</p>
+
+<h2 id="a-mystery-solved-maybe">A Mystery Solved (Maybe)</h2>
+
+<p>Finally, let&rsquo;s put all this information together and solve a mystery.
+On my Google Cloud bill, I have three charges for the Ubuntu OS license:</p>
+
+<table>
+<thead>
+<tr style="background:white;">
+<th align="left">SKU</th><th align="left">SKU ID</th><th align="left">Usage</th><th align="right">Cost in CHF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Licensing Fee for Ubuntu 16.04 (Xenial Xerus) (CPU cost)</td><td align="left">2A23-096B-A372</td><td align="left">1.33 hour</td><td align="right">0.00</td>
+</tr>
+<tr style="background-color:#fbf2f9;">
+<td align="left">Licensing Fee for Ubuntu 16.04 (Xenial Xerus) (CPU cost)</td><td align="left">EE6A-FFA3-84D7</td><td align="left">2.67 hour</td><td align="right">0.00</td>
+</tr>
+<tr>
+<td align="left">Licensing Fee for Ubuntu 16.04 (Xenial Xerus) (RAM cost)</td><td align="left">9169-5341-635D</td><td align="left">10.01 gibibyte hour</td><td align="right">0.00</td>
+</tr>
+</tbody>
+</table>
+
+<p>If the costs weren&rsquo;t all zero, I guess I&rsquo;d be a little worried. Why are there two charges for &ldquo;CPU cost&rdquo;?
+Browsing the SKUs did not get me additional information. Labels helped me verify that these charges are
+indeed for the minikube VM (the other VM I run uses Debian). I also verified that I get the equivalent
+three lines of charges for Debian and Fedora.</p>
+
+<p>So next I compared the Usages reported: 1.33 vs. 2.67 hours for the CPU costs, and 10.01 gibibyte hours for
+the RAM cost. The VM had had about 80 minutes of uptime, and that&rsquo;s close enough to 1.33 hours. An
+N1-Standard-2 machine type has two vCPUs and eight GB of RAM. So maybe one of the &ldquo;CPU cost&rdquo; charges is
+really a &ldquo;VM cost&rdquo; charge, because the VM ran for 1.33 hours. And the second &ldquo;CPU cost&rdquo; charge is per vCPU,
+hence <code>2 * 1.33 ~ 2.67</code> hours. This matches the RAM charge: 10.01 gibibyte hours are about 10.75 Gigabyte hours,
+and that&rsquo;s about <code>8 * 1.34</code> Gigabyte hours.</p>
+
+<p>Maybe this means that Google supports billing for licenses based on RAM usage, vCPU usage, VM count, or
+a combination of those, and they simply created SKUs for all billing modes even though some of them always
+have a zero price?</p>
+
+<p>However, I could not find all of these SKUs in the <a href="https://cloud.google.com/skus/?currency=USD&amp;filter=F9BE-F344-D1B6">explorer</a>.
+ I have a SKU on my bill for March that&rsquo;s labeled
+<em>Licensing Fee for Fedora CoreOS Stable (CPU cost)</em> with an id of <code>F9BE-F344-D1B6</code> but the SKU explorer claims
+that this SKU does not exist. Maybe there&rsquo;s some kind of migration or update in progress? Then again,
+the API data and BigQuery both know about this SKU, so maybe it&rsquo;s the explorer that is wrong.</p>
+
+<p>On another hand, SKUs for other OSses can be structured in very different ways.
+For example, here are the SKUs for <code>RHEL7</code> licenses:</p>
+
+<table>
+<thead>
+<tr style="background:white;">
+<th align="left">SKU</th><th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">2894-5229-F604</td><td align="left">Licensing Fee for RedHat Enterprise Linux 7 (GPU cost)</td>
+</tr>
+<tr style="background-color:#fbf2f9;">
+<td align="left">5744-6443-7F8D</td><td align="left">Licensing Fee for RedHat Enterprise Linux 7 on VM with 1 to 4 VCPU</td>
+</tr>
+<tr>
+<td align="left">9AAA-D841-1CA1</td><td align="left">Licensing Fee for RedHat Enterprise Linux 7 on VM with 6 or more VCPU</td>
+</tr>
+<tr style="background-color:#fbf2f9;">
+<td align="left">FF54-E5CA-BAC3</td><td align="left">Licensing Fee for RedHat Enterprise Linux 7 on f1-micro</td>
+</tr>
+<tr>
+<td align="left">9AAA-D841-1CA1</td><td align="left">Licensing Fee for RedHat Enterprise Linux 7 on g1-small</td>
+</tr>
+<tr style="background-color:#fbf2f9;">
+<td align="left">FF54-E5CA-BAC3</td><td align="left">Licensing Fee for RedHat Enterprise Linux 7 (RAM cost)</td>
+</tr>
+</tbody>
+</table>
+
+<p>By the way, you can get this information out of BigQuery if you have set up billing exports for your account.</p>
+
+<p>This probably shows that there are more ways for Google to implement licenses than just per-VM or per-vCPU,
+so maybe the Ubuntu etc. licenses were just created with some kind of scripted default values and nobody
+has bothered to change them because the charges are always zero anyway?</p>
+
+<p>Anyway, I hope this has shed a little light on how to dig into a cloud bill from Google.</p>
+
+    </p>
+  </article>
+  <aside class="sidebar">
+    
+        <div class="container">
+          <div class="row">
+              
+	      <p><b>Previous Post:</b><br />
+                <a href="../../../2021/02/mapping-your-cloud-assets-using-googles-apis-in-go/">Mapping your Cloud Assets using Google&rsquo;s APIs in Go</a>
+	      </p>
+              
+              
+	        <p><b>Next Post:</b><br />
+                <a href="../../../2021/10/san-junipero-is-a-dystopia/">San Junipero is a Dystopia</a>
+	        </p>
+              
+          </div>
+        </div>
+    
+    
+    
+    <div class="container">
+      <b>See also:</b>
+      	
+          <a class="text-body" href="../../../2021/02/mapping-your-cloud-assets-using-googles-apis-in-go/">Mapping your Cloud Assets using Google&rsquo;s APIs in Go</a>
+          <div>If you&rsquo;ve used Google&rsquo;s Cloud, you&rsquo;ve probably encountered their commandline tool. While you can achieve many things using just the web cloud console, the gcloud command line tool is flexible, scriptable, and (once you know how to use it), quicker than the console.
+		    <br /><a href="../../../2021/03/skus-and-resources/">...</a>
+	  </div>
+        
+    </div>
+    
+  </aside>
+</article>
+<footer class="footer">
+  <div class="container"><div id="nocookies" class="NoCookieFooter">
+<hr />
+This site was built statically using <a href="https://gohugo.io">Hugo</a>
+ and sets no Cookies.
+<p>
+See also: <a href=../../../privacy>Privacy Statement</a>
+</div>
+
+  </div>
+</footer>
+</div>
+    </body>
+</html>

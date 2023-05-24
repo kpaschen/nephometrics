@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html><head>
+  <title>Mapping your Cloud Assets using Google&#39;s APIs in Go</title>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width initial-scale=1.0">
+
+ <link rel="stylesheet" href="../../../css/basic.css"/>
+ <link rel="stylesheet" href="../../../css/syntax.css"/>
+  <meta name="google-site-verification" content="yHK1RGH0XqN4iPhXZkdWnaRxqjueVNbqgKQ6jKJ_cc4">
+</head>
+<body>
+	<div class="wrapper"><div class="header">
+<nav class="navbar">
+<ul class="LanguageRow">
+  
+ <li class="LanguageItem">
+	 <a href="http://www.nephometrics.ch/">EN</a>
+    </li>
+  
+ <li class="LanguageItem">
+	 <a href="http://www.nephometrics.ch/fr/">FR</a>
+    </li>
+  
+ <li class="LanguageItem">
+	 <a href="http://www.nephometrics.ch/de/">DE</a>
+    </li>
+  
+</ul>
+</nav>
+<div class="Logobox">
+<div class="Logo">
+	<div class="CompanyName">
+		Nephometrics
+	</div>
+	<div class="CompanyPurpose">
+		Cloud SRE Consulting
+	</div>
+</div>
+</div>
+<nav class="navbar">
+    <ul class="MenuRow">
+      
+      
+        
+          <li class="MenuItem ">
+		  <a href="../../../" title="">Home</a>
+          </li>
+	  
+      
+        
+	    <li class="MenuItem">
+		    <a href="../../../blog/">Blog</a>
+            </li>
+        
+      
+        
+	
+	
+	  
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	 
+         <li class="MenuItem">
+           <div class="dropdown">
+             <button class="dropdown-button">Tags&nbsp;&#9662;</button>
+             <div class="dropdown-content">
+              
+                
+                  <a href="../../../tags/aws/">aws</a>
+                
+              
+                
+                  <a href="../../../tags/billing/">billing</a>
+                
+              
+                
+                  <a href="../../../tags/cloud-billing/">cloud-billing</a>
+                
+              
+                
+                  <a href="../../../tags/cmake/">cmake</a>
+                
+              
+                
+                  <a href="../../../tags/cost/">cost</a>
+                
+              
+                
+                  <a href="../../../tags/dataframe/">dataframe</a>
+                
+              
+                
+                  <a href="../../../tags/dataset/">dataset</a>
+                
+              
+                
+                  <a href="../../../tags/express/">express</a>
+                
+              
+                
+                  <a href="../../../tags/gcloud/">gcloud</a>
+                
+              
+                
+                  <a href="../../../tags/gcloud-api/">gcloud-api</a>
+                
+              
+                
+                  <a href="../../../tags/golang/">golang</a>
+                
+              
+                
+                  <a href="../../../tags/lilypond/">lilypond</a>
+                
+              
+                
+                  <a href="../../../tags/linux/">linux</a>
+                
+              
+                
+                  <a href="../../../tags/magenta/">magenta</a>
+                
+              
+                
+                  <a href="../../../tags/matching-skus-to-resources/">matching-skus-to-resources</a>
+                
+              
+                
+                  <a href="../../../tags/mattermost/">mattermost</a>
+                
+              
+                
+                  <a href="../../../tags/musicocr/">musicocr</a>
+                
+              
+                
+                  <a href="../../../tags/nodejs/">nodejs</a>
+                
+              
+                
+                  <a href="../../../tags/opencv/">opencv</a>
+                
+              
+                
+                  <a href="../../../tags/parquet/">parquet</a>
+                
+              
+                
+                  <a href="../../../tags/rdd/">rdd</a>
+                
+              
+                
+                  <a href="../../../tags/resource-estimation/">resource-estimation</a>
+                
+              
+                
+                  <a href="../../../tags/resources/">resources</a>
+                
+              
+                
+                  <a href="../../../tags/scala/">scala</a>
+                
+              
+                
+                  <a href="../../../tags/sku/">sku</a>
+                
+              
+                
+                  <a href="../../../tags/spark/">spark</a>
+                
+              
+                
+                  <a href="../../../tags/tensorflow/">tensorflow</a>
+                
+              
+                
+                  <a href="../../../tags/tesseract/">tesseract</a>
+                
+              
+                
+                  <a href="../../../tags/unittests/">unittests</a>
+                
+              
+             </div>
+           </div>
+         </li>
+	 
+        
+      
+        
+          <li class="MenuItem ">
+		  <a href="../../../contact/" title="">Contact</a>
+          </li>
+	  
+      
+    </ul>
+</nav>
+</div>
+
+  <article class="content textblock">
+    <h2>Mapping your Cloud Assets using Google&rsquo;s APIs in Go</h2>
+
+    
+
+    <p>
+      <a href="http://www.nephometrics.ch/2021/02/mapping-your-cloud-assets-using-googles-apis-in-go/">Published February 11, 2021</a>
+    </p>
+    <p>
+      
+
+<p>If you&rsquo;ve used Google&rsquo;s Cloud, you&rsquo;ve probably encountered their commandline tool. While you can achieve many things using just the
+<a href="https://console.cloud.google.com/">web cloud console</a>, the <code>gcloud</code> command line
+tool is flexible, scriptable, and (once you know how to use it), quicker
+than the console.</p>
+
+<p>For automation beyond a quick script, Google offer
+<a href="https://github.com/googleapis/">APIs</a> in several programming languages.
+ The client libraries for these APIs are generated automatically, so you
+get the same feature set no matter which of the supported languages you choose.</p>
+
+<p>I recently wanted to explore the different machine types and their costs and
+I used several of the golang client APIs for this purpose (everything
+relevant is in the documentation, I just wanted to try the APIs really).</p>
+
+<p>One of the challenges in using the Google APIs is that there are a lot of them,
+and I do not always know right away which one has the information I want. For
+a list of available machine types, you need the
+<a href="https://github.com/googleapis/google-api-go-client/tree/master/compute">Compute API</a>. The generated code is so large that it&rsquo;s easier to download the file
+from github than to browse it there.</p>
+
+<p>There is a <a href="https://github.com/googleapis/google-api-go-client/blob/master/GettingStarted.md">Getting Started</a> file, and most of the APIs also have an
+example page. Moreover, there is documentation about the APIs in general
+at <a href="https://cloud.google.com/apis/docs/overview">cloud.google.com</a> and you
+can follow links from there to language- or API-specific documentation.</p>
+
+<p>However, I ran into a few things that weren&rsquo;t in these guides,
+so I thought I&rsquo;d write them down here.</p>
+
+<h3 id="authentication">Authentication</h3>
+
+<p>The Google API documentation always starts with several options for authentication.
+I just create a service account, give it a minimal set of roles (for the
+examples here, <code>Compute Viewer</code> and <code>Monitoring Viewer</code> are enough),
+download a credentials <code>.json</code> file for it, and then run</p>
+
+<pre class="chroma">
+<code style="white-space: nowrap;">
+export GOOGLE_APPLICATION_CREDENTIALS=./whatever.json
+</code>
+</pre>
+
+<p>But if you want to go another route, this part of the API is absolutely
+thoroughly documented.</p>
+
+<h3 id="api-flavours-and-versions">API Flavours and Versions</h3>
+
+<p>The golang APIs come in two flavours. The documentation for one flavour (&ldquo;Google APIs Client Libraries&rdquo;)
+lives under <a href="https://pkg.go.dev/google.golang.org/">google.golang.org</a> and
+the other one (&ldquo;Cloud Client Libraries for Go&rdquo;) lives under <a href="https://pkg.go.dev/cloud.google.com/go/">cloud.google.com/go</a>.</p>
+
+<p>As the name implies, the Cloud Client Libraries for Go focus on the cloud platform
+APIs. The Google APIs Client Libraries cover more APIs, and with a slightly
+different syntax, but the documentation says the cloud client libraries are
+&ldquo;more idiomatic&rdquo;. I&rsquo;ll call these two flavours the &ldquo;Cloud&rdquo; vs. &ldquo;API&rdquo; flavours
+below.</p>
+
+<p>So, hey, I&rsquo;ll try both.</p>
+
+<p>Besides the flavours, the APIs are also versioned, A few features may only
+be available in a <code>beta</code> version or similar. For the compute service, I&rsquo;ll
+only be using <code>v1</code> features here.</p>
+
+<p>Both flavours offer functions that</p>
+
+<ul>
+<li>list all items of a given kind (e.g. machine types or VM instances)</li>
+<li>retrieve a particular item given its id</li>
+</ul>
+
+<p>Depending on the API, you may also be able to create new items or modify
+existing ones, but I am only looking at retrieval for now.</p>
+
+<h3 id="google-apis-client-library-compute-v1">Google APIs Client Library: compute/v1</h3>
+
+<p>Import the library like this:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-golang" data-lang="golang"><span class="kn">import</span> <span class="s">&#34;google.golang.org/api/compute/v1&#34;</span></code></pre></div>
+
+<p>You will also need to import &ldquo;context&rdquo; and &ldquo;fmt&rdquo;.</p>
+
+<p>In order to find the functions and how to call them, I browsed the generated code for the compute API. It contains several service declarations.
+One of them is <code>MachineTypesService</code>; I looked for functions declared on
+this type, there is a <code>List</code> and a <code>Get</code> call. <code>List</code> takes a project ID
+and a zone. I can see why you&rsquo;d require a zone (not all machine types are
+available in all zones), not sure about the project. All API calls I&rsquo;ve
+seen require a project ID as a parameter. Maybe this is about billing,
+since there is a quota for how often you can call one of these APIs? But
+the caller already has to use authentication, which has to be tied to
+a Billing Account at least. Maybe it&rsquo;s because a project or a user
+can have access to pre-release features enabled and that might add
+machine types to the lists you can get? That&rsquo;s possible, but it&rsquo;s also
+possible this is just because the APIs work on a heavily denormalised
+data model where the project ID is the root of all the data you can
+request. The format of the URI ids bears this out &ndash; if you print assets
+retrieved from the Assets or Compute APIs, you&rsquo;ll get something like this:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">Name://compute.googleapis.com/projects/binderhub-test-275512/zones/europe-west1-b/instances/binderhub-minikube</code></pre></div>
+
+<p>This is for an Instance, but Disks and so on have similar patterns. Here there
+is the project ID, followed by the zone, then the asset type, and then the
+actual name that I gave the instance when I created it (if you wonder about the
+name, this is a VM I use when I want to run the minikube-based unit tests
+for binderhub, because I dislike running minikube on my own computer).</p>
+
+<p>The machine type for that instance is:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">https://www.googleapis.com/compute/v1/projects/binderhub-test-275512/zones/europe-west1-b/machineTypes/n1-standard-2</code></pre></div>
+
+<p>so if I assume that these paths reflect how the data is laid out internally
+at Google, then that suggests a very denormalised schema with the project ID
+as primary key for everything of interest to the project.</p>
+
+<p>It would have been nice to be able to get a generic list of machine types
+and then have a separate call that lets me know which type is available
+in which zone, but I&rsquo;ll take what I can get. You can actually get lists
+of Regions and Zones from the Compute API if you want to get all the
+machine type/zone combinations.</p>
+
+<p>In order to call an API (API flavour), here is what I do:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-golang" data-lang="golang"><span class="kd">func</span> <span class="nf">ListMachineTypes</span><span class="p">(</span><span class="nx">project</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">zone</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+  <span class="nx">ctx</span> <span class="o">:=</span> <span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">()</span>
+  <span class="nx">client</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">compute</span><span class="p">.</span><span class="nf">NewService</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
+  <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">err</span>
+  <span class="p">}</span>
+  <span class="kd">const</span> <span class="nx">pageSize</span> <span class="kt">int64</span> <span class="p">=</span> <span class="mi">100</span>
+  <span class="nx">resp</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">MachineTypes</span><span class="p">.</span><span class="nf">List</span><span class="p">(</span><span class="nx">project</span><span class="p">,</span> <span class="nx">zone</span><span class="p">)</span>
+                     <span class="p">.</span><span class="nf">MaxResults</span><span class="p">(</span><span class="nx">pageSize</span><span class="p">).</span><span class="nf">Do</span><span class="p">()</span>
+  <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">err</span>
+  <span class="p">}</span>
+  <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">machineType</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">Items</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Found a machine type: %+v\n&#34;</span><span class="p">,</span>
+               <span class="nx">machineType</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="kc">nil</span>
+<span class="p">}</span></code></pre></div>
+
+<p>About the <code>pageSize</code> constant: the API can return paginated results,
+which is useful when there are a lot of them. Machine types are not so bad,
+but if you query the Monitoring API for metrics, you can get a lot.</p>
+
+<p>With code like the above, you will only get the first 100 results. If you want
+all of them, you need to look at the <code>pageToken</code> contained in the response.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-golang" data-lang="golang"><span class="kd">func</span> <span class="nf">ListMachineTypes</span><span class="p">(</span><span class="nx">project</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">zone</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+  <span class="nx">ctx</span> <span class="o">:=</span> <span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">()</span>
+  <span class="nx">client</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">compute</span><span class="p">.</span><span class="nf">NewService</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
+  <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">err</span>
+  <span class="p">}</span>
+  <span class="kd">const</span> <span class="nx">pageSize</span> <span class="kt">int64</span> <span class="p">=</span> <span class="mi">100</span>
+  <span class="nx">nextPageToken</span> <span class="o">:=</span> <span class="s">&#34;&#34;</span>
+  <span class="k">for</span> <span class="p">{</span>
+    <span class="nx">resp</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">MachineTypes</span><span class="p">.</span><span class="nf">List</span><span class="p">(</span>
+                        <span class="nx">project</span><span class="p">,</span> <span class="nx">zone</span><span class="p">)</span>
+	               <span class="p">.</span><span class="nf">MaxResults</span><span class="p">(</span><span class="nx">pageSize</span><span class="p">)</span>
+	               <span class="p">.</span><span class="nf">PageToken</span><span class="p">(</span><span class="nx">nextPageToken</span><span class="p">)</span>
+		       <span class="p">.</span><span class="nf">Do</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">err</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">machineType</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">Items</span> <span class="p">{</span>
+      <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Found a machine type: %+v\n&#34;</span><span class="p">,</span>
+		 <span class="nx">machineType</span><span class="p">)</span>
+      <span class="p">}</span>
+      <span class="k">if</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">NextPageToken</span> <span class="o">==</span> <span class="s">&#34;&#34;</span> <span class="p">{</span>
+        <span class="k">break</span>
+      <span class="p">}</span>
+      <span class="nx">nextPageToken</span> <span class="p">=</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">NextPageToken</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="kc">nil</span>
+<span class="p">}</span></code></pre></div>
+
+<p>The generated code lets you see the return types for all API calls.
+They are protocol buffers (of course). The documentation in the code
+is quite good, but you can also just print some or all of the items
+you get back (as in the example above) to see what they look like.
+With machine types, the number of cpus is in a field called <code>GuestCpus</code>
+and the max memory per VM is expressed in Mb. You don&rsquo;t really get to see
+the number of GPUs available (at least not that I could find), but you
+can look at the <code>Accelerators</code> field; moreover, for the machine types
+that offer GPUs (currently only the <code>a2-</code> series), you can look at the
+type name. Normally, when a machine type name ends in a number (like
+<code>n1-standard-2</code>) that number is the number of vCPUs. With the <code>a2-</code> series,
+the type names end in a number followed by <code>g</code>, and that number is the
+number of GPUs.</p>
+
+<p>Several settings besides the machine type influence the performance
+ (and cost) of your VMs, for example the usage type (<code>Preemptible</code> is cheap
+but, well, preemptible). You can get these settings either via the
+<code>assets</code> API (which gets you a list of all the assets in use by a given
+project) or via the <code>compute</code> API (where you can retrieve all assets of
+a particular type, such as <code>Instance</code>, for a project).</p>
+
+<p>You also don&rsquo;t have to be running your instances all the time; the assets
+API will report the status of an instance as e.g. <code>TERMINATED</code> if you have
+stopped it. A stopped instance incurs no costs (you still pay for persistent
+ disk space and things such as disk images, but not for the VM).</p>
+
+<p>So another thing I want to know about my VMs is, how much do I use them?
+I couldn&rsquo;t see a way to figure this out other than via monitoring. For this
+part, I used the Cloud flavour of the APIs.</p>
+
+<h3 id="cloud-client-libraries-monitoring">Cloud Client Libraries: Monitoring</h3>
+
+<p>The Cloud flavour is quite similar to the API flavour&mdash;you still
+do the same things (request data, use page tokens to go through the
+list), but the syntax is just different enough to need reading up on.</p>
+
+<p>First off, there are more things you need to import.</p>
+
+<pre class="chroma">
+<code style="white-space: nowrap;">
+  "cloud.google.com/go/monitoring/apiv3"
+</code>
+<code style="white-space: nowrap;">
+  "google.golang.org/api/iterator"
+</code>
+<code style="white-space: nowrap;">
+  pb "google.golang.org/genproto/googleapis/monitoring/v3"
+</code>
+</pre>
+
+<p>And then instead of a fairly generic <code>NewService</code> you have to specify which
+service you want a client for. I found what I needed by reading the
+generated source code on github.</p>
+
+<p>Below, I have omitted some error handling just to keep the code shorter.
+I also hardcoded the metric and resource type parameters. I found these
+parameters via the Metrics Explorer; you can obtain lists via the monitoring
+API, but there are a lot of metrics and resource types to scroll through.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-golang" data-lang="golang"><span class="kd">func</span> <span class="nf">GetMetricDescriptors</span><span class="p">(</span><span class="nx">project</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+  <span class="nx">ctx</span> <span class="o">:=</span> <span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">()</span>
+  <span class="nx">client</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">monitoring</span><span class="p">.</span><span class="nf">NewMetricClient</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
+  <span class="nx">nextPageToken</span> <span class="o">:=</span> <span class="s">&#34;&#34;</span>
+  <span class="nx">filter</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">`metric.type=starts_with(&#34;%s&#34;)
+</span><span class="s">	AND resource.type=starts_with(&#34;%s&#34;)`</span><span class="p">,</span>
+	<span class="s">&#34;gce_instance&#34;</span><span class="p">,</span>
+	<span class="s">&#34;compute.googleapis.com/instance/uptime&#34;</span><span class="p">)</span>
+  <span class="k">for</span> <span class="p">{</span>
+    <span class="nx">req</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">pb</span><span class="p">.</span><span class="nx">ListMetricDescriptorsRequest</span><span class="p">{</span>
+	<span class="nx">Name</span><span class="p">:</span> <span class="nx">project</span><span class="p">,</span>
+	<span class="nx">Filter</span><span class="p">:</span> <span class="nx">filter</span><span class="p">,</span>
+	<span class="nx">PageSize</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+	<span class="nx">PageToken</span><span class="p">:</span> <span class="nx">nextPageToken</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="nx">it</span> <span class="o">:=</span> <span class="nx">client</span><span class="p">.</span><span class="nf">ListMetricDescriptors</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">req</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">{</span>
+      <span class="nx">resp</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">it</span><span class="p">.</span><span class="nf">Next</span><span class="p">()</span>
+      <span class="k">if</span> <span class="nx">err</span> <span class="o">==</span> <span class="nx">iterator</span><span class="p">.</span><span class="nf">Done</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">break</span>
+      <span class="p">}</span>
+      <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">err</span>
+      <span class="p">}</span>
+      <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;response: %+v\n&#34;</span><span class="p">,</span> <span class="nx">resp</span><span class="p">)</span>
+      <span class="k">if</span> <span class="nx">it</span><span class="p">.</span><span class="nf">PageInfo</span><span class="p">().</span><span class="nx">Token</span> <span class="o">==</span> <span class="s">&#34;&#34;</span> <span class="p">{</span>
+        <span class="k">break</span>
+      <span class="p">}</span>
+      <span class="nx">nextPageToken</span> <span class="p">=</span> <span class="nx">it</span><span class="p">.</span><span class="nf">PageInfo</span><span class="p">().</span><span class="nx">Token</span>
+    <span class="p">}</span>	 
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="kc">nil</span>
+<span class="p">}</span></code></pre></div>
+
+<p>This finds two metrics, <code>uptime</code> and <code>uptime_total</code> because of the
+<code>starts_with</code> clause in the Filter. It retrieves metadata about these
+metrics. It looks like this (I added linebreaks to make it more readable):</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="err">name:</span><span class="s2">&#34;projects/binderhub-test-275512/metricDescriptors/compute.googleapis.com/instance/uptime&#34;</span>
+<span class="err">type:</span><span class="s2">&#34;compute.googleapis.com/instance/uptime&#34;</span>
+<span class="err">labels:</span><span class="p">{</span><span class="err">key:</span><span class="nt">&#34;instance_name&#34;</span>  <span class="err">description</span><span class="p">:</span><span class="s2">&#34;The name of the VM instance.&#34;</span><span class="p">}</span>
+<span class="err">metric_kind:DELTA</span>
+<span class="err">value_type:DOUBLE</span>
+<span class="err">unit:</span><span class="s2">&#34;s{uptime}&#34;</span>
+<span class="err">description:</span><span class="s2">&#34;Delta of how long the VM has been running, in seconds. Note: to get the total number of seconds since VM start, use compute.googleapis.com/instance/uptime_total.&#34;</span>
+<span class="err">display_name:</span><span class="s2">&#34;Uptime&#34;</span>
+<span class="err">metadata:</span><span class="p">{</span><span class="err">launch_stage:GA</span>  <span class="err">sample_period:{seconds:60</span><span class="p">}</span>  <span class="err">ingest_delay:</span><span class="p">{</span><span class="err">seconds:240</span><span class="p">}</span><span class="err">}</span>
+<span class="err">launch_stage:GA</span>
+<span class="err">monitored_resource_types:</span><span class="s2">&#34;gce_instance&#34;</span></code></pre></div>
+
+<p>I don&rsquo;t know that this is actually the best way to obtain the uptime of a VM
+from Stackdriver. I was hoping for something like the <code>up</code> timeseries that Prometheus
+gets your for jobs and then a way to use something like Prometheus&rsquo; <code>count_over_time</code>.</p>
+
+<p>In order to get the actual uptime for my VMs over a time period, I&rsquo;ll need
+to request a time series. The monitoring API has the <code>ListTimeSeries</code> call for this
+purpose. It takes a <code>ListTimeSeriesRequest</code>, which has to specify a filter
+(for specifying the metrics to use) as well as a <code>TimeInterval</code> protocol
+buffer and an <code>Aggregation</code>.</p>
+
+<p>The function is, somewhat confusingly, called <code>ListTimeSeries</code> rather than
+ <code>GetTimeSeries</code>.
+The call actually fails if your filter matches more than one
+metric. Depending on your aggregation settings, you can still get more than
+one time series, but they&rsquo;ll all be for the same metric, just with different
+label combinations.</p>
+
+<p>Below are some code snippets for how to fill in the request.
+For the aggregation settings, I cheated (just a bit) and fiddled with
+the Metrics Explorer until I had data that looked useful, then fished
+likely-looking parameters out of the URL.</p>
+
+<p><code>mpb</code> is for the monitoringpb module. You will also need to import
+durationpb and timestamppb.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-golang" data-lang="golang"><span class="c1">// Set up a TimeInterval for the past day (86400 seconds)
+</span><span class="c1"></span><span class="nx">now</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">Unix</span><span class="p">()</span>
+<span class="nx">interval</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">mb</span><span class="p">.</span><span class="nx">TimeInterval</span><span class="p">{</span>
+             <span class="nx">EndTime</span><span class="p">:</span> <span class="o">&amp;</span><span class="nx">timestamppb</span><span class="p">.</span><span class="nx">Timestamp</span><span class="p">{</span>
+               <span class="nx">Seconds</span><span class="p">:</span> <span class="nx">now</span><span class="p">,</span>
+             <span class="p">},</span>
+             <span class="nx">StartTime</span><span class="p">:</span> <span class="o">&amp;</span><span class="nx">timestamppb</span><span class="p">.</span><span class="nx">Timestamp</span><span class="p">{</span>
+               <span class="nx">Seconds</span><span class="p">:</span> <span class="nx">now</span> <span class="o">-</span> <span class="mi">86400</span><span class="p">,</span>
+             <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="c1">// Create filter based on metric type and resource type
+</span><span class="c1"></span><span class="nx">filter</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span>
+  <span class="s">`metric.type=&#34;%s&#34; AND
+</span><span class="s">   resource.type=&#34;%s&#34;`</span><span class="p">,</span>
+   <span class="s">&#34;gce_instance&#34;</span><span class="p">,</span> <span class="s">&#34;uptime_total&#34;</span><span class="p">)</span>
+
+<span class="nx">groupBy</span> <span class="o">:=</span> <span class="s">&#34;metric.system_labels.region&#34;</span>
+
+<span class="c1">// Make the request proto
+</span><span class="c1"></span><span class="nx">req</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">mpb</span><span class="p">.</span><span class="nx">ListTimeSeriesRequest</span><span class="p">{</span>
+  <span class="nx">Name</span><span class="p">:</span>     <span class="nx">projectID</span><span class="p">,</span>
+  <span class="nx">Filter</span><span class="p">:</span>   <span class="nx">filter</span><span class="p">,</span>
+  <span class="nx">Interval</span><span class="p">:</span> <span class="nx">interval</span><span class="p">,</span>
+  <span class="nx">View</span><span class="p">:</span>     <span class="nx">mpb</span><span class="p">.</span><span class="nx">ListTimeSeriesRequest_FULL</span><span class="p">,</span>
+  <span class="nx">Aggregation</span><span class="p">:</span> <span class="o">&amp;</span><span class="nx">mpb</span><span class="p">.</span><span class="nx">Aggregation</span><span class="p">{</span>
+   <span class="nx">CrossSeriesReducer</span><span class="p">:</span> <span class="nx">mpb</span><span class="p">.</span><span class="nx">Aggregation_REDUCE_SUM</span><span class="p">,</span>
+   <span class="nx">PerSeriesAligner</span><span class="p">:</span> <span class="nx">mpb</span><span class="p">.</span><span class="nx">Aggregation_ALIGN_MEAN</span><span class="p">,</span>
+   <span class="nx">AlignmentPeriod</span><span class="p">:</span> <span class="o">&amp;</span><span class="nx">durationpb</span><span class="p">.</span><span class="nx">Duration</span><span class="p">{</span> <span class="nx">Seconds</span><span class="p">:</span> <span class="mi">600</span> <span class="p">},</span>
+   <span class="nx">GroupByFields</span><span class="p">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="nx">groupBy</span><span class="p">},</span>
+  <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="c1">// Send the request:
+</span><span class="c1"></span><span class="nx">it</span> <span class="o">:=</span> <span class="nx">client</span><span class="p">.</span><span class="nf">ListTimeSeries</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">req</span><span class="p">)</span></code></pre></div>
+
+<p>The time series request is quite difficult to fill in correctly,
+especially if you use aggregation (and you usually have to aggregate
+somehow). I played with the Metrics Explorer to
+work out which values to set in the aggregation proto.</p>
+
+<p>I used <code>uptime_total</code> rather than <code>uptime</code> here. <code>uptime_total</code> is the
+total elapsed time since the VM was started, in seconds. <code>uptime</code> is a delta.
+I requested a sum of time series grouped by region. This means I get one
+time series per region, and the values in each series are sums of the <code>uptime_total</code> values for the VMs in that region.</p>
+
+<p>I ran this using just a single VM in one region, and a time range of
+one week. I had the VM running for a while one day, then took it down,
+then ran it again for about 11 minutes. Here is the time series I got back:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="err">metric:</span><span class="p">{</span><span class="err">type:</span><span class="nt">&#34;compute.googleapis.com/instance/uptime_total&#34;</span>
+        <span class="err">labels</span><span class="p">:{</span><span class="err">key:</span><span class="nt">&#34;instance_name&#34;</span> <span class="err">value</span><span class="p">:</span><span class="s2">&#34;instance-1&#34;</span><span class="p">}}</span>
+<span class="err">resource:</span><span class="p">{</span><span class="err">type:</span><span class="nt">&#34;gce_instance&#34;</span>
+<span class="err">labels</span><span class="p">:{</span><span class="err">key:</span><span class="nt">&#34;project_id&#34;</span> <span class="err">value</span><span class="p">:</span><span class="s2">&#34;binderhub-test-275512&#34;</span><span class="p">}}</span>
+<span class="err">metric_kind:GAUGE</span>
+<span class="err">value_type:DOUBLE</span>
+<span class="err">points:</span><span class="p">{</span>
+  <span class="err">interval:{</span>
+    <span class="err">end_time:{seconds:1613031278</span><span class="p">}</span>
+    <span class="err">start_time:</span><span class="p">{</span><span class="err">seconds:1613031278</span><span class="p">}</span><span class="err">}</span>
+    <span class="err">value:</span><span class="p">{</span><span class="err">double_value:444</span><span class="p">}</span>
+<span class="err">}</span>
+<span class="err">points:</span><span class="p">{</span>
+  <span class="err">interval:{</span>
+     <span class="err">end_time:{seconds:1613030678</span><span class="p">}</span>
+     <span class="err">start_time:</span><span class="p">{</span><span class="err">seconds:1613030678</span><span class="p">}</span><span class="err">}</span>
+     <span class="err">value:</span><span class="p">{</span><span class="err">double_value:90</span><span class="p">}</span>
+<span class="err">}</span>
+<span class="err">points:</span><span class="p">{</span>
+  <span class="err">interval:{</span>
+    <span class="err">end_time:{seconds:1612860878</span><span class="p">}</span>
+    <span class="err">start_time:</span><span class="p">{</span><span class="err">seconds:1612860878</span><span class="p">}</span><span class="err">}</span>
+    <span class="err">value:</span><span class="p">{</span><span class="err">double_value:1454.6666666666667</span><span class="p">}</span>
+<span class="err">}</span>
+<span class="err">points:</span><span class="p">{</span>
+  <span class="err">interval:{</span>
+    <span class="err">end_time:{seconds:1612860278</span><span class="p">}</span>
+    <span class="err">start_time:</span><span class="p">{</span><span class="err">seconds:1612860278</span><span class="p">}</span><span class="err">}</span>
+    <span class="err">value:</span><span class="p">{</span><span class="err">double_value:1050</span><span class="p">}</span>
+<span class="err">}</span>
+<span class="err">points:</span><span class="p">{</span>
+  <span class="err">interval:{</span>
+    <span class="err">end_time:{seconds:1612859678</span><span class="p">}</span>
+    <span class="err">start_time:</span><span class="p">{</span><span class="err">seconds:1612859678</span><span class="p">}</span><span class="err">}</span>
+    <span class="err">value:</span><span class="p">{</span><span class="err">double_value:450</span><span class="p">}</span>
+<span class="err">}</span>
+<span class="err">points:</span><span class="p">{</span>
+  <span class="err">interval:{</span>
+    <span class="err">end_time:{seconds:1612859078</span><span class="p">}</span>
+    <span class="err">start_time:</span><span class="p">{</span><span class="err">seconds:1612859078</span><span class="p">}</span><span class="err">}</span>
+    <span class="err">value:</span><span class="p">{</span><span class="err">double_value:60.333333333333336</span><span class="p">}</span>
+<span class="err">}</span></code></pre></div>
+
+<p>The points in the time series are ordered from newest to oldest. The oldest
+four points are from Feb 9th, the newest two from Feb 11th. Consecutive
+measurements are 10 minutes apart (this matches the alignment period I
+specified). The gap between the Feb 9th and Feb 11th points corresponds to
+a time when the VM in question was stopped. For consecutive points, the
+value always increases, so the last value for Feb 9th represents how long
+the VM had been running when I stopped it, and then uptime_total resumed
+from 0 when I restarted the VM on the 11th.</p>
+
+<p>This means the total time
+I had the VM running was 1454.667 seconds (about 24 minutes) on Feb 9th and
+ 444 seconds (7.4 minutes) on Feb 11th. However, because of the long
+alignment period (10 minutes), the numbers are not precise. Indeed, the
+Metrics Explorer claims 12.53m on the 9th and 6.42m on the 11th, and
+the billing dashboard wants to charge me for 0.41 hours (about 24.6 minutes)
+of VM running time on Feb 9th.</p>
+
+<p>My monitoring-based estimate of VM uptime matches the one in the billing
+dashboard, but at this point, I suspect this may be accidental. I don&rsquo;t
+know how exactly Google determine usage for the purposes of billing; given
+the overall awkwardness of aggregating and interpreting the data via the
+monitoring API, I strongly suspect they use something else. I would
+expect to be able to get a roughly correct estimate of my usage via monitoring,
+but clearly this requires further research.</p>
+
+<h3 id="comparison">Comparison</h3>
+
+<p>The GCloud client libraries are said to be more idiomatic than the other
+flavour. I&rsquo;m no great Go expert, so I cannot really tell. I found the
+first flavour I wrote about (the Client APIs one) easier to use because you don&rsquo;t
+need to import an extra protocol buffer and the iterator module.</p>
+
+<p>The syntax for specifying the request in the API flavour</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-golang" data-lang="golang">  <span class="nx">resp</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">MachineTypes</span><span class="p">.</span><span class="nf">List</span><span class="p">(</span><span class="nx">project</span><span class="p">,</span> <span class="nx">zone</span><span class="p">)</span>
+	<span class="p">.</span><span class="nf">MaxResults</span><span class="p">(</span><span class="nx">pageSize</span><span class="p">)</span>
+	<span class="p">.</span><span class="nf">PageToken</span><span class="p">(</span><span class="nx">nextPageToken</span><span class="p">)</span>
+	<span class="p">.</span><span class="nf">Do</span><span class="p">()</span></code></pre></div>
+
+<p>feels a little Java-y compared to the Cloud flavour:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-golang" data-lang="golang">  <span class="nx">req</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">pb</span><span class="p">.</span><span class="nx">ListMetricDescriptorsRequest</span><span class="p">{</span>
+	<span class="nx">Name</span><span class="p">:</span> <span class="nx">project</span><span class="p">,</span>
+	<span class="nx">Filter</span><span class="p">:</span> <span class="nx">filter</span><span class="p">,</span>
+	<span class="nx">PageSize</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+	<span class="nx">PageToken</span><span class="p">:</span> <span class="nx">nextPageToken</span><span class="p">,</span>
+  <span class="p">}</span></code></pre></div>
+
+<p>On the other hand the API flavour has this:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-golang" data-lang="golang">  <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">machineType</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">Items</span></code></pre></div>
+
+<p>compared to the explicit iterator syntax in the GCloud flavour, and I
+find the first more natural in Go.</p>
+
+<p>On the whole though, I don&rsquo;t particularly mind which flavour I use; I am glad
+that there are comprehensive APIs at all.  However, I wish
+the APIs were a little more interoperable. For example, the monitoring
+API&rsquo;s filter syntax uses <code>resource_type=&quot;gce_instance&quot;</code> whereas the assets
+API uses <code>AssetType:compute.googleapis.com/Instance</code>. This makes it necessary
+to hardcode mappings (&ldquo;when I want to get metrics for an asset of type
+<code>X</code> I need to ask for a resource of type <code>Y</code> in monitoring&rdquo;).</p>
+
+<p>Everything gets much more complicated once you
+start looking into billing and try to map assets (or resources) to Skus.
+But that will have to wait for another blog post or two.</p>
+
+    </p>
+  </article>
+  <aside class="sidebar">
+    
+        <div class="container">
+          <div class="row">
+              
+	      <p><b>Previous Post:</b><br />
+                <a href="../../../2020/04/catflap-continued/">Catflap, continued</a>
+	      </p>
+              
+              
+	        <p><b>Next Post:</b><br />
+                <a href="../../../2021/03/skus-and-resources/">SKUs and Resources</a>
+	        </p>
+              
+          </div>
+        </div>
+    
+    
+    
+  </aside>
+</article>
+<footer class="footer">
+  <div class="container"><div id="nocookies" class="NoCookieFooter">
+<hr />
+This site was built statically using <a href="https://gohugo.io">Hugo</a>
+ and sets no Cookies.
+<p>
+See also: <a href=../../../privacy>Privacy Statement</a>
+</div>
+
+  </div>
+</footer>
+</div>
+    </body>
+</html>

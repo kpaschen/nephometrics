@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://www.nephometrics.ch/tags/aws/</loc>
+    <lastmod>2023-05-09T11:55:04+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/tags/cost/</loc>
+    <lastmod>2023-05-09T11:55:04+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/tags/mattermost/</loc>
+    <lastmod>2023-05-09T11:55:04+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/tags/resources/</loc>
+    <lastmod>2023-05-09T11:55:04+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/2023/05/running-mattermost-in-aws-how-much-will-it-cost/</loc>
+    <lastmod>2023-05-09T11:55:04+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/</loc>
+    <lastmod>2023-05-09T11:55:04+01:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="http://www.nephometrics.ch/fr/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="de"
+                href="http://www.nephometrics.ch/de/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://www.nephometrics.ch/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/tags/</loc>
+    <lastmod>2023-05-09T11:55:04+01:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="de"
+                href="http://www.nephometrics.ch/de/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="http://www.nephometrics.ch/fr/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://www.nephometrics.ch/tags/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/2021/10/san-junipero-is-a-dystopia/</loc>
+    <lastmod>2021-10-27T13:47:01+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/tags/billing/</loc>
+    <lastmod>2021-03-18T13:46:20+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/tags/cloud-billing/</loc>
+    <lastmod>2021-03-18T13:46:20+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/tags/gcloud/</loc>
+    <lastmod>2021-03-18T13:46:20+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/tags/matching-skus-to-resources/</loc>
+    <lastmod>2021-03-18T13:46:20+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/tags/resource-estimation/</loc>
+    <lastmod>2021-03-18T13:46:20+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/tags/sku/</loc>
+    <lastmod>2021-03-18T13:46:20+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/2021/03/skus-and-resources/</loc>
+    <lastmod>2021-03-18T13:46:20+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/tags/gcloud-api/</loc>
+    <lastmod>2021-02-11T16:35:53+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/tags/golang/</loc>
+    <lastmod>2021-02-11T16:35:53+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/2021/02/mapping-your-cloud-assets-using-googles-apis-in-go/</loc>
+    <lastmod>2021-02-11T16:35:53+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/2020/04/catflap-continued/</loc>
+    <lastmod>2020-04-15T13:12:45+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/2020/03/catflap/</loc>
+    <lastmod>2020-03-16T16:12:45+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/tags/express/</loc>
+    <lastmod>2019-07-23T12:10:58+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/tags/magenta/</loc>
+    <lastmod>2019-07-23T12:10:58+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/2019/07/magenta-app/</loc>
+    <lastmod>2019-07-23T12:10:58+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/tags/nodejs/</loc>
+    <lastmod>2019-07-23T12:10:58+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/2019/06/serving-magenta/</loc>
+    <lastmod>2019-06-26T13:43:06+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/tags/tensorflow/</loc>
+    <lastmod>2019-06-26T13:43:06+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/tags/dataframe/</loc>
+    <lastmod>2019-06-17T16:54:41+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/tags/dataset/</loc>
+    <lastmod>2019-06-17T16:54:41+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/tags/parquet/</loc>
+    <lastmod>2019-06-17T16:54:41+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/tags/rdd/</loc>
+    <lastmod>2019-06-17T16:54:41+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/tags/spark/</loc>
+    <lastmod>2019-06-17T16:54:41+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/2019/06/spark-many-ways-to-do-the-same-thing/</loc>
+    <lastmod>2019-06-17T16:54:41+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/tags/scala/</loc>
+    <lastmod>2019-05-16T12:23:24+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/2019/05/unit-testing-spark-scala-code/</loc>
+    <lastmod>2019-05-16T12:23:24+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/tags/unittests/</loc>
+    <lastmod>2019-05-16T12:23:24+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/tags/cmake/</loc>
+    <lastmod>2019-05-07T10:41:44+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/2019/05/cmake-opencv-and-unit-tests/</loc>
+    <lastmod>2019-05-07T10:41:44+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/tags/musicocr/</loc>
+    <lastmod>2019-05-07T10:41:44+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/tags/opencv/</loc>
+    <lastmod>2019-05-07T10:41:44+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/tags/tesseract/</loc>
+    <lastmod>2019-05-07T10:41:44+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/tags/lilypond/</loc>
+    <lastmod>2019-04-10T09:47:22+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/2019/04/music-ocr-introducing-the-idea/</loc>
+    <lastmod>2019-04-10T09:47:22+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/tags/linux/</loc>
+    <lastmod>2019-03-22T09:10:36+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/2019/03/opensuse-update-to-leap/</loc>
+    <lastmod>2019-03-22T09:10:36+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/blog/</loc>
+    <lastmod>2019-03-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/2019/03/intro-blog-post/</loc>
+    <lastmod>2019-03-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/categories/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="de"
+                href="http://www.nephometrics.ch/de/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="http://www.nephometrics.ch/fr/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://www.nephometrics.ch/categories/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/contact/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="de"
+                href="http://www.nephometrics.ch/de/contact/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="http://www.nephometrics.ch/fr/contact/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://www.nephometrics.ch/contact/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://www.nephometrics.ch/privacy/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="de"
+                href="http://www.nephometrics.ch/de/privacy/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="http://www.nephometrics.ch/fr/privacy/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://www.nephometrics.ch/privacy/"
+                />
+  </url>
+  
+</urlset>

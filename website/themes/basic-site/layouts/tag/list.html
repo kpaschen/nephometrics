@@ -1,0 +1,36 @@
+{{ define "main" }}
+<div class="container">
+  <h2>
+    {{ .Name | humanize }}
+  </h2>
+
+  {{ if eq .Kind "taxonomyTerm" }}
+    {{ range $.Site.Taxonomies.tags.ByCount }}
+      <div class="row">
+        <div>
+           {{ .Count }} Articles
+        </div>
+        <div class="col">
+          <a class="text-body" href="/tags{{ .Name | relURL }}">{{ .Name | markdownify }}</a>
+        </div>
+      </div>
+    {{ end }}
+  {{ else }}
+   {{ $dateFormat := default "Jan 2" (index .Site.Params "date_format") }}
+    {{ range .Pages }}
+      <div class="row">
+        <div>
+          <time class="post-date" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+        </div>
+	<ul>
+		<li>
+        <div class="col">
+          <a class="text-body" href="{{ .Permalink | relURL }}">{{ if .Draft }}DRAFT: {{end}}{{ .Title | markdownify }}</a>
+        </div>
+		</li>
+	</ul>
+      </div>
+    {{ end }}
+  {{ end }}
+</div>
+{{ end }}

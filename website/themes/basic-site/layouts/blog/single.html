@@ -1,0 +1,49 @@
+{{ define "main" }}
+  <article class="content textblock">
+    <h2>{{ .Title | markdownify}}</h2>
+
+    {{ if .Params.Subtitle }}
+      <h3>{{ .Params.Subtitle | markdownify }}</h3>
+    {{ end }}
+
+    <p>
+      <a href="{{ .Permalink }}">Published {{ .Date.Format "January 2, 2006"  }}</a>
+    </p>
+    <p>
+      {{ .Content }}
+    </p>
+  </article>
+  <aside class="sidebar">
+    {{ if or .PrevPage .NextPage }}
+        <div class="container">
+          <div class="row">
+              {{ if .PrevPage }}
+	      <p><b>Previous Post:</b><br />
+                <a href="{{ .PrevPage.Permalink | relURL}}">{{ .PrevPage.Title | markdownify }}</a>
+	      </p>
+              {{ end }}
+              {{ if .NextPage }}
+	        <p><b>Next Post:</b><br />
+                <a href="{{ .NextPage.Permalink | relURL }}">{{ .NextPage.Title | markdownify }}</a>
+	        </p>
+              {{ else }}
+	        <p><b>Stay tuned for the next post</b></p>
+              {{ end }}
+          </div>
+        </div>
+    {{ end }}
+    {{ $related := .Site.RegularPages.Related . | first 3 }}
+    {{ with $related }}
+    <div class="container">
+      <b>See also:</b>
+      	{{ range . }}
+          <a class="text-body" href="{{ .RelPermalink }}">{{ .Title | markdownify}}</a>
+          <div>{{.Summary | markdownify}}
+		    <br /><a href="{{  .NextPage.Permalink | relURL }}">...</a>
+	  </div>
+        {{ end }}
+    </div>
+    {{ end }}
+  </aside>
+</article>
+{{ end }}

@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html><head>
+  <title>CMake, OpenCV, and Unit tests</title>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width initial-scale=1.0">
+
+ <link rel="stylesheet" href="../../../css/basic.css"/>
+ <link rel="stylesheet" href="../../../css/syntax.css"/>
+  <meta name="google-site-verification" content="yHK1RGH0XqN4iPhXZkdWnaRxqjueVNbqgKQ6jKJ_cc4">
+</head>
+<body>
+	<div class="wrapper"><div class="header">
+<nav class="navbar">
+<ul class="LanguageRow">
+  
+ <li class="LanguageItem">
+	 <a href="http://www.nephometrics.ch/">EN</a>
+    </li>
+  
+ <li class="LanguageItem">
+	 <a href="http://www.nephometrics.ch/fr/">FR</a>
+    </li>
+  
+ <li class="LanguageItem">
+	 <a href="http://www.nephometrics.ch/de/">DE</a>
+    </li>
+  
+</ul>
+</nav>
+<div class="Logobox">
+<div class="Logo">
+	<div class="CompanyName">
+		Nephometrics
+	</div>
+	<div class="CompanyPurpose">
+		Cloud SRE Consulting
+	</div>
+</div>
+</div>
+<nav class="navbar">
+    <ul class="MenuRow">
+      
+      
+        
+          <li class="MenuItem ">
+		  <a href="../../../" title="">Home</a>
+          </li>
+	  
+      
+        
+	    <li class="MenuItem">
+		    <a href="../../../blog/">Blog</a>
+            </li>
+        
+      
+        
+	
+	
+	  
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	 
+         <li class="MenuItem">
+           <div class="dropdown">
+             <button class="dropdown-button">Tags&nbsp;&#9662;</button>
+             <div class="dropdown-content">
+              
+                
+                  <a href="../../../tags/aws/">aws</a>
+                
+              
+                
+                  <a href="../../../tags/billing/">billing</a>
+                
+              
+                
+                  <a href="../../../tags/cloud-billing/">cloud-billing</a>
+                
+              
+                
+                  <a href="../../../tags/cmake/">cmake</a>
+                
+              
+                
+                  <a href="../../../tags/cost/">cost</a>
+                
+              
+                
+                  <a href="../../../tags/dataframe/">dataframe</a>
+                
+              
+                
+                  <a href="../../../tags/dataset/">dataset</a>
+                
+              
+                
+                  <a href="../../../tags/express/">express</a>
+                
+              
+                
+                  <a href="../../../tags/gcloud/">gcloud</a>
+                
+              
+                
+                  <a href="../../../tags/gcloud-api/">gcloud-api</a>
+                
+              
+                
+                  <a href="../../../tags/golang/">golang</a>
+                
+              
+                
+                  <a href="../../../tags/lilypond/">lilypond</a>
+                
+              
+                
+                  <a href="../../../tags/linux/">linux</a>
+                
+              
+                
+                  <a href="../../../tags/magenta/">magenta</a>
+                
+              
+                
+                  <a href="../../../tags/matching-skus-to-resources/">matching-skus-to-resources</a>
+                
+              
+                
+                  <a href="../../../tags/mattermost/">mattermost</a>
+                
+              
+                
+                  <a href="../../../tags/musicocr/">musicocr</a>
+                
+              
+                
+                  <a href="../../../tags/nodejs/">nodejs</a>
+                
+              
+                
+                  <a href="../../../tags/opencv/">opencv</a>
+                
+              
+                
+                  <a href="../../../tags/parquet/">parquet</a>
+                
+              
+                
+                  <a href="../../../tags/rdd/">rdd</a>
+                
+              
+                
+                  <a href="../../../tags/resource-estimation/">resource-estimation</a>
+                
+              
+                
+                  <a href="../../../tags/resources/">resources</a>
+                
+              
+                
+                  <a href="../../../tags/scala/">scala</a>
+                
+              
+                
+                  <a href="../../../tags/sku/">sku</a>
+                
+              
+                
+                  <a href="../../../tags/spark/">spark</a>
+                
+              
+                
+                  <a href="../../../tags/tensorflow/">tensorflow</a>
+                
+              
+                
+                  <a href="../../../tags/tesseract/">tesseract</a>
+                
+              
+                
+                  <a href="../../../tags/unittests/">unittests</a>
+                
+              
+             </div>
+           </div>
+         </li>
+	 
+        
+      
+        
+          <li class="MenuItem ">
+		  <a href="../../../contact/" title="">Contact</a>
+          </li>
+	  
+      
+    </ul>
+</nav>
+</div>
+
+  <article class="content textblock">
+    <h2>CMake, OpenCV, and Unit tests</h2>
+
+    
+
+    <p>
+      <a href="http://www.nephometrics.ch/2019/05/cmake-opencv-and-unit-tests/">Published May 7, 2019</a>
+    </p>
+    <p>
+      
+
+<p>For my ongoing <a href="./music-ocr-introducing-the-idea/">Music OCR hobby project</a>,
+ I use <a href="https://opencv.org">OpenCV</a> and
+C++. For inline text, I&rsquo;ve been experimenting with OpenCV&rsquo;s Tesseract support,
+ which relies on the
+<a href="https://docs.opencv.org/3.4/d7/ddc/classcv_1_1text_1_1OCRTesseract.html">OCRTesseract class</a>
+ from OpenCV&rsquo;s cv::text package. And of course I want to use unit tests; I chose
+<a href="https://github.com/google/googletest/blob/master/googletest/docs/primer.md">Googletest</a>.</p>
+
+<p>I&rsquo;ll write more on how I use OpenCV and my experience with Tesseract another time;
+today is all about getting things to compile and link.</p>
+
+<h3 id="basic-cmake-file-to-get-c-code-to-compile">Basic CMake file to get C++ code to compile</h3>
+
+<p>I hadn&rsquo;t used CMake before, but from what I can tell, it&rsquo;s a generator for build files, and it supports Makefiles as one of its outputs.
+There is <a href="https://cmake.org/documentation/">documentation</a> and <a href="https://cmake.org/cmake-tutorial">tutorials</a> as well as a wealth of answers on
+<a href="https://www.stackoverflow.com">StackOverflow</a>. Just compiling a simple C++
+file is pretty straightforward by following the tutorial:</p>
+
+<ul>
+<li><p>Write a hello world-type program and save it as opencv_demo.cpp:</p>
+
+<pre><code>#include &lt;iostream&gt;
+
+int main(int argc, char **argv) {
+std::cout &lt;&lt; &quot;Hello OpenCV&quot; &lt;&lt; std::endl;
+}
+</code></pre></li>
+
+<li><p>In the root directory of your source tree, create a file called CMakeLists.txt with the following three lines:</p>
+
+<pre><code>cmake_minimum_required(VERSION 3.1)
+project(HelloOpenCV)
+add_executable(HelloOpenCV opencv_demo.cpp)
+</code></pre></li>
+
+<li><p>Make a build directory and call cmake from there:</p>
+
+<pre><code>mkdir build ; cd build ; cmake ../src
+</code></pre></li>
+</ul>
+
+<p>There&rsquo;s actually multiple ways to do this &ndash; the above is what I do. For my setup,
+this generates Unix Makefiles by default, which is what I want. <code>cmake --help</code>
+shows the list of generators supported on the current system, and you can select
+one with the <code>-G</code> option to <code>cmake</code>.</p>
+
+<p>In your <code>build</code> directory, you&rsquo;ll now find a <code>CMakeCache.txt</code> file listing
+a lot of settings that <code>cmake</code> has found, such as the path to the compiler
+and the linker. There&rsquo;s also an install script called <code>cmake_install.cmake</code>,
+a <code>Makefile</code>, and a directory called <code>CMakeFiles</code>. <code>Makefile</code> mostly just
+calls <code>CMakeFiles/Makefile2</code>.</p>
+
+<p>As expected, <code>make</code> creates an executable file called <code>HelloOpenCV</code>. The generated
+Makefiles do not contain an <code>install</code> target; I think that target only gets
+generated if you add an
+ <a href="https://cmake.org/cmake/help/v3.13/command/install.html"><code>install</code> command</a>
+ to <code>CMakeLists.txt</code> and then that target will use the generated install script.</p>
+
+<p>One word of advice: you do not technically have to use a separate <code>build</code> directory
+(though some codebases enforce this, for example when you try to compile OpenCV).
+It makes things a lot easier though! There are situations where you want to make
+sure to re-run <code>cmake</code> from scratch, and there is no <code>cmake clean</code> command or
+equivalent. I&rsquo;ve found it easiest to just <code>rm -rf build/*</code>.</p>
+
+<h3 id="linking-opencv">Linking OpenCV</h3>
+
+<p>Next, here&rsquo;s a basic tool that just shows an image from a file.
+Some of the steps are also documented <a href="https://docs.opencv.org/3.4.3/d7/d9f/tutorial_linux_install.html">on the OpenCV website</a>.</p>
+
+<pre><code>#include &lt;iostream&gt;
+
+#include &lt;opencv2/core/core.hpp&gt;
+#include &lt;opencv2/highgui/highgui.hpp&gt;
+#include &lt;opencv2/imgproc.hpp&gt;
+#include &lt;opencv2/opencv.hpp&gt;
+
+int main(int argc, char **argv) {
+  if (argc &lt; 2) {
+    std::cerr &lt;&lt; &quot;Please provide a path to an image file.&quot;;
+    return -1;
+  }
+  std::string filename = argv[1];
+  cv::Mat image = cv::imread(filename, 1);
+  if (!image.data) {
+    std::cerr &lt;&lt; &quot;No image data read.&quot;;
+    return -1;
+  }
+  cv::resize(image, image, cv::Size(), 0.2, 0.2, cv::INTER_AREA);
+  cv::namedWindow(&quot;Your Image&quot;, cv::WINDOW_AUTOSIZE);
+  cv::imshow(&quot;Your Image&quot;, image);
+
+  cv::waitKey(0);
+  return 0;
+}
+</code></pre>
+
+<p>And here is the CMakeLists.txt file that goes with it:</p>
+
+<pre><code>cmake_minimum_required(VERSION 3.1)
+project(HelloOpenCV)
+
+find_package(OpenCV REQUIRED)
+message(STATUS &quot;OpenCV library status:&quot;)
+message(STATUS &quot;    version: ${OpenCV_VERSION}&quot;)
+message(STATUS &quot;    libraries: ${OpenCV_LIBS}&quot;)
+message(STATUS &quot;    include path: ${OpenCV_INCLUDE_DIRS}&quot;)
+
+include_directories(${OpenCV_INCLUDE_DIRS})
+
+add_executable(HelloOpenCV opencv_demo.cpp)
+target_link_libraries(HelloOpenCV ${OpenCV_LIBS})
+</code></pre>
+
+<p>Now if you type <code>cmake ../src</code>, and you have OpenCV (including the header files)
+installed, you should see output like this:</p>
+
+<pre><code>-- OpenCV library status:
+--     version: 3.3.1
+--     libraries: opencv_calib3d;opencv_core;opencv_dnn;opencv_face;opencv_features2d;opencv_flann;opencv_highgui;opencv_imgcodecs;opencv_imgproc;opencv_ml;opencv_objdetect;opencv_photo;opencv_shape;opencv_stitching;opencv_superres;opencv_video;opencv_videoio;opencv_videostab
+--     include path: /usr/include;/usr/include/opencv
+</code></pre>
+
+<p>That happens to be the OpenCV version I installed on my machine using package
+management. I installed the development headers as well, and verified that
+the versions match by looking at <code>/usr/include/opencv2/core/version.hpp</code>.</p>
+
+<p>You&rsquo;ll notice that the most-used header files for OpenCV are actually in
+the <code>opencv2</code> directory rather than <code>opencv</code>, but the include path above
+contains <code>/usr/include</code> and the header files I want are in <code>/usr/include/opencv2/</code>,
+so this works.</p>
+
+<h3 id="different-versions-of-opencv-and-adding-modules">Different versions of OpenCV, and adding modules</h3>
+
+<p>I also downloaded the latest OpenCV source tree from github,
+including the opencv_extra and opencv_contrib repositories. That code lives
+in a subdirectory of my $HOME.</p>
+
+<p>CMake has a pretty involved <a href="https://cmake.org/cmake/help/v3.0/command/find_package.html">methodology for locating packages</a>. It looks to be
+a combination of parameters you can set on the find_package call, variables
+set in your CMake config files or via command-line parameters to cmake, environment
+variables and even some heuristics (like &lsquo;Search project trees recently configured
+ in a cmake-gui&rsquo;).</p>
+
+<p>If I just wanted to #include and link against the OpenCV code in my home directory,
+I could hardcode a value for OpenCV_DIR in
+my CmakeLists.txt:</p>
+
+<pre><code>set(OpenCV_DIR &quot;/home/&lt;username&gt;/git-experiments/musicocr/opencv/opencv/build&quot;)
+</code></pre>
+
+<p>Or I can compile and <code>make install</code> OpenCV from there and then configure CMake
+to look for the OpenCV module where I put it. Either way, I need to compile
+and link the OpenCV code including the extra modules I want to use.</p>
+
+<p>To that end, I called <code>cmake</code> with <code>-DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules</code>. I also worked out the following settings:</p>
+
+<pre><code>cmake \
+-DCMAKE_BUILD_TYPE=RELEASE -DBUILD_EXAMPLES=ON \
+-DWITH_LIB4L=OFF -DWITH_V4L=OFF \
+-DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules
+</code></pre>
+
+<p>I added the <code>LIB4L</code> and <code>V4L</code> parameters because I was getting missing includes
+errors otherwise. I had to install the devel package for <code>libpng</code> and <code>libv4l-devel</code>
+in order to get the <code>png.h</code> and <code>videodev.h</code> headers. <code>libv4l-devel</code> actually gave
+me a file called <code>/usr/include/linux/videodev2.h</code>, and I created a symlink called
+<code>/usr/include/linux/videodev.h</code> pointing to <code>videodev2.h</code>, which made the linker
+happy, though I still don&rsquo;t think this is how software installation should be done.
+It&rsquo;s a workaround for a known issue and has been <a href="https://stackoverflow.com/questions/5842235/linux-videodev-h-no-such-file-or-directory-opencv-on-ubuntu-11-04">discussed on StackOverflow</a>. In principle, just switching both libraries off (as
+I did above) should have been enough, but it wasn&rsquo;t, for me.</p>
+
+<p><code>LIB4L</code> and <code>V4L</code> are two libraries supporting video capture. You need at most
+one of them. I need neither of them because I don&rsquo;t intend to do video capture,
+so I went with whatever made the code I actually wanted compile.</p>
+
+<p>With these parameters, I got OpenCV including the extra modules to compile and link. At first,
+I got an output saying there had been errors (<code>-- Configuring incomplete, errors occurred!</code>) and that I should look in <code>CMakeOutput.log</code> and <code>CMakeError.log</code>. Unfortunately,
+those files were full of warnings about unsupported compiler options such as
+<code>-Wno-unnamed-type-template-args</code> that are probably ok to ignore. In the end, I got
+no useful information from these files (though I&rsquo;m sure they can be useful
+in other situations), but when I took a good look at my <code>cmake</code> invocation,
+I noticed a typo in the value of <code>OPENCV_EXTRA_MODULES_PATH</code> (which I have corrected above because
+the whole point of sharing these tips is for you to have a chance to run into different issues :-).</p>
+
+<p>And then, after all this, when I executed my binary, I got a core dump:</p>
+
+<pre><code>terminate called after throwing an instance of 'cv::Exception'
+  what():  OpenCV(4.0.0-pre) /home/me/git-experiments/musicocr/opencv/opencv/modules/highgui/src/window.cpp:615: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Carbon support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvNamedWindow'
+</code></pre>
+
+<p>That was disappointing. Scrolling back through the output of <code>cmake</code>, I could
+see it had in fact decided not to compile with GUI support because it could not
+find development headers for GTK. I located the package to install (<code>gtk3-devel</code>
+for OpenSUSE, it&rsquo;ll be called something else on other Linux distributions), ran
+<code>cmake</code> again, and got:</p>
+
+<pre><code>--   GUI: 
+--     GTK+:                        YES (ver 3.22.30)
+--       GThread :                  YES (ver 2.54.3)
+--       GtkGlExt:                  NO
+--     VTK support:                 NO
+</code></pre>
+
+<h3 id="using-tesseract">Using Tesseract</h3>
+
+<p>It&rsquo;s pretty cool that libraries such as OpenCV and Tesseract
+are freely available. I love using them, even when it takes me a few
+attempts and some experimentation to get things right. Below are some tips
+that might save you time getting started, but of course there is a lot more
+to discover.</p>
+
+<p>Here is some very basic code extending the <code>opencv_demo.cpp</code> file above
+to it runs character recognition on the image you feed it and prints
+some information on what it found:</p>
+
+<pre><code>#include &lt;fstream&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+#include &lt;opencv2/core/core.hpp&gt;
+#include &lt;opencv2/highgui/highgui.hpp&gt;
+#include &lt;opencv2/imgproc.hpp&gt;
+#include &lt;opencv2/opencv.hpp&gt;
+#include &lt;opencv2/text.hpp&gt;
+
+int main(int argc, char **argv) {
+  if (argc &lt; 2) {
+    std::cerr &lt;&lt; &quot;Please provide a path to an image file.&quot;;
+    return -1;
+  }
+  std::string filename = argv[1];
+  cv::Mat image = cv::imread(filename, 1);
+  if (!image.data) {
+    std::cerr &lt;&lt; &quot;No image data read.&quot;;
+    return -1;
+  }
+  cv::resize(image, image, cv::Size(), 0.2, 0.2, cv::INTER_AREA);
+  cv::namedWindow(&quot;Your Image&quot;, cv::WINDOW_AUTOSIZE);
+  cv::imshow(&quot;Your Image&quot;, image);
+
+  cv::waitKey(0);
+
+  cv::Ptr&lt;cv::text::OCRTesseract&gt; tess = cv::text::OCRTesseract::create(
+    NULL, NULL, NULL, cv::text::OEM_DEFAULT, cv::text::PSM_SINGLE_WORD);
+
+  std::string output_text;
+  std::vector&lt;cv::Rect&gt; component_rects;
+  std::vector&lt;std::string&gt; component_texts;
+  std::vector&lt;float&gt; component_confidences;
+  cv::Mat local = image.clone();
+
+  tess-&gt;run(local, output_text, &amp;component_rects, &amp;component_texts,
+            &amp;component_confidences, cv::text::OCR_LEVEL_WORD);
+
+  std::cout &lt;&lt; &quot;Tesseract says: &quot; &lt;&lt; output_text &lt;&lt; std::endl;
+  std::cout &lt;&lt; &quot;found &quot; &lt;&lt; component_rects.size() &lt;&lt; &quot; characters: &quot; &lt;&lt; std::endl;
+  for (int i = 0; i &lt; component_rects.size(); i++) {
+    std::cout &lt;&lt; &quot;character &quot; &lt;&lt; i &lt;&lt; &quot;: &quot; &lt;&lt; component_texts[i]
+              &lt;&lt; &quot; with confidence &quot; &lt;&lt; component_confidences[i] &lt;&lt; std::endl;
+  }
+  return 0;
+}
+</code></pre>
+
+<p>And here&rsquo;s how to build it:</p>
+
+<p>I specified the location of the tesseract package (again by pointing to
+my own directory because I thought I might need to compile multiple times
+with different settings and wanted to hold off on <code>make install</code> until I had
+a good version):</p>
+
+<pre><code>set(Tesseract_DIR &quot;/home/&lt;username&gt;/git-experiments/musicocr/tesseract/build&quot;)
+find_package(Tesseract REQUIRED)
+</code></pre>
+
+<p>Here&rsquo;s the updated <code>CMakeLists.txt</code> file in full:</p>
+
+<pre><code>cmake_minimum_required(VERSION 3.1)
+project(HelloOpenCV)
+
+set(OpenCV_DIR &quot;/home/&lt;username&gt;/git-experiments/musicocr/opencv/opencv/build&quot;)
+find_package(OpenCV REQUIRED)
+message(STATUS &quot;OpenCV library status:&quot;)
+message(STATUS &quot;    version: ${OpenCV_VERSION}&quot;)
+message(STATUS &quot;    libraries: ${OpenCV_LIBS}&quot;)
+message(STATUS &quot;    include path: ${OpenCV_INCLUDE_DIRS}&quot;)
+
+set(Tesseract_DIR &quot;/home/&lt;username&gt;/git-experiments/musicocr/tesseract/build&quot;)
+find_package(Tesseract REQUIRED)
+message(STATUS &quot;Tesseract library status:&quot;)
+message(STATUS &quot;    version: ${Tesseract_VERSION}&quot;)
+message(STATUS &quot;    libraries: ${Tesseract_LIBS}&quot;)
+
+include_directories(${OpenCV_INCLUDE_DIRS})
+include_directories(${Tesseract_INCLUDE_DIRS})
+
+add_executable(HelloOpenCV opencv_demo.cpp)
+target_link_libraries(HelloOpenCV ${OpenCV_LIBS})
+target_link_libraries(HelloOpenCV ${TESSERACT_LIBRARIES})
+</code></pre>
+
+<p>Note I also installed the <code>tesseract-ocr</code> commandline tool, which brought some essential language files with it, as well as the <code>leptonica</code> library.</p>
+
+<p>You can run <code>HelloOpenCV</code> with any image file, Tesseract will do its best to interpret the image
+as a word.
+Just specify the path to an image file on the commandline; the tool will display the image file
+on your screen and wait for you to hit any key. Once you&rsquo;ve hit a key, the tool will run Tesseract,
+print what it found, and exit.</p>
+
+<p>A few comments on options you may want to play around with:</p>
+
+<ol>
+<li>There&rsquo;s a <a href="https://github.com/tesseract-ocr/tesseract/wiki/Command-Line-Usage">commandline version of Tesseract</a> that&rsquo;s great for playing around with options.</li>
+<li>Read more about how Tesseract works and what some of the options mean e.g. <a href="https://www.learnopencv.com/deep-learning-based-text-recognition-ocr-using-tesseract-and-opencv/">here</a></li>
+<li>You can find all the options documented <a href="https://docs.opencv.org/3.4/d7/ddc/classcv_1_1text_1_1OCRTesseract.html">here</a> (you may need to look for the right version)</li>
+<li>In general, OCR works best on clean black-on-white inputs. Noise in the image (smudges, pixelations, generally things that aren&rsquo;t text) as well as skew will throw off OCR accuracy. The command-line tool is very helpful in working out the minimum level of image quality that will work for your purposes.</li>
+</ol>
+
+<h3 id="integrating-with-googletest">Integrating with googletest</h3>
+
+<p>Finally, unit tests. Multiple frameworks are available, and you should choose one you like. I had
+used <a href="https://github.com/google/googletest">googletest</a> previously and did not want to learn a new
+testing framework on top of teaching myself OpenCV.</p>
+
+<p>The good news is that Googletest comes with <a href="https://github.com/google/googletest/blob/master/googletest/README.md">extensive CMake instructions</a>. However, the
+favoured/most highly recommended option is to instruct CMake to obtain the latest version of the
+library from github when you run <code>cmake</code>. While there are reasons for doing this
+(<a href="https://github.com/google/googletest/blob/master/googletest/docs/FAQ.md#why-is-it-not-recommended-to-install-a-pre-compiled-copy-of-google-test-for-example-into-usrlocal">reasoning from Google</a>,
+<a href="https://stackoverflow.com/questions/13513905/how-to-setup-googletest-as-a-shared-library-on-linux">discussion on StackOverflow</a>), this means you cannot run <code>cmake</code> when you don&rsquo;t have
+internet access. I spend a lot of time on trains and like to write code (and run tests)
+without having constant internet access, so this is not ideal for me. For the time being,
+I&rsquo;ve gone with the recommended approach (update from github) and just try to remember not to
+run <code>cmake</code> while offline.</p>
+
+    </p>
+  </article>
+  <aside class="sidebar">
+    
+        <div class="container">
+          <div class="row">
+              
+	      <p><b>Previous Post:</b><br />
+                <a href="../../../2019/04/music-ocr-introducing-the-idea/">Music OCR: introducing the idea</a>
+	      </p>
+              
+              
+	        <p><b>Next Post:</b><br />
+                <a href="../../../2019/05/unit-testing-spark-scala-code/">Unit testing Spark Scala code</a>
+	        </p>
+              
+          </div>
+        </div>
+    
+    
+    
+    <div class="container">
+      <b>See also:</b>
+      	
+          <a class="text-body" href="../../../2019/04/music-ocr-introducing-the-idea/">Music OCR: introducing the idea</a>
+          <div>Sometimes I write my own music. I play the piano (badly), and I&rsquo;ll never be a great composer, but I find it interesting to play around with melody and chords.
+		    <br /><a href="../../../2019/05/cmake-opencv-and-unit-tests/">...</a>
+	  </div>
+        
+    </div>
+    
+  </aside>
+</article>
+<footer class="footer">
+  <div class="container"><div id="nocookies" class="NoCookieFooter">
+<hr />
+This site was built statically using <a href="https://gohugo.io">Hugo</a>
+ and sets no Cookies.
+<p>
+See also: <a href=../../../privacy>Privacy Statement</a>
+</div>
+
+  </div>
+</footer>
+</div>
+    </body>
+</html>

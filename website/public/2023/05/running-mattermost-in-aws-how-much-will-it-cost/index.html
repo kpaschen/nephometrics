@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html><head>
+  <title>Running Mattermost in AWS: How much will it cost?</title>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width initial-scale=1.0">
+
+ <link rel="stylesheet" href="../../../css/basic.css"/>
+ <link rel="stylesheet" href="../../../css/syntax.css"/>
+  <meta name="google-site-verification" content="yHK1RGH0XqN4iPhXZkdWnaRxqjueVNbqgKQ6jKJ_cc4">
+</head>
+<body>
+	<div class="wrapper"><div class="header">
+<nav class="navbar">
+<ul class="LanguageRow">
+  
+ <li class="LanguageItem">
+	 <a href="http://www.nephometrics.ch/">EN</a>
+    </li>
+  
+ <li class="LanguageItem">
+	 <a href="http://www.nephometrics.ch/fr/">FR</a>
+    </li>
+  
+ <li class="LanguageItem">
+	 <a href="http://www.nephometrics.ch/de/">DE</a>
+    </li>
+  
+</ul>
+</nav>
+<div class="Logobox">
+<div class="Logo">
+	<div class="CompanyName">
+		Nephometrics
+	</div>
+	<div class="CompanyPurpose">
+		Cloud SRE Consulting
+	</div>
+</div>
+</div>
+<nav class="navbar">
+    <ul class="MenuRow">
+      
+      
+        
+          <li class="MenuItem ">
+		  <a href="../../../" title="">Home</a>
+          </li>
+	  
+      
+        
+	    <li class="MenuItem">
+		    <a href="../../../blog/">Blog</a>
+            </li>
+        
+      
+        
+	
+	
+	  
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	 
+         <li class="MenuItem">
+           <div class="dropdown">
+             <button class="dropdown-button">Tags&nbsp;&#9662;</button>
+             <div class="dropdown-content">
+              
+                
+                  <a href="../../../tags/aws/">aws</a>
+                
+              
+                
+                  <a href="../../../tags/billing/">billing</a>
+                
+              
+                
+                  <a href="../../../tags/cloud-billing/">cloud-billing</a>
+                
+              
+                
+                  <a href="../../../tags/cmake/">cmake</a>
+                
+              
+                
+                  <a href="../../../tags/cost/">cost</a>
+                
+              
+                
+                  <a href="../../../tags/dataframe/">dataframe</a>
+                
+              
+                
+                  <a href="../../../tags/dataset/">dataset</a>
+                
+              
+                
+                  <a href="../../../tags/express/">express</a>
+                
+              
+                
+                  <a href="../../../tags/gcloud/">gcloud</a>
+                
+              
+                
+                  <a href="../../../tags/gcloud-api/">gcloud-api</a>
+                
+              
+                
+                  <a href="../../../tags/golang/">golang</a>
+                
+              
+                
+                  <a href="../../../tags/lilypond/">lilypond</a>
+                
+              
+                
+                  <a href="../../../tags/linux/">linux</a>
+                
+              
+                
+                  <a href="../../../tags/magenta/">magenta</a>
+                
+              
+                
+                  <a href="../../../tags/matching-skus-to-resources/">matching-skus-to-resources</a>
+                
+              
+                
+                  <a href="../../../tags/mattermost/">mattermost</a>
+                
+              
+                
+                  <a href="../../../tags/musicocr/">musicocr</a>
+                
+              
+                
+                  <a href="../../../tags/nodejs/">nodejs</a>
+                
+              
+                
+                  <a href="../../../tags/opencv/">opencv</a>
+                
+              
+                
+                  <a href="../../../tags/parquet/">parquet</a>
+                
+              
+                
+                  <a href="../../../tags/rdd/">rdd</a>
+                
+              
+                
+                  <a href="../../../tags/resource-estimation/">resource-estimation</a>
+                
+              
+                
+                  <a href="../../../tags/resources/">resources</a>
+                
+              
+                
+                  <a href="../../../tags/scala/">scala</a>
+                
+              
+                
+                  <a href="../../../tags/sku/">sku</a>
+                
+              
+                
+                  <a href="../../../tags/spark/">spark</a>
+                
+              
+                
+                  <a href="../../../tags/tensorflow/">tensorflow</a>
+                
+              
+                
+                  <a href="../../../tags/tesseract/">tesseract</a>
+                
+              
+                
+                  <a href="../../../tags/unittests/">unittests</a>
+                
+              
+             </div>
+           </div>
+         </li>
+	 
+        
+      
+        
+          <li class="MenuItem ">
+		  <a href="../../../contact/" title="">Contact</a>
+          </li>
+	  
+      
+    </ul>
+</nav>
+</div>
+
+  <article class="content textblock">
+    <h2>Running Mattermost in AWS: How much will it cost?</h2>
+
+    
+
+    <p>
+      <a href="http://www.nephometrics.ch/2023/05/running-mattermost-in-aws-how-much-will-it-cost/">Published May 9, 2023</a>
+    </p>
+    <p>
+      
+
+<p>This post summarises results of an internship project that <a href="https://github.com/Quangcaow">Quang Cao</a> completed February 2023.</p>
+
+<h3 id="summary">Summary</h3>
+
+<p>Mattermost is a chat service similar to Slack, but it allows customers to self-host their instance. This is nice if you have, e.g. data residency concerns; moreover, the basic version is <a href="https://mattermost.com/pricing/">free</a>. To be clear, <em>free</em> refers to the licensing costs, not the hosting.</p>
+
+<p>You can get a hosted instance from mattermost.com or various SaaS providers. Prices vary,
+but typically start around $20/month.
+But let&rsquo;s say you want to do your own hosting&mdash;how much will this cost for a modestly sized team? We ran some experiments to determine the hardware you&rsquo;ll need and how much that will cost.</p>
+
+<p>Of course, self-hosting has an additional cost besides the hardware, and that is the system administration effort
+you&rsquo;ll have to spend. We have not put a number on that.</p>
+
+<p>Quang ran performance tests on different configurations in AWS and determined that:</p>
+
+<ul>
+<li>For small teams, Mattermost will perform adequately on a <code>t2.micro</code> instance, and the complete setup will (at the time of writing) come to about $10 per month.</li>
+<li>You can scale up horizontally with more <code>t2.micro</code> instances for an additional $10 per month per instance.</li>
+<li>If you scale up vertically by switching to a <code>t2.small</code> instance you&rsquo;re looking at about $20 per month,
+or $30 if you go to <code>t2.medium</code>.</li>
+</ul>
+
+<p>In each case, you can save money by using reserved instances.</p>
+
+<p>Much will vary depending on how active your users are and several choices that you make in AWS. And of course, other hosting providers are available, and offer similarly sized and priced VMs.</p>
+
+<h3 id="environment">Environment</h3>
+
+<p>There are excellent tutorials out there for how to run your own Mattermost instance, and we won&rsquo;t replicate them here. In short, you&rsquo;ll need four pieces:</p>
+
+<ul>
+<li>a <em>reverse proxy</em>&mdash;the <a href="https://docs.mattermost.com/guides/deployment.html#server-installation">installation instructions</a> favour Nginx, but Apache works as well.</li>
+<li>a database&mdash;PostGres or MySQL both work fine.</li>
+<li>the Mattermost server binary itself</li>
+<li>an S3-compatible object storage for large files (such as image uploads)</li>
+</ul>
+
+<p>For storage space estimations,
+we&rsquo;ve assumed 5-25 MB per user per month, in line with the <a href="https://docs.mattermost.com/install/software-hardware-requirements.html#scale-requirements">scaling recommendations for medium-usage teams</a></p>
+
+<p>Mattermost used to recommend that the server should run on a computer with at least two cores and 4 GB of RAM. More recently, <a href="https://mattermost.com/dowhload/">their website</a> says 1 core and 2GB of RAM should be enough up to 1000 users. In
+AWS EC2, that would be a <code>t2.small</code> instance; we tested mainly on <code>t2.micro</code>, which have 1vCPU and
+one GB of RAM (<a href="https://aws.amazon.com/ec2/instance-types/t2/">overview</a>)</p>
+
+<p>We decided against using a managed database service such as RDS and instead installed Postgres in EC2.</p>
+
+<p>We did not include voice or video calls in our experiments.</p>
+
+<h3 id="load-tests">Load tests</h3>
+
+<p>Let&rsquo;s say we have a certain number of people using our server: they read and write messages; sometimes they search for something, subscribe to a channel, unsubscribe from another one. Every now and then someone logs on or off. They might be using Mattermost via a browser or an app but independently of their client, all their actions will be implemented via calls
+against the Mattermost server&rsquo;s REST API. We want to size our deployment so that for these users, the system shows acceptable latency and
+reliability; that is, API requests are not very slow, and API requests only very rarely fail due to overload. We used Mattermost from the browser while various load tests were running and concluded that a latency of about 50ms (measured from nginx to the server) and a request failure rate below 1% would be acceptable.</p>
+
+<p>Mattermost have their own <a href="https://github.com/mattermost/mattermost-load-test-ng">load-testing tool</a> which lets you run a configurable mix of API requests against a server. The tool usually combines with a Prometheus instance for monitoring, but the metrics endpoint of
+the Mattermost server is only enabled when you buy an Enterprise license. This would have cost us several thousand USD and that seemed a bit much for a relatively simple experiment. We were primarily interested in the failure rate and the end-user latency of API calls, and that information
+can be obtained from the Nginx or Apache logs. On AWS, we extracted this information using CloudWatch logs.</p>
+
+<p>A lot of Mattermost&rsquo;s client-server interaction is asynchronous: the client will periodically check for new messages. Users will rarely notice if those requests are slow. We looked up which API requests correspond to which interactions, and focused the latency evaluations on those requests where latency would be the most annoying to users.</p>
+
+<p>We ran load tests for different numbers of users (30, 50, 200, 300) and using different hardware configurations:</p>
+
+<ol>
+<li>Everything (database, proxy, mattermost) on one t2.micro instance</li>
+<li>Two t2.micro instances for mattermost, one of them also hosting the database and reverse proxy</li>
+<li>Everything on one t2.medium instance</li>
+</ol>
+
+<p>We ran the loadtesting tool on a separate VM in AWS, but it was in the same availability zone as our Mattermost server. Moreover, we measured latency at the reverse proxy. For some tests, this was on the same VM as the Mattermost server; for others, it was on a different VM but still in the same AZ. This is why we measured some very low latencies&mdash;there is almost no network latency included.</p>
+
+<h3 id="load-test-evaluation">Load test evaluation</h3>
+
+<p>The documentation and <a href="https://mattermost.com/blog/performance-scale-mattermost/">publications</a> by the Mattermost team show that their load-testing tool evaluates performance under very high load.
+They set out to show that their tool could scale up to thousands or even tens of thousands of simultaneous users.</p>
+
+<p>We were asking a different question, namely, how small a setup is sufficient for a modest number of users. We deliberately ran
+Mattermost on setups that were small and observed when and how performance degraded.</p>
+
+<p>Below, when we mention a number of users, this is just a way to specify the size of the load test.
+The load testing tool uses a configuration file where you can specify several parameters such as
+the number of simulated users and the mix of operations they perform. With the configuration we used
+(pretty much the default one), every simulated user sends on average about five requests per minute.
+That is more than most real users will do.</p>
+
+<p>We do not know which settings the Mattermost team used
+to determine that a t2.small instance is large enough for 1000 users, but our configuration
+would not run 1000 simulated users even on a t2.medium. That is almost certainly because our configuration
+simulates unrealistically active users.</p>
+
+<p>A few more observations:</p>
+
+<ol>
+<li>It is important to run the loadtesting tool for long enough. It starts by creating users, logging them in and joining them to teams
+and channels. This creates an initial flurry of activity and high load on the mattermost server, which subsides when the load test starts
+sending the actual simulated requests. We always ran for at least one hour.</li>
+<li>Not all t2.micro instances are created equal. We observed differences in performance but were unable to determine
+for sure whether these were due to differences in the underlying hardware. If you&rsquo;re unlucky, a t2.micro instance can reach high CPU
+load (85-100%) and even crash during a load test. We saw this happen with as few as 50 users.</li>
+<li>At high load (starting at 50 users for t2.micro or 250 for t2.medium), some requests from the load test driver will time out. You don&rsquo;t always see these in the logs of the reverse proxy, but you can see them in the logs that the load test driver writes.</li>
+<li>With an earlier version of Mattermost (7.1.2), we observed a number of websocket timeouts especially under load. More recent versions (we tested up to 7.10.0) appear to have fixed this.</li>
+</ol>
+
+<h4 id="evaluation">Evaluation</h4>
+
+<p>We ran load tests from a separate t2.micro AWS instance in the same availability zone as our mattermost servers.</p>
+
+<p>The loadtesting tool uses a configuration file where you can specify the type of simulation as well as several parameters (number
+of teams to create, frequency of different types of operations, etc.) For the results below, we used the default settings
+of the load testing tool. We started it like this:</p>
+
+<pre><code>go run ./cmd/ltagent -n 50 -d 3600 &gt; ltagent-50-3600 &amp;
+</code></pre>
+
+<p>This runs a load test with 50 simulated users for one hour.</p>
+
+<p>We used cloudwatch to extract latency and success/failure statistics from the logs of the reverse proxy. In addition, we examined
+the log outputs from the load testing tool, and we looked at AWS monitoring for the CPU load of the mattermost instances.</p>
+
+<p>This gives us the following data points:</p>
+
+<ol>
+<li>Did this load make Mattermost crash on at least one of our test runs?</li>
+<li>Highest CPU load observed on the Mattermost instances.</li>
+<li>Number of load test requests that timed out (this comes from the load test agent log file)</li>
+<li>Server errors (5xx responses) as percentage of total requests (from the reverse proxy logs)</li>
+<li>Latency of requests by request method (GET, POST, PUT)
+We also broke down the request latency by api endpoint because some request latencies are a lot more noticeable to the end user than others, but the breakdown by method is a good way to get a first idea of whether a given setup is workable at all.</li>
+</ol>
+
+<h3 id="load-test-evaluation-1">Load test evaluation</h3>
+
+<table>
+<thead>
+<tr>
+<th align="center">Setup</th>
+<th align="right">Users</th>
+<th align="right">Crash?</th>
+<th align="right">CPU load</th>
+<th align="right">Timeouts</th>
+<th align="right">Server error ratio</th>
+<th align="right">GET latency</th>
+<th align="right">POST latency</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">t2.micro</td>
+<td align="right">30</td>
+<td align="right">N</td>
+<td align="right">6%</td>
+<td align="right">0</td>
+<td align="right">0.6%</td>
+<td align="right">4.1ms</td>
+<td align="right">31.9ms</td>
+</tr>
+
+<tr>
+<td align="center">t2.micro</td>
+<td align="right">50</td>
+<td align="right">Y</td>
+<td align="right">10%</td>
+<td align="right">0</td>
+<td align="right">0.5%</td>
+<td align="right">2.5ms</td>
+<td align="right">30.0ms</td>
+</tr>
+
+<tr>
+<td align="center">t2.micro</td>
+<td align="right">200</td>
+<td align="right">Y</td>
+<td align="right">85%</td>
+<td align="right">50</td>
+<td align="right">0.4%</td>
+<td align="right">10.4ms</td>
+<td align="right">162.0ms</td>
+</tr>
+
+<tr>
+<td align="center">t2.micro</td>
+<td align="right">250</td>
+<td align="right">Y</td>
+<td align="right">50%</td>
+<td align="right">80</td>
+<td align="right">0.4%</td>
+<td align="right">18.1ms</td>
+<td align="right">218.5ms</td>
+</tr>
+
+<tr>
+<td align="center">t2.micro</td>
+<td align="right">300</td>
+<td align="right">Y</td>
+<td align="right">100%</td>
+<td align="right">lots</td>
+<td align="right">1.0%</td>
+<td align="right">1842.5ms</td>
+<td align="right">64574.9ms</td>
+</tr>
+
+<tr>
+<td align="center">t2.micro dual</td>
+<td align="right">50</td>
+<td align="right">N</td>
+<td align="right">10%</td>
+<td align="right">0</td>
+<td align="right">0.5%</td>
+<td align="right">4.9ms</td>
+<td align="right">23.8ms</td>
+</tr>
+
+<tr>
+<td align="center">t2.micro dual</td>
+<td align="right">200</td>
+<td align="right">N</td>
+<td align="right">11%</td>
+<td align="right">0</td>
+<td align="right">0.1%</td>
+<td align="right">3.1ms</td>
+<td align="right">38.3ms</td>
+</tr>
+
+<tr>
+<td align="center">t2.micro dual</td>
+<td align="right">300</td>
+<td align="right">N</td>
+<td align="right">13%</td>
+<td align="right">0</td>
+<td align="right">3.0%</td>
+<td align="right">4.6ms</td>
+<td align="right">31.2ms</td>
+</tr>
+
+<tr>
+<td align="center">t2.medium</td>
+<td align="right">50</td>
+<td align="right">N</td>
+<td align="right">7%</td>
+<td align="right">0</td>
+<td align="right">0.5%</td>
+<td align="right">1.9ms</td>
+<td align="right">17.6ms</td>
+</tr>
+
+<tr>
+<td align="center">t2.medium</td>
+<td align="right">200</td>
+<td align="right">N</td>
+<td align="right">11%</td>
+<td align="right">0</td>
+<td align="right">0.5%</td>
+<td align="right">2.2ms</td>
+<td align="right">17.5ms</td>
+</tr>
+
+<tr>
+<td align="center">t2.medium</td>
+<td align="right">300</td>
+<td align="right">N</td>
+<td align="right">11%</td>
+<td align="right">124</td>
+<td align="right">0.4%</td>
+<td align="right">4.7ms</td>
+<td align="right">88.7ms</td>
+</tr>
+
+<tr>
+<td align="center">t2.medium</td>
+<td align="right">500</td>
+<td align="right">Y</td>
+<td align="right">96%</td>
+<td align="right">lots</td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="everything-on-one-t2-micro-instance">Everything on one t2.micro instance</h4>
+
+<p>In this setup, we deployed the reverse proxy, the database, and the mattermost service on one t2.micro instance (1 CPU, 1 GB RAM). This is below the minimum size recommended by Mattermost.</p>
+
+<p>Surprisingly enough, this setup is usable at 30 users. At 50 users, it crashed a few times, and ran fine other times. Timeouts consistently
+showed up at 200 users, and latency was high at 200 users as well.</p>
+
+<h4 id="two-t2-micro-instances-for-mattermost">Two t2.micro instances for mattermost</h4>
+
+<p>Mattermost has multi-instance support. We ran two mattermost servers behind one Apache reverse proxy. This means we had two t2.micro
+instances in total, one hosting the reverse proxy, the database and one mattermost server, and the other hosting the second mattermost server.</p>
+
+<p>At the loads we were using, the cpu load for the database and the reverse proxy were not high, otherwise we could have split them off
+into a third t2.micro instance.</p>
+
+<p>This setup can handle 50 users with no problems. You can see the latency beginning to creep up at 200 users, and then server errors
+increasing at 300 users.</p>
+
+<h4 id="everything-on-one-t2-medium-instance">Everything on one t2.medium instance</h4>
+
+<p>Performance was good at 50-200 users, with a marked increase in latency at 300 accompanied by timeouts. We tried it once with 500 users
+and it crashed, and since latency was already high at 300, this did not seem worth trying again.</p>
+
+<h3 id="cost-estimation">Cost estimation</h3>
+
+<p>Our deployment&rsquo;s costs are dominated by the cost of the VM(s).</p>
+
+<p>We&rsquo;ll assume that an average user produces 5-25MB per month that gets stored in the DB, and that we do not prune data from the database; this gives us a total of about 180 MB per user and year. We&rsquo;ll also assume 1 GB per user and year of S3.</p>
+
+<p>Inbound data transfer from the internet to AWS is free, but we do have to pay for outbound. This is 0.09 USD per GB and month.</p>
+
+<p>If we assume that every user creates about 15 MB per month and that all users see everybody else&rsquo;s messages, then 15 * number of users MB of outgoing traffic per month is a lower bound. We have to assume some messages or images are viewed multiple times. Still, at 0.09 USD per GB, this should not be a huge item on our bill.</p>
+
+<p>We&rsquo;ll want an external IP for our service, but one is enough, and that is free. Since we only have the one instance, there is no load balancer. I&rsquo;ll assume you already have a domain name, otherwise budget about 10 USD/year for an inexpensive one.</p>
+
+<p>At 30 users, we&rsquo;ll pay</p>
+
+<ul>
+<li>0.09 USD for outbound network traffic</li>
+<li>0.60 USD for EBS storage</li>
+<li>9.78 USD for one t2.micro instance (this goes down to 5.11 with an EC2 instance savings plan)</li>
+<li>0.08 USD for S3</li>
+</ul>
+
+<p>If we wanted to go for a larger VM, a t2.medium (2 CPUs, 4 GB RAM) is USD 20.15/month on the cheapest savings plan. An a1.large is at least USD 36.72 per month but before paying that, it would be worth looking at using a dynamically scaled number of smaller instances.</p>
+
+<p>For comparison, we could get a similar setup on <a href="https://infomaniak.com">Infomaniak</a>, where a VM the size of a t2.small instance will
+cost CHF 4.67/month, but the public IP will set us back CHF 3.34/month.</p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>If you want to host Mattermost yourself, and find yourself wondering how much it will cost you, maybe
+these results can help you. It is difficult to say exactly how much you will need, but here is some
+guidance for the hardware you can start with, as well as for metrics you&rsquo;ll want to keep an eye on.</p>
+
+<p>In summary, you can&rsquo;t really get started with self-hosting for anything less than about 10$ per month.</p>
+
+<p>If you start with a very small deployment, you&rsquo;ll want to keep an eye on performance to make sure
+you scale up when it is necessary; CPU load is one indicator here, but the data above shows that
+the average latency of POST requests will allow you to spot overload earlier. If it goes over
+40ms (measured from the reverse proxy to the Mattermost instance), there is a good chance your
+Mattermost server is overloaded.</p>
+
+    </p>
+  </article>
+  <aside class="sidebar">
+    
+        <div class="container">
+          <div class="row">
+              
+	      <p><b>Previous Post:</b><br />
+                <a href="../../../2021/10/san-junipero-is-a-dystopia/">San Junipero is a Dystopia</a>
+	      </p>
+              
+              
+	        <p><b>Stay tuned for the next post</b></p>
+              
+          </div>
+        </div>
+    
+    
+    
+  </aside>
+</article>
+<footer class="footer">
+  <div class="container"><div id="nocookies" class="NoCookieFooter">
+<hr />
+This site was built statically using <a href="https://gohugo.io">Hugo</a>
+ and sets no Cookies.
+<p>
+See also: <a href=../../../privacy>Privacy Statement</a>
+</div>
+
+  </div>
+</footer>
+</div>
+    </body>
+</html>

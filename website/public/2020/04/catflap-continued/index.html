@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html><head>
+  <title>Catflap, continued</title>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width initial-scale=1.0">
+
+ <link rel="stylesheet" href="../../../css/basic.css"/>
+ <link rel="stylesheet" href="../../../css/syntax.css"/>
+  <meta name="google-site-verification" content="yHK1RGH0XqN4iPhXZkdWnaRxqjueVNbqgKQ6jKJ_cc4">
+</head>
+<body>
+	<div class="wrapper"><div class="header">
+<nav class="navbar">
+<ul class="LanguageRow">
+  
+ <li class="LanguageItem">
+	 <a href="http://www.nephometrics.ch/">EN</a>
+    </li>
+  
+ <li class="LanguageItem">
+	 <a href="http://www.nephometrics.ch/fr/">FR</a>
+    </li>
+  
+ <li class="LanguageItem">
+	 <a href="http://www.nephometrics.ch/de/">DE</a>
+    </li>
+  
+</ul>
+</nav>
+<div class="Logobox">
+<div class="Logo">
+	<div class="CompanyName">
+		Nephometrics
+	</div>
+	<div class="CompanyPurpose">
+		Cloud SRE Consulting
+	</div>
+</div>
+</div>
+<nav class="navbar">
+    <ul class="MenuRow">
+      
+      
+        
+          <li class="MenuItem ">
+		  <a href="../../../" title="">Home</a>
+          </li>
+	  
+      
+        
+	    <li class="MenuItem">
+		    <a href="../../../blog/">Blog</a>
+            </li>
+        
+      
+        
+	
+	
+	  
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	 
+         <li class="MenuItem">
+           <div class="dropdown">
+             <button class="dropdown-button">Tags&nbsp;&#9662;</button>
+             <div class="dropdown-content">
+              
+                
+                  <a href="../../../tags/aws/">aws</a>
+                
+              
+                
+                  <a href="../../../tags/billing/">billing</a>
+                
+              
+                
+                  <a href="../../../tags/cloud-billing/">cloud-billing</a>
+                
+              
+                
+                  <a href="../../../tags/cmake/">cmake</a>
+                
+              
+                
+                  <a href="../../../tags/cost/">cost</a>
+                
+              
+                
+                  <a href="../../../tags/dataframe/">dataframe</a>
+                
+              
+                
+                  <a href="../../../tags/dataset/">dataset</a>
+                
+              
+                
+                  <a href="../../../tags/express/">express</a>
+                
+              
+                
+                  <a href="../../../tags/gcloud/">gcloud</a>
+                
+              
+                
+                  <a href="../../../tags/gcloud-api/">gcloud-api</a>
+                
+              
+                
+                  <a href="../../../tags/golang/">golang</a>
+                
+              
+                
+                  <a href="../../../tags/lilypond/">lilypond</a>
+                
+              
+                
+                  <a href="../../../tags/linux/">linux</a>
+                
+              
+                
+                  <a href="../../../tags/magenta/">magenta</a>
+                
+              
+                
+                  <a href="../../../tags/matching-skus-to-resources/">matching-skus-to-resources</a>
+                
+              
+                
+                  <a href="../../../tags/mattermost/">mattermost</a>
+                
+              
+                
+                  <a href="../../../tags/musicocr/">musicocr</a>
+                
+              
+                
+                  <a href="../../../tags/nodejs/">nodejs</a>
+                
+              
+                
+                  <a href="../../../tags/opencv/">opencv</a>
+                
+              
+                
+                  <a href="../../../tags/parquet/">parquet</a>
+                
+              
+                
+                  <a href="../../../tags/rdd/">rdd</a>
+                
+              
+                
+                  <a href="../../../tags/resource-estimation/">resource-estimation</a>
+                
+              
+                
+                  <a href="../../../tags/resources/">resources</a>
+                
+              
+                
+                  <a href="../../../tags/scala/">scala</a>
+                
+              
+                
+                  <a href="../../../tags/sku/">sku</a>
+                
+              
+                
+                  <a href="../../../tags/spark/">spark</a>
+                
+              
+                
+                  <a href="../../../tags/tensorflow/">tensorflow</a>
+                
+              
+                
+                  <a href="../../../tags/tesseract/">tesseract</a>
+                
+              
+                
+                  <a href="../../../tags/unittests/">unittests</a>
+                
+              
+             </div>
+           </div>
+         </li>
+	 
+        
+      
+        
+          <li class="MenuItem ">
+		  <a href="../../../contact/" title="">Contact</a>
+          </li>
+	  
+      
+    </ul>
+</nav>
+</div>
+
+  <article class="content textblock">
+    <h2>Catflap, continued</h2>
+
+    
+
+    <p>
+      <a href="http://www.nephometrics.ch/2020/04/catflap-continued/">Published April 15, 2020</a>
+    </p>
+    <p>
+      
+
+<p>New developments in cat flap automation &ndash; continuing on from <a href="../../../2020/03/catflap/">my first cat flap-related post</a>.
+In the last post, I described how I installed the Raspberry Pi and camera, and installed
+<a href="https://github.com/Motion-Project/motion">motion</a> on it to capture images when motion is detected.</p>
+
+<p>In this post, I&rsquo;ll set up some infrastructure for receiving and processing images captured by motion:
+&ndash; some very basic opencv code for locating the area where
+motion was detected; training a simple statistical model to decide heuristically whether a cat is approaching
+the cat flap; and then putting things together so motion can call my code.</p>
+
+<p>So you&rsquo;ll get a hodgepodge of different technologies, none of them described at the level of
+detail I&rsquo;d like to give them. All three (OpenCV in Python, Statmodels in OpenCV, and Python&rsquo;s asyncio)
+have thorough and official documentation as well as some code samples and Stackoverflow questions
+that show how people use them. However, actually understanding how they work and how to use them
+correctly does not seem as straightforward as it could be.</p>
+
+<p>When I put it all together, I now have a &ldquo;cat flap daemon&rdquo; that runs on the pi and listens on a (UDP) port.
+Motion (the open source motion detection software) is also running, and is configured to send a UDP
+message to the cat flap daemon when it takes a picture. The daemon then reads that picture, locates the
+area where motion was detected, and applies a statistical model to decide whether this pictures shows a cat
+approaching the flap.</p>
+
+<p>I have (at least) three more things to do before the project is complete:</p>
+
+<ol>
+<li>Decide whether the cat approaching is carrying a mouse</li>
+<li>Figure out how the pi can keep the cat flap closed</li>
+<li>Add an IR LED so the camera can see at night</li>
+</ol>
+
+<p>I&rsquo;ll tackle those next &ndash; stay tuned.</p>
+
+<h3 id="processing-images-with-opencv-in-python">Processing images with opencv in python</h3>
+
+<p>After a few days of running motion and just capturing images, I had a good sample set, so I started extending
+the simple listing code I&rsquo;d written.</p>
+
+<p>Motion generates (among others) two types of events:</p>
+
+<ol>
+<li><code>motion detected: 3494 changed pixels 48 x 76 at 272 38</code></li>
+<li><code>saved /home/pi/pictures/11-20200414141730-00.jpg</code></li>
+</ol>
+
+<p>I wanted to use the coordinates where motion was detected for a basic heuristic that tells me
+whether a cat is approaching (as opposed to a cat leaving, or some non-cat-related movement). As it is, I get
+the coordinates in two ways: first from the <code>motion detected</code> message and then from the box that motion draws
+on the image it saves. I played with both, and ended up going with the box for now, mainly because I messed up
+and lost a bunch of the motion messages but I still had all the images and wanted to start working with them.</p>
+
+<p>Another reason is that motion uses different coordinates from opencv; as far as I can tell, the motion
+messages describe the extent (48 x 76 pixels in the example above) around the centre of movement (272 38).
+With opencv, I more usually get boundaries or a bounding box. On top of that, the coordinates reported by
+motion appear to be shifted compared to what I get from opencv. Since I want to do more processing with
+opencv, I need locations to be usable there, preferably without a lot of places where I can introduce bugs.</p>
+
+<p>Finding a box using opencv is not hard. A box is basically a set of four straight lines, and opencv comes with
+pre-implemented line detection algorithms. However, they generally need a bit of parameterisation so you detect
+just the lines you&rsquo;re interested in.</p>
+
+<p>I extended the image listing tool with a basic shell for trying opencv commands. I could have driven everything
+from just a python shell, but that is a lot of repetitive typing.</p>
+
+<p>So now, when you scroll through images using <code>listImages.py</code>, you can press <code>x</code> and it&rsquo;ll take you into a shell
+where you can apply a few cv algorithms to a greyscale version of the current image. I use greyscale because
+many cv algorithms require greyscale.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">exploreImage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">cur</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
+    <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">windowName</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cur</span><span class="p">)</span>
+
+    <span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+      <span class="n">pressed</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">pressed</span> <span class="o">==</span> <span class="mi">113</span><span class="p">:</span> <span class="c1"># &#39;q&#39; for quit</span>
+          <span class="k">break</span>
+      <span class="k">elif</span> <span class="n">pressed</span> <span class="o">==</span> <span class="mi">99</span><span class="p">:</span> <span class="c1"># &#39;c&#39; for canny</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cur</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">Canny</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cur</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span>
+                             <span class="bp">self</span><span class="o">.</span><span class="n">cannyAperture</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">windowName</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cur</span><span class="p">)</span>
+      <span class="k">elif</span> <span class="n">pressed</span> <span class="o">==</span> <span class="mi">101</span><span class="p">:</span> <span class="c1"># &#39;e&#39; equalizeHist</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cur</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">equalizeHist</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cur</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">windowName</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cur</span><span class="p">)</span>
+      <span class="k">elif</span> <span class="n">pressed</span> <span class="o">==</span> <span class="mi">104</span><span class="p">:</span> <span class="c1"># &#39;h&#39; for hough</span>
+      <span class="o">...</span></code></pre></div>
+
+<p>As you can see, the code just waits for a key press, updates the image and shows it. I have added a few controls
+using <code>cv2.createTrackbar</code> for the Canny aperture or various settings for the Hough line finding
+algorithm.</p>
+
+<p><img src="../../../images/cv-explorer1.png" alt="Image explorer" /></p>
+
+<p>In order to find the motion area, if I want to go with detecting lines, probably the easiest way is to
+use <a href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_houghlines/py_houghlines.html">the hough transform</a>. This works best on a pre-processed image; a regular greyscale image like the one above will
+get way too many lines. I used the shell I made above to experiment with settings and settled on:</p>
+
+<ol>
+<li>Binary threshold</li>
+<li>Canny</li>
+<li>Probabilistic Hough</li>
+</ol>
+
+<p>There are many ways to achieve the same result here; with properly chosen parameters, you
+can skip the binary threshold and/or the canny step. I&rsquo;d expect an approach with just Hough
+(no thresholding or Canny) to use slightly more CPU, but haven&rsquo;t tested (and besides, if I was
+worried about CPU, I&rsquo;d try harder to use the coordinates supplied by motion).</p>
+
+<h4 id="threshold">Threshold</h4>
+
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">cv2</span><span class="o">.</span><span class="n">threshold</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="mi">127</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">THRESH_BINARY</span><span class="p">)</span></code></pre></div>
+
+<p>Thresholding converts a greyscale image into just black and white. You give it a threshold (127 here) and
+a max value for pixels exceeding the threshold (255). So pixels whose greyscale value is &lt; 127 get set to 0,
+and those at 127 or above get set to 255. <code>THRESH_BINARY</code> is the basic thresholding algorithm;
+<a href="https://docs.opencv.org/master/d7/d4d/tutorial_py_thresholding.html">others are available</a>.</p>
+
+<p><img src="../../../images/cv-explorer1-threshold.png" alt="Threshold applied" /></p>
+
+<h4 id="canny">Canny</h4>
+
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">cv2</span><span class="o">.</span><span class="n">Canny</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span></code></pre></div>
+
+<p><a href="https://en.wikipedia.org/wiki/Canny_edge_detector">Canny</a> computes gradients across your image and then applies thresholds to those. The second and
+third parameters are thresholds. Lower the third parameter to find more edges; if you get a lot
+of small edges that aren&rsquo;t connected to anything, raise the second parameter. The Sobel kernel parameter
+(aka the aperture)
+controls a smoothing operation. 3 or 5 tend to work well for the kinds of images I got here. Larger
+kernels mean you smooth over larger areas of the image (the kernel size is the size of a matrix that
+gets convolved with your image); I imagine that if you had a highly detailed image but were only
+interested in strong lines you could benefit from a larger kernel, but I am only an amateur experimenting.</p>
+
+<p>As long as I apply thresholding first, the choice of parameters for Canny makes very little difference.
+Unsurprisingly, the defaults I have here (100, 200, 3) are what&rsquo;s used in a lot of tutorials that also start
+with a binary thresholding operation. If you skip the thresholding, you can see what the parameters do more
+clearly.</p>
+
+<p>There&rsquo;s some noise in the lower right corner; some of that is because I forgot to tell motion not to print
+the date and time onto the image.</p>
+
+<p><img src="../../../images/cv-explorer1-canny.png" alt="Canny applied" /></p>
+
+<h4 id="probabilistic-hough">Probabilistic Hough</h4>
+
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">cv2</span><span class="o">.</span><span class="n">HoughLinesP</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">35</span><span class="p">)</span></code></pre></div>
+
+<p><img src="../../../images/cv-explorer1-hough.png" alt="Lines found" /></p>
+
+<p>You can see that hough did not find all four lines of the box, but enough for me to locate the cat. This is a matter
+of parameterisation; you can adapt the houghp parameters (and of course canny etc) to find more lines, but then
+you also sometimes find more other lines, such as the edges of the rubbish bin in the background. I settled on
+parameters that allow me to find the cat without too much noise.</p>
+
+<p>If you look closely, you&rsquo;ll see hough actually found &ldquo;double&rdquo; lines; this is an artifact of having run Canny before.
+As far as I understand it, Canny detects &ldquo;edges&rdquo;, aka places where there is a somewhat sharp change in brightness,
+and a line, seen like this, has two &ldquo;edges&rdquo;.</p>
+
+<p><a href="https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_imgproc/py_houghlines/py_houghlines.html">Hough parameter</a>
+ tuning is pretty involved, and I&rsquo;ve always found it difficult to decode how the parameters affect
+the lines found. Basically, the parameters in python are:
+<code>image, distance resolution in pixels, angle resolution in radians, threshold, minLineLength, maxLineGap</code>.</p>
+
+<p>The distance and angle resolution control the tightness of the sweep that the algorithm will perform over
+the parameter space. The Hough algorithm will try combinations of polar coordinates to generate potential
+lines. Each straight line in your image corresponds to exactly one point in the parameter space. minLineLength
+and maxLineGap are there to filter the lines you get back.</p>
+
+<p>I pretty much just extract the corners from this &ndash; the top left, top right, bottom left, and bottom right coordinates.
+Sometimes my code detects a box that is smaller than what motion found (when I don&rsquo;t find all four lines), sometimes
+(more rarely) I end up with a larger box (when I&rsquo;ve detected additional lines that weren&rsquo;t part of the motion box).</p>
+
+<p>These settings work reasonably well for the lighting and environment that I have. I also experimented with
+<a href="https://docs.opencv.org/4.0.1/d4/d1b/tutorial_histogram_equalization.html">histogram equalization</a>
+ and with <a href="https://docs.opencv.org/4.0.1/df/d0d/tutorial_find_contours.html">contour finding</a>.
+Histogram equalization works nicely for brightening up an image taken in near-darkness, but I don&rsquo;t need it (or
+contours) just yet.</p>
+
+<h3 id="statistical-models">Statistical models</h3>
+
+<p>Just from looking at motion events, there were a few pretty obvious ways to classify them. For instance,
+if the first motion detected is at the lower edge of the picture, it&rsquo;s almost always a cat leaving.
+However, occasionally a cat would arrive with a jump from
+the side and land right in front of the cat flap at the bottom of the screen;
+ that typically results in a larger area of motion
+and farther to the right edge than the typical &lsquo;cat leaving&rsquo; image. Similarly, movement detected in the
+top right is almost never a cat (there&rsquo;s nowhere for a cat to come from on that side). This was just
+a little too tedious to code by hand, but seemed just fine for a basic statistical model.</p>
+
+<p>I collected about 200 motion events, and then labelled them manually. I built some support for this into the
+listImages.py tool, so I can just press &lsquo;l&rsquo; when viewing an image and then enter a label. I use only four labels:</p>
+
+<ol>
+<li>no cat</li>
+<li>not sure what this is, could be a cat?</li>
+<li>cat is leaving</li>
+<li>cat is arriving</li>
+</ol>
+
+<p>I discarded 17 motion events that had only single images (obvious false positives).</p>
+
+<p>This is for heuristic pre-processing, so there is no distinction between &lsquo;cat arriving with mouse&rsquo; vs. &lsquo;without mouse&rsquo;. I just want to decide early on whether to start serious processing. Category 2 (&ldquo;not sure&rdquo;) exists for images
+that show something moving fast and in a blur; sometimes this is a cat running, but I&rsquo;d need to see the next
+image to be sure. I tried a basic statistical model using only the coordinates of the detected motion, and it did ok.</p>
+
+<p>OpenCV supports <a href="https://docs.opencv.org/4.0.1/db/d7d/classcv_1_1ml_1_1StatModel.html">a range of statistical models</a>
+though I had some trouble getting everything to run. I ended up using KNN (K-Nearest-Neighbour) and gave up
+on using DTrees since <a href="https://stackoverflow.com/questions/61117320/python-opencv-dtree-model-train-terminates-with-stdlength-error">training them consistently resulted in segmentation faults</a>. Luckily, KNN worked ok even
+though my training set had only 183 entries. I do not (yet) have enough data for a separate test set, so I have
+only tested the model on the training set, where it got about 93% accuracy, and a confusion matrix that looks like this:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="p">[[</span><span class="mi">45</span>  <span class="mi">1</span>  <span class="mi">1</span>  <span class="mi">4</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">0</span>  <span class="mi">7</span>  <span class="mi">0</span>  <span class="mi">2</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">0</span>  <span class="mi">0</span> <span class="mi">73</span>  <span class="mi">4</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span> <span class="mi">46</span><span class="p">]]</span></code></pre></div>
+
+<p>An entry in row <code>x</code> and column <code>y</code> means that an event of type <code>x</code> happened and the model categorized it
+as <code>y</code>. So for example row 3 column 4: cat was leaving, model said cat was arriving.</p>
+
+<p>Of course, testing on the training data is not very meaningful; the most I can really tell from this is that
+my KNN model is complex enough for the data, and the confusion matrix tells
+me that most errors are false positives (the model thinks a cat is approaching when there is none), which is
+fine if it doesn&rsquo;t happen too often (I&rsquo;d rather spend some extra processing time looking for a mouse than
+miss one).</p>
+
+<p>I&rsquo;m sure you are wondering why there are more &lsquo;cat leaving&rsquo; events (third row of the matrix) than
+&lsquo;cat arriving&rsquo; (fourth row). This is because both cats will come inside when we open the door or a
+window that they can get to.</p>
+
+<p>The code for training looks roughly like this:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">For</span> <span class="n">each</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">training</span> <span class="n">data</span> <span class="n">csv</span><span class="p">:</span>
+  <span class="n">split</span> <span class="n">line</span> <span class="n">into</span> <span class="n">label</span><span class="p">,</span> <span class="n">coordinates</span>
+  <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+  <span class="n">coordinates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">c</span><span class="p">))</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">coordinates</span><span class="p">])</span>
+
+<span class="k">assert</span> <span class="n">that</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">coordinates</span><span class="p">)</span>
+<span class="n">features</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">coordinates</span><span class="p">),</span> <span class="mi">4</span><span class="p">),</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">coordinates</span><span class="p">))</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span>
+    <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">coordinates</span><span class="p">),</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">knn_model</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">ml</span><span class="o">.</span><span class="n">KNearest_create</span><span class="p">()</span>
+<span class="n">knn_model</span><span class="o">.</span><span class="n">setDefaultK</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">knn_model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">samples</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span>
+                <span class="n">layout</span><span class="o">=</span><span class="n">cv2</span><span class="o">.</span><span class="n">ml</span><span class="o">.</span><span class="n">ROW_SAMPLE</span><span class="p">,</span>
+                <span class="n">responses</span><span class="o">=</span><span class="n">features</span><span class="p">)</span>
+<span class="n">knn_model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span></code></pre></div>
+
+<p>You need to transform the training data into arrays. OpenCV is very picky about data types
+here though the documentation usually only describes what you need to pass in at the C level,
+and then it&rsquo;s up to you (and StackOverflow) to figure out how to get there in Python.</p>
+
+<p>In theory, you can then load that model later and use it:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">knn_model</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">ml</span><span class="o">.</span><span class="n">KNearest_load</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+   <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span>
+   <span class="nb">buffer</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">inputdata</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+<span class="n">retval</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">knn_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">f</span><span class="p">)</span></code></pre></div>
+
+<p>I say &lsquo;in theory&rsquo; because as it turns out loading a KNearest model from a file isn&rsquo;t supported
+in python_opencv 4.0.0, which is what I installed on the pi. It is supported in the slightly
+newer version I have on my laptop. But rather than spend another afternoon compiling a newer
+version of opencv on the pi, I went ahead and changed my code to train a model on startup;
+after all, it&rsquo;s a very small model and takes almost no time to train.</p>
+
+<p>So far, the model works ok; it is pretty reliable in terms of deciding that a given motion
+is definitely not a cat approaching, which is what I wanted, so I can focus on images
+that have a high probability of showing cats approaching.</p>
+
+<p>Initially I had planned to examine sequences of images and detect whether movement was towards or away
+from the camera; that would be more complicated both in terms of collecting training data and in terms
+of applying to images captured at run time. Luckily, the performance of the KNN model is already good
+enough that I did not need to do this.</p>
+
+<h3 id="sending-images-from-motion-to-processing">Sending images from motion to processing</h3>
+
+<p>Now I want to plug the image processor into the motion detector. Since I might need to process
+sequences of images (maybe I don&rsquo;t get a clear view of the cat&rsquo;s head in the first picture
+and need to wait for the second), I want to run a daemon that motion can talk to. I looked into
+some message processing utilities for python but decided they were overkill for what I want,
+since I really just want to send short messages (a few hundred bytes), no more than two messages
+per second, and I don&rsquo;t need any kind of guarantees such as at-most-once processing or so.</p>
+
+<p>So I just went with having the &lsquo;cat flap daemon&rsquo; listen on a UDP port, and making motion send
+messages to that port. UDP is fine for this since daemon and motion run on the same machine,
+and messages are small and infrequent enough that I&rsquo;m not worried about out of order delivery etc.
+But because I did want to go with the times, I used the <code>asyncio</code> package because this use
+case seems like what that is meant for.</p>
+
+<p>The code below is definitely not suitable for anything but a toy environment. Using
+asyncio correctly is the topic of <a href="https://docs.python.org/3/library/asyncio.html">several existing tutorials</a>.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+<span class="n">motion_queue</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
+<span class="n">connect</span> <span class="o">=</span> <span class="n">loop</span><span class="o">.</span><span class="n">create_datagram_endpoint</span><span class="p">(</span>
+  <span class="k">lambda</span><span class="p">:</span> <span class="n">UDPServerProtocol</span><span class="p">(</span><span class="n">motion_queue</span><span class="p">),</span>
+  <span class="n">local_addr</span><span class="o">=</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">port</span><span class="p">))</span>
+<span class="n">server</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">connect</span><span class="p">)</span>
+<span class="c1"># statmodel has been loaded or trained previously</span>
+<span class="n">detector</span> <span class="o">=</span> <span class="n">CatDetector</span><span class="p">(</span><span class="n">statmodel</span><span class="p">)</span> 
+<span class="c1"># This is low-level because the pi runs an older</span>
+<span class="c1"># version of python that does not support</span>
+<span class="c1"># loop.create_task.</span>
+<span class="n">task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">ensure_future</span><span class="p">(</span>
+  <span class="n">motion_worker</span><span class="p">(</span><span class="n">motion_queue</span><span class="p">,</span> <span class="n">detector</span><span class="p">))</span>
+<span class="n">loop</span><span class="o">.</span><span class="n">run_forever</span><span class="p">()</span></code></pre></div>
+
+<p><code>UDPServerProtocol</code> is an implementation of <code>asyncio.DatagramProtocol</code> that just takes
+messages, decodes them and puts them into <code>motion_queue</code>. <code>motion_worker</code> picks
+messages up from the queue and sends them to the cat detector:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">async</span> <span class="k">def</span> <span class="nf">motion_worker</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span> <span class="n">detector</span><span class="p">):</span>
+  <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="n">await</span> <span class="n">queue</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="n">queue</span><span class="o">.</span><span class="n">task_done</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">value</span> <span class="o">=</span> <span class="n">detector</span><span class="o">.</span><span class="n">parse_message</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+      <span class="k">print</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+   <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Failed to parse message {0} because {1}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">ex</span><span class="p">),</span> <span class="n">flush</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span></code></pre></div>
+
+<p>The Cat Detector decides what kind of message this is (file saved, motion detected, maybe something else)
+and processes it. Flushing stdout is useful here as the version
+of Python I run on the pi was swallowing stdout when run in the background.</p>
+
+<p>Initially, I just had this in motion.conf:</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">on_picture_save</span> <span class="s2">&#34;echo &#39;saved </span><span class="si">%f</span><span class="s2">&#39; | nc -u 127.0.0.1 3333&#34;</span>
+<span class="n">on_motion_detected</span> <span class="s2">&#34;echo &#39;motion detected: %D changed pixels </span><span class="si">%i</span><span class="s2"> x %J at %K %L&#39; | nc -u 127.0.0.1 3333&#34;</span></code></pre></div>
+
+<p>This worked fine on my laptop. However, the first time I ran this on the pi, the cat flap daemon
+decided to quit halfway through the night (I don&rsquo;t know why) and when I checked in the morning,
+there were about a hundred processes waiting for a <code>sh</code> or <code>nc</code> command to terminate. I had
+expected <code>nc</code> to just quit if nothing was listening on localhost port 3333, but that is not what
+it does. I could have added <code>-w1</code> to give it a timeout, but I went and wrote a tiny piece of python
+instead; that also gives me the ability to add logging output if I want it.</p>
+
+<p>Now I have the pi running with the cat detector, and I&rsquo;ll look for the next images.</p>
+
+<p>I have also enabled hourly snapshots in motion. I plan to subtract the latest snapshot from images so
+I can get a clearer outline of the moving object. My other attempts at contour detection have not
+been so successful, largely (I suspect) because of shadows and lighting.</p>
+
+    </p>
+  </article>
+  <aside class="sidebar">
+    
+        <div class="container">
+          <div class="row">
+              
+	      <p><b>Previous Post:</b><br />
+                <a href="../../../2020/03/catflap/">Catflap</a>
+	      </p>
+              
+              
+	        <p><b>Next Post:</b><br />
+                <a href="../../../2021/02/mapping-your-cloud-assets-using-googles-apis-in-go/">Mapping your Cloud Assets using Google&rsquo;s APIs in Go</a>
+	        </p>
+              
+          </div>
+        </div>
+    
+    
+    
+  </aside>
+</article>
+<footer class="footer">
+  <div class="container"><div id="nocookies" class="NoCookieFooter">
+<hr />
+This site was built statically using <a href="https://gohugo.io">Hugo</a>
+ and sets no Cookies.
+<p>
+See also: <a href=../../../privacy>Privacy Statement</a>
+</div>
+
+  </div>
+</footer>
+</div>
+    </body>
+</html>

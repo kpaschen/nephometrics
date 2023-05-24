@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Service &#34;SRE&#34; on www.paschen.ch</title>
+    <link>http://www.nephometrics.ch/fr/</link>
+    <description>Recent content in Service &#34;SRE&#34; on www.paschen.ch</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	<atom:link href="http://www.nephometrics.ch/fr/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Comment m&#39;engager</title>
+      <link>http://www.nephometrics.ch/fr/contact/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.nephometrics.ch/fr/contact/</guid>
+      <description>Je vis &amp;agrave; Zurich. J&amp;rsquo;accepte volontiers les travaux &amp;agrave; distance; pour des engagements n&amp;eacute;cessitant travail sur votre site plusieurs fois par semaine, je pr&amp;eacute;f&amp;egrave;re la r&amp;eacute;gion Zurich/Winterthur.</description>
+    </item>
+    
+    <item>
+      <title>Politique de confidentialit&amp;eacute;</title>
+      <link>http://www.nephometrics.ch/fr/privacy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.nephometrics.ch/fr/privacy/</guid>
+      <description>Mon site est g&amp;eacute;n&amp;eacute;r&amp;eacute; statiquement par Hugo et n&amp;rsquo;enregistre pas de cookies. Je n&amp;rsquo;utilise ni de plugins social media ni d&amp;rsquo;avertissements.</description>
+    </item>
+    
+  </channel>
+</rss>

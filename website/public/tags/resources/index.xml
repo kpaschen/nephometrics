@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>resources on www.paschen.ch</title>
+    <link>http://www.nephometrics.ch/tags/resources/</link>
+    <description>Recent content in resources on www.paschen.ch</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 09 May 2023 11:55:04 +0100</lastBuildDate>
+    
+	<atom:link href="http://www.nephometrics.ch/tags/resources/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Running Mattermost in AWS: How much will it cost?</title>
+      <link>http://www.nephometrics.ch/2023/05/running-mattermost-in-aws-how-much-will-it-cost/</link>
+      <pubDate>Tue, 09 May 2023 11:55:04 +0100</pubDate>
+      
+      <guid>http://www.nephometrics.ch/2023/05/running-mattermost-in-aws-how-much-will-it-cost/</guid>
+      <description>This post summarises results of an internship project that Quang Cao completed February 2023.
+Summary Mattermost is a chat service similar to Slack, but it allows customers to self-host their instance.</description>
+    </item>
+    
+  </channel>
+</rss>

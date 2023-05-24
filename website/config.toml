@@ -1,0 +1,82 @@
+baseURL = "http://www.nephometrics.ch/"
+title = "www.paschen.ch"
+theme = "basic-site"
+relativeUrls = true
+pygmentsCodeFences = true
+pygmentsUseClasses = true
+summaryLength = 20
+
+[permalinks]
+  blog = "/:year/:month/:title/"
+
+DefaultContentLanguage = "en"
+[languages]
+  [languages.en]
+    languageName = "EN"
+  [languages.de]
+    languageName = "DE"
+    [[languages.de.menu.main]]
+      url = "/de/"
+      name = "Startseite"
+      weight = 100
+    [[languages.de.menu.main]]
+      name = "Kontakt"
+      url = "/de/contact/" 
+      weight = 200
+    [[languages.de.menu.main]]
+      identifier = "blog"
+      name = "Blog"
+      url = "/blog/" 
+      weight = 110
+    [[languages.de.menu.main]]
+      identifier = "tags"
+      name = "Tags"
+      url = "/tags/"
+      weight = 120
+  [languages.fr]
+    languageName = "FR"
+    [[languages.fr.menu.main]]
+      url = "/fr/"
+      name = "Page d'Accueil"
+      weight = 100
+    [[languages.fr.menu.main]]
+      name = "Contact"
+      url = "/fr/contact/" 
+      weight = 200
+    [[languages.fr.menu.main]]
+      identifier = "blog"
+      name = "Blog"
+      url = "/blog/" 
+      weight = 110
+    [[languages.fr.menu.main]]
+      identifier = "tags"
+      name = "Tags"
+      url = "/tags/"
+      weight = 120
+
+
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 100
+
+  [[menu.main]]
+    identifier = "contact"
+    name = "Contact"
+    url = "/contact/"
+    weight = 200
+
+  [[menu.main]]
+    identifier = "blog"
+    name = "Blog"
+    url = "/blog/"
+    weight = 110
+
+  [[menu.main]]
+    identifier = "tags"
+    name = "Tags"
+    url = "/tags/"
+    weight = 120 
+

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html><head>
+  <title>Music OCR: introducing the idea</title>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width initial-scale=1.0">
+
+ <link rel="stylesheet" href="../../../css/basic.css"/>
+ <link rel="stylesheet" href="../../../css/syntax.css"/>
+  <meta name="google-site-verification" content="yHK1RGH0XqN4iPhXZkdWnaRxqjueVNbqgKQ6jKJ_cc4">
+</head>
+<body>
+	<div class="wrapper"><div class="header">
+<nav class="navbar">
+<ul class="LanguageRow">
+  
+ <li class="LanguageItem">
+	 <a href="http://www.nephometrics.ch/">EN</a>
+    </li>
+  
+ <li class="LanguageItem">
+	 <a href="http://www.nephometrics.ch/fr/">FR</a>
+    </li>
+  
+ <li class="LanguageItem">
+	 <a href="http://www.nephometrics.ch/de/">DE</a>
+    </li>
+  
+</ul>
+</nav>
+<div class="Logobox">
+<div class="Logo">
+	<div class="CompanyName">
+		Nephometrics
+	</div>
+	<div class="CompanyPurpose">
+		Cloud SRE Consulting
+	</div>
+</div>
+</div>
+<nav class="navbar">
+    <ul class="MenuRow">
+      
+      
+        
+          <li class="MenuItem ">
+		  <a href="../../../" title="">Home</a>
+          </li>
+	  
+      
+        
+	    <li class="MenuItem">
+		    <a href="../../../blog/">Blog</a>
+            </li>
+        
+      
+        
+	
+	
+	  
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	 
+         <li class="MenuItem">
+           <div class="dropdown">
+             <button class="dropdown-button">Tags&nbsp;&#9662;</button>
+             <div class="dropdown-content">
+              
+                
+                  <a href="../../../tags/aws/">aws</a>
+                
+              
+                
+                  <a href="../../../tags/billing/">billing</a>
+                
+              
+                
+                  <a href="../../../tags/cloud-billing/">cloud-billing</a>
+                
+              
+                
+                  <a href="../../../tags/cmake/">cmake</a>
+                
+              
+                
+                  <a href="../../../tags/cost/">cost</a>
+                
+              
+                
+                  <a href="../../../tags/dataframe/">dataframe</a>
+                
+              
+                
+                  <a href="../../../tags/dataset/">dataset</a>
+                
+              
+                
+                  <a href="../../../tags/express/">express</a>
+                
+              
+                
+                  <a href="../../../tags/gcloud/">gcloud</a>
+                
+              
+                
+                  <a href="../../../tags/gcloud-api/">gcloud-api</a>
+                
+              
+                
+                  <a href="../../../tags/golang/">golang</a>
+                
+              
+                
+                  <a href="../../../tags/lilypond/">lilypond</a>
+                
+              
+                
+                  <a href="../../../tags/linux/">linux</a>
+                
+              
+                
+                  <a href="../../../tags/magenta/">magenta</a>
+                
+              
+                
+                  <a href="../../../tags/matching-skus-to-resources/">matching-skus-to-resources</a>
+                
+              
+                
+                  <a href="../../../tags/mattermost/">mattermost</a>
+                
+              
+                
+                  <a href="../../../tags/musicocr/">musicocr</a>
+                
+              
+                
+                  <a href="../../../tags/nodejs/">nodejs</a>
+                
+              
+                
+                  <a href="../../../tags/opencv/">opencv</a>
+                
+              
+                
+                  <a href="../../../tags/parquet/">parquet</a>
+                
+              
+                
+                  <a href="../../../tags/rdd/">rdd</a>
+                
+              
+                
+                  <a href="../../../tags/resource-estimation/">resource-estimation</a>
+                
+              
+                
+                  <a href="../../../tags/resources/">resources</a>
+                
+              
+                
+                  <a href="../../../tags/scala/">scala</a>
+                
+              
+                
+                  <a href="../../../tags/sku/">sku</a>
+                
+              
+                
+                  <a href="../../../tags/spark/">spark</a>
+                
+              
+                
+                  <a href="../../../tags/tensorflow/">tensorflow</a>
+                
+              
+                
+                  <a href="../../../tags/tesseract/">tesseract</a>
+                
+              
+                
+                  <a href="../../../tags/unittests/">unittests</a>
+                
+              
+             </div>
+           </div>
+         </li>
+	 
+        
+      
+        
+          <li class="MenuItem ">
+		  <a href="../../../contact/" title="">Contact</a>
+          </li>
+	  
+      
+    </ul>
+</nav>
+</div>
+
+  <article class="content textblock">
+    <h2>Music OCR: introducing the idea</h2>
+
+    
+
+    <p>
+      <a href="http://www.nephometrics.ch/2019/04/music-ocr-introducing-the-idea/">Published April 10, 2019</a>
+    </p>
+    <p>
+      <p>Sometimes I write my own music. I play the piano (badly), and I&rsquo;ll
+never be a great composer, but I find it interesting to play around
+with melody and chords.</p>
+
+<p>I write notes by hand on paper, and whenever I feel like I&rsquo;ve got
+something together, I typeset it using <a href="http://www.lilypond.org/">lilypond</a>.
+That&rsquo;s a markup format / programming environment for typesetting musical
+scores, similar in spirit to <a href="https://www.latex-project.org/">LaTeX</a>
+(though LaTeX actually has its own music support via MusicTeX).</p>
+
+<p>My process is clearly a little laborious. Lilypond is pretty cool in terms
+of the quality of typesetting as well as flexibility and programmability, but
+it is very much not a wysiwyg environment. I believe people who are more
+seriously into writing scores use software like
+ <a href="https://www.sibelius.com/">Sibelius</a>.</p>
+
+<p>Anyhow, I rather like developing music with pencil and paper. And wouldn&rsquo;t it
+be cool if I could take a picture of my handwritten notes on my phone and
+have a computer read them and generate a typeset file (and even a midi file)
+for me? So I set to work on that.</p>
+
+<p>I know there are other people working on this. For example, there&rsquo;s a data set
+of handwritten music symbols called <a href="https://grfia.dlsi.ua.es/homus/">HOMUS</a>
+and other related work. It&rsquo;s obviously not a huge research topic, but work
+has been done in this space. However, I&rsquo;m not trying to compete with university
+researchers; I just want to write some code, learn a few things, see how far I
+get.</p>
+
+<p>For illustration, here&rsquo;s a picture of some handwritten notes, taken with my phone:</p>
+
+<p><img src="../../../images/sample-raw-notes.png" alt="Handwriting sample" /></p>
+
+<p>And here is the same composition typeset with Lilypond (this was done manually,
+hence the differences in spelling, articulation, etc).</p>
+
+<p><img src="../../../images/sample-set-notes.png" alt="Typeset sample" /></p>
+
+<p>The title is from an <a href="https://www.youtube.com/watch?v=j9oG_IG62_c">experimental short film</a> by Maya Deren which (from what I can tell) seems to be a popular
+composition assignment.</p>
+
+<p>I do have a background in programming, but I&rsquo;m really not a computer vision
+expert, nor do I know much about writing software for mobile phones. For a first
+stab, I just took a look at <a href="https://opencv.org/">OpenCV</a> and decided I&rsquo;d try
+to run it on my phone. OpenCV has Android support via JNI. So
+I went ahead and installed Android Studio with OpenCV and got to work. This was fun
+and I had some encouraging early results, but it also drew pretty heavily on the
+battery. So much so that my battery became convex (you do not want your battery
+to become convex) and I had to replace it. Luckily, this was an older phone,
+the battery was easy to replace, and I decided to call this a learning experience.</p>
+
+<p>The nice thing about running the entire system on the phone is that it could
+work offline. You wouldn&rsquo;t need an internet connection, and you could keep all
+your data on your phone. However, you&rsquo;re
+unlikely to be stuck somewhere with only your phone,
+some awesome sheet music, and an urgent desire to typeset said sheet music, but
+absolutely no internet access. Thus it seems like I could run
+the core processing server-side. This means I have to run a server somewhere,
+but that&rsquo;s actually something I know how to do (as opposed to image recognition,
+mobile software, or indeed composing).</p>
+
+<p>Now the phone app will be just a thin client. It takes the picture and uploads
+it to a server. The server processes the image and writes a lilypond file.
+The server then calls lilypond to generate both pdf and midi output files.
+This can be done by having the server execute a shell command, possibly via
+an API provider deployed separately (that seems to be what <a href="https://github.com/GGracieux/lilypond-api">this code</a> does); or I suppose I could look at the
+Lilypond source code to see how hard it would be to interact with it
+via library calls. At that point, I&rsquo;d have to
+think about licensing implications because Lilypond is GNU, but
+I don&rsquo;t mind putting my own code under a GNU license.</p>
+
+<p>I want the server to provide a notification back to the client when the
+file is ready to view and play. I might be able to do this near-interactively,
+but (especially if I call lilypond via a shell command, and taking into account
+the network delay for transmitting the image to the server and sending the
+ pdf and midi files back), latency could be on the order of seconds.</p>
+
+<p>I&rsquo;ll set the server up so it does not store the images after processing. This is
+both because storage is expensive and because I don&rsquo;t want to hang on to
+my customers&rsquo; data. Since I don&rsquo;t require login credentials or payment details,
+ the security risks seem manageable.</p>
+
+<p>Running the core processing server-side has several advantages: most updates
+will affect only the server code (much easier than updating a bunch of mobile
+clients), and I can take advantage of machine-learning models that would be
+too large to fit onto a phone. Plus I get to use OpenCV in C++ rather than
+via JNI on Android; C++ is certainly not my most productive language, but it is
+where you find the best documentation and examples for OpenCV.</p>
+
+<p>As far as overall architecture goes, this should be it. I don&rsquo;t expect the app
+to become so popular that I&rsquo;d have to worry about the max number of concurrent
+requests I can handle; if that ever does happen, first I&rsquo;ll celebrate my
+success, and then I&rsquo;ll deal with the problem (but I doubt it will happen).</p>
+
+<p>The sample photo I included above demonstrates a lot of what makes this problem
+hard: the picture is unevenly lit, skewed and warped, it has poor contrast and
+it has extraneous items (e.g. the punch holes on the left side). The handwriting is
+poorly formed, the bar lines are not straight, note heads and necks don&rsquo;t always
+connect, there&rsquo;s crossed-out notes, and there&rsquo;s handwritten words between the
+lines. In the following posts, I&rsquo;ll write about the options I&rsquo;ve found for dealing
+with these issues; I don&rsquo;t think I can solve all of them perfectly though, so
+some of the upcoming decisions are about the user experience when the system
+cannot quite decide how to interpret your handwriting.</p>
+
+    </p>
+  </article>
+  <aside class="sidebar">
+    
+        <div class="container">
+          <div class="row">
+              
+	      <p><b>Previous Post:</b><br />
+                <a href="../../../2019/03/opensuse-update-to-leap/">OpenSuSE update to Leap</a>
+	      </p>
+              
+              
+	        <p><b>Next Post:</b><br />
+                <a href="../../../2019/05/cmake-opencv-and-unit-tests/">CMake, OpenCV, and Unit tests</a>
+	        </p>
+              
+          </div>
+        </div>
+    
+    
+    
+  </aside>
+</article>
+<footer class="footer">
+  <div class="container"><div id="nocookies" class="NoCookieFooter">
+<hr />
+This site was built statically using <a href="https://gohugo.io">Hugo</a>
+ and sets no Cookies.
+<p>
+See also: <a href=../../../privacy>Privacy Statement</a>
+</div>
+
+  </div>
+</footer>
+</div>
+    </body>
+</html>

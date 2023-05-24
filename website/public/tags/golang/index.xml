@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>golang on www.paschen.ch</title>
+    <link>http://www.nephometrics.ch/tags/golang/</link>
+    <description>Recent content in golang on www.paschen.ch</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 11 Feb 2021 16:35:53 +0100</lastBuildDate>
+    
+	<atom:link href="http://www.nephometrics.ch/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mapping your Cloud Assets using Google&#39;s APIs in Go</title>
+      <link>http://www.nephometrics.ch/2021/02/mapping-your-cloud-assets-using-googles-apis-in-go/</link>
+      <pubDate>Thu, 11 Feb 2021 16:35:53 +0100</pubDate>
+      
+      <guid>http://www.nephometrics.ch/2021/02/mapping-your-cloud-assets-using-googles-apis-in-go/</guid>
+      <description>If you&amp;rsquo;ve used Google&amp;rsquo;s Cloud, you&amp;rsquo;ve probably encountered their commandline tool. While you can achieve many things using just the web cloud console, the gcloud command line tool is flexible, scriptable, and (once you know how to use it), quicker than the console.</description>
+    </item>
+    
+  </channel>
+</rss>

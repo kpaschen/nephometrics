@@ -1,0 +1,14 @@
+name = "Basic Site"
+license = "MIT"
+licenselink = "https://github.com/yourname/yourtheme/blob/master/LICENSE"
+description = ""
+homepage = "http://www.nephometrics.ch/"
+tags = ["tags"]
+features = []
+min_version = "0.41"
+summaryLength = 20
+
+[author]
+  name = ""
+  homepage = "http://www.nephometrics.ch/"
+

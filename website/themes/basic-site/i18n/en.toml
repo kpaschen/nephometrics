@@ -1,0 +1,11 @@
+[this-site-built]
+  other = "This site was built statically using "
+
+[and-sets-no-cookies]
+  other = " and sets no Cookies"
+
+[see-also]
+  other = "See also: "
+
+[privacy-statement]
+  other = "Privacy Statement"
