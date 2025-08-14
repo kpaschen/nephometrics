@@ -104,7 +104,8 @@ body {
 .MenuRow {
   list-style: none;
   display: flex;
-  justify-content: space-between;
+  # justify-content: space-between;
+  justify-content: flex-begin;
   margin: 0;
   padding: 0;
 

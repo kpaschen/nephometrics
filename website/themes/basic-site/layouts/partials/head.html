@@ -7,7 +7,7 @@
  <link rel="stylesheet" href="/css/basic.css"/>
  <link rel="stylesheet" href="/css/syntax.css"/>
   {{ range .AlternativeOutputFormats -}}
-    {{ printf `<link rel="%s" type="%s+%s" href="%s" title="%s" />` .Rel .MediaType.Type .MediaType.Suffix .Permalink $.Site.Title | safeHTML }}
+    {{ printf `<link rel="%s" type="%s+%s" href="%s" title="%s" />` .Rel .MediaType.Type .MediaType.FirstSuffix.Suffix .Permalink $.Site.Title | safeHTML }}
   {{ end -}}
 
  <meta name="google-site-verification" content="yHK1RGH0XqN4iPhXZkdWnaRxqjueVNbqgKQ6jKJ_cc4">

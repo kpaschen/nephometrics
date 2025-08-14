@@ -2,8 +2,7 @@
 title: Contact
 ---
 
-I am based in Zurich, Switzerland. I'm open to remote work or to working on-site within the Zurich and Winterthur
-areas.
+I am based in Zurich, Switzerland. I'm open to remote work anywhere; if I need to be onsite regularly, I prefer to be within an hours' train journey of Zurich or Winterthur.
 
 If you'd like to hire me, we can negotiate an hourly or daily rate, or a fixed-price contract.
 
@@ -16,34 +15,31 @@ e-mail: [contact@paschen.ch](mailto:contact@paschen.ch)
 I am a software engineer with significant SRE/DevOps experience. I like to help
 people create maintainable, resilient, scalable systems.
 
-My SRE experience comes from many years at Google and some more recent client projects;
-confidentiality prevents me from publishing work many samples. However, if you browse
-[my github repositories](https://github.com/kpaschen) or [my blog](blog), you can see some
-code samples.
+My SRE experience comes from many years at Google and steady stream of client projects since 2019.
+Confidentiality usually prevents me from publishing work samples. However, if you browse
+[my github repositories](https://github.com/kpaschen) and [my codeberg repository](https://codeberg.org/kpaschen) or [my blog](blog), you can see some work I have done by myself.
 
 
-<h3>Skills</h3>
-<h4>Programming Languages</h4>
+### Skills
+#### Programming Languages
 
-<ol>
-<li>Python: over 10 years of experience
-<li>C++: over 10 years of experience
-<li>Other languages as needed: have used Java, JavaScript, Scala, Go among others.
-</ol>
+* Python: over 10 years of experience
+* Golang: regularly used since 2018
+* C++: over 10 years of experience
+* Other languages as needed: have used Java, JavaScript, Scala, among others
+* I can (and occasionally do) program in Bash, though I prefer to use it for small tasks
 
-<h4>Technologies</h4>
+#### Technologies
 
-<ol>
-<li> Data stores: SQL (MySQL, a bit of Oracle, Sybase) and NoSQL (Spanner, BigTable, MongoDB). Including schema design, performance troubleshooting/tuning.
-<li> Large-scale processing: MapReduce, Spark. Implementation, troubleshooting, performance tuning.
-<li> CI/CD: Jenkins, several homegrown systems
-<li> Production automation: Kubernetes, Terraform
-<li> Tools: Git, Docker, Bazel
-<li> Cloud environments: mainly GCP and AWS
-</ol>
+* Kubernetes: used regularly since 2019; have brought up clusters in a variety of contexts from managed to baremetal. I have also written controllers and a scheduler plugin.
+* Monitoring: I have set up, configued, and troubleshot Prometheus for several clients, including writing and debugging PromQL.
+* CI/CD: Gitlab runners, Jenkins, and various homegrown systems
+* Automation tools: Mainly Ansible and Terraform
+* Other tools: Docker, Bazel, Git
 
 <hr />
-<h3>Impressum</h3>
+
+### Impressum
 
 Company name: Nephometrics GmbH <br />
 Address: c/o ImpactHub Z&uuml;rich, Sihlquai 131, 8005 Z&uuml;rich <br />

@@ -14,33 +14,29 @@ e-mail &agrave; [contact@paschen.ch](mailto:contact@paschen.ch).
 
 <hr />
 
-Je suis d&eacute;veloppeur de software avec plusieurs ann&eacute;es d'exp&eacute;rience SRE. J'aime assister des gens en d&eacute;eveloppant des syst&egrave;mes faciles &agrave;
+Je suis d&eacute;veloppeur de software avec plusieurs ann&eacute;es d'exp&eacute;rience SRE. J'aime assister des gens en d&eacute;veloppant des syst&egrave;mes faciles &agrave;
 g&eacute;rer, resilients et &eacute;volutives.
 
-<h3> Comp&eacute;tences </h3>
+### Comp&eacute;tences
+#### Langages de programmation
 
-<h4> Langages de programmation </h4>
+* Python: plus de 10 ans d'exp&eacute;rience
+* Golang: utilis&eacute; r&eacute;guli&egrave;rement depuis 2018
+* C++: plus de 10 ans d'exp&eacute;rience
+* autres langues selon besoin: je me suis servie de Java, JavaScript et Spark, par exemple.
+* je sais programmer en bash, mais je pr&eacute;f&egrave;re le r&eacute;server aux travaux plut&ocirc;t petits
 
-<ol>
-<li> Python: plus de 10 ans d'exp&eacute;rience
-<li> C++: plus de 10 ans d'exp&eacute;rience
-<li> autres langues selon besoin: je me suis servie de Java, JavaScript, Spark et Go, par exemple.
-</ol>
+### Technologies
 
-<h4> Technologies </h4>
-
-<ol>
-<li> Bases de donn&eacute;es: SQL (MySQL, quelquefois Oracle ou Sybase), NoSQL (Spanner, BigTable, MongoDB). Dessein de
-sch&eacute;mas, optimisation.
-<li> Pipelines de donn&eacute;es (MapReduce, Spark): implementation, maintenance, optimisation.
-<li> CI/CD: Jenkins, plusieurs syst&egrave;mes idiosyncratiques
-<li> Automation/orchestration: Kubernetes, Terraform
-<li> Outils: Git, Docker, Bazel
-<li> Environnements nuage: principalement GCP (GKE), un peu de AWS.
-</ol>
+* Kubernetes: utilis&eacute; r&eacute;guli&egrave;rement depuis 2019 en plusieurs contextes. J'ai aussi d&eacute;velopp&eacute; des controllers ainsi qu'un scheduler plugin.
+* Observabilit&eacute;: j'ai configur&eacute;, g&eacute;r&eacute; et d&eacute;pann&eacute; Prometheus pour plusieurs clients, y inclu le d&eacute;veloppement et la d&eacute;pannage d'expressions PromQL.
+* CI/CD: Gitlab, Jenkins, plusieurs syst&egrave;mes idiosyncratiques
+* Automation: Ansible, Terrform
+* Autres outils: Docker, Bazel, Git
 
 <hr />
-<h3>Impressum</h3>
+
+### Impressum
 
 Entreprise: Nephometrics GmbH <br />
 Adresse: c/o ImpactHub Z&uuml;rich, Sihlquai 131, 8005 Z&uuml;rich <br />
