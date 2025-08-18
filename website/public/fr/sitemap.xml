@@ -2,106 +2,106 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/fr/categories/</loc>
+    <loc>http://www.nephometrics.ch/fr/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/categories/"
+                href="http://www.nephometrics.ch/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="de"
-                href="http://localhost:1313/de/categories/"
+                href="http://www.nephometrics.ch/de/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="http://localhost:1313/fr/categories/"
+                href="http://www.nephometrics.ch/fr/categories/"
                 />
   </url><url>
-    <loc>http://localhost:1313/fr/contact/</loc>
+    <loc>http://www.nephometrics.ch/fr/contact/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="de"
-                href="http://localhost:1313/de/contact/"
+                href="http://www.nephometrics.ch/de/contact/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/contact/"
+                href="http://www.nephometrics.ch/contact/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="http://localhost:1313/fr/contact/"
+                href="http://www.nephometrics.ch/fr/contact/"
                 />
   </url><url>
-    <loc>http://localhost:1313/fr/skills/</loc>
+    <loc>http://www.nephometrics.ch/fr/skills/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="de"
-                href="http://localhost:1313/de/skills/"
+                href="http://www.nephometrics.ch/de/skills/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/skills/"
+                href="http://www.nephometrics.ch/skills/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="http://localhost:1313/fr/skills/"
+                href="http://www.nephometrics.ch/fr/skills/"
                 />
   </url><url>
-    <loc>http://localhost:1313/fr/privacy/</loc>
+    <loc>http://www.nephometrics.ch/fr/privacy/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="de"
-                href="http://localhost:1313/de/privacy/"
+                href="http://www.nephometrics.ch/de/privacy/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/privacy/"
+                href="http://www.nephometrics.ch/privacy/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="http://localhost:1313/fr/privacy/"
+                href="http://www.nephometrics.ch/fr/privacy/"
                 />
   </url><url>
-    <loc>http://localhost:1313/fr/</loc>
+    <loc>http://www.nephometrics.ch/fr/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/"
+                href="http://www.nephometrics.ch/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="de"
-                href="http://localhost:1313/de/"
+                href="http://www.nephometrics.ch/de/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="http://localhost:1313/fr/"
+                href="http://www.nephometrics.ch/fr/"
                 />
   </url><url>
-    <loc>http://localhost:1313/fr/tags/</loc>
+    <loc>http://www.nephometrics.ch/fr/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/tags/"
+                href="http://www.nephometrics.ch/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="de"
-                href="http://localhost:1313/de/tags/"
+                href="http://www.nephometrics.ch/de/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="http://localhost:1313/fr/tags/"
+                href="http://www.nephometrics.ch/fr/tags/"
                 />
   </url>
 </urlset>

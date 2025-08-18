@@ -2,108 +2,108 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Software and Opinions on www.paschen.ch</title>
-    <link>http://localhost:1313/blog/</link>
+    <link>http://www.nephometrics.ch/blog/</link>
     <description>Recent content in Software and Opinions on www.paschen.ch</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Tue, 09 May 2023 11:55:04 +0100</lastBuildDate>
-    <atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://www.nephometrics.ch/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Running Mattermost in AWS: How much will it cost?</title>
-      <link>http://localhost:1313/2023/05/running-mattermost-in-aws-how-much-will-it-cost/</link>
+      <link>http://www.nephometrics.ch/2023/05/running-mattermost-in-aws-how-much-will-it-cost/</link>
       <pubDate>Tue, 09 May 2023 11:55:04 +0100</pubDate>
-      <guid>http://localhost:1313/2023/05/running-mattermost-in-aws-how-much-will-it-cost/</guid>
+      <guid>http://www.nephometrics.ch/2023/05/running-mattermost-in-aws-how-much-will-it-cost/</guid>
       <description>&lt;p&gt;This post summarises results of an internship project that &lt;a href=&#34;https://github.com/Quangcaow&#34;&gt;Quang Cao&lt;/a&gt; completed February 2023.&lt;/p&gt;&#xA;&lt;h3 id=&#34;summary&#34;&gt;Summary&lt;/h3&gt;&#xA;&lt;p&gt;Mattermost is a chat service similar to Slack, but it allows customers to self-host their instance. This is nice if you have, e.g. data residency concerns; moreover, the basic version is &lt;a href=&#34;https://mattermost.com/pricing/&#34;&gt;free&lt;/a&gt;. To be clear, &lt;em&gt;free&lt;/em&gt; refers to the licensing costs, not the hosting.&lt;/p&gt;</description>
     </item>
     <item>
       <title>San Junipero is a Dystopia</title>
-      <link>http://localhost:1313/2021/10/san-junipero-is-a-dystopia/</link>
+      <link>http://www.nephometrics.ch/2021/10/san-junipero-is-a-dystopia/</link>
       <pubDate>Wed, 27 Oct 2021 13:47:01 +0200</pubDate>
-      <guid>http://localhost:1313/2021/10/san-junipero-is-a-dystopia/</guid>
+      <guid>http://www.nephometrics.ch/2021/10/san-junipero-is-a-dystopia/</guid>
       <description>&lt;p&gt;Warning: contains minor spoilers for &amp;ldquo;San Junipero&amp;rdquo; and other &lt;a href=&#34;https://en.wikipedia.org/wiki/Black_Mirror&#34;&gt;Black Mirror&lt;/a&gt; episodes.&lt;/p&gt;&#xA;&lt;p&gt;I often hear people say that &amp;ldquo;San Junipero&amp;rdquo; is unique among Black Mirror episodes for not&#xA;being dystopian. I disagree.&lt;/p&gt;</description>
     </item>
     <item>
       <title>SKUs and Resources</title>
-      <link>http://localhost:1313/2021/03/skus-and-resources/</link>
+      <link>http://www.nephometrics.ch/2021/03/skus-and-resources/</link>
       <pubDate>Thu, 18 Mar 2021 13:46:20 +0100</pubDate>
-      <guid>http://localhost:1313/2021/03/skus-and-resources/</guid>
+      <guid>http://www.nephometrics.ch/2021/03/skus-and-resources/</guid>
       <description>&lt;p&gt;Reading cloud bills is hard.&#xA;For illustration, below are a few lines from the bill for a small toy project of mine on GCloud. I don&amp;rsquo;t want to&#xA;single Google out here&amp;mdash;AWS and Azure bills are also difficult to read. In the following, all details are taken from&#xA;Google Cloud, but I point to related AWS or Azure features when I think it&amp;rsquo;s useful.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Mapping your Cloud Assets using Google&#39;s APIs in Go</title>
-      <link>http://localhost:1313/2021/02/mapping-your-cloud-assets-using-googles-apis-in-go/</link>
+      <link>http://www.nephometrics.ch/2021/02/mapping-your-cloud-assets-using-googles-apis-in-go/</link>
       <pubDate>Thu, 11 Feb 2021 16:35:53 +0100</pubDate>
-      <guid>http://localhost:1313/2021/02/mapping-your-cloud-assets-using-googles-apis-in-go/</guid>
+      <guid>http://www.nephometrics.ch/2021/02/mapping-your-cloud-assets-using-googles-apis-in-go/</guid>
       <description>&lt;p&gt;If you&amp;rsquo;ve used Google&amp;rsquo;s Cloud, you&amp;rsquo;ve probably encountered their commandline tool. While you can achieve many things using just the&#xA;&lt;a href=&#34;https://console.cloud.google.com/&#34;&gt;web cloud console&lt;/a&gt;, the &lt;code&gt;gcloud&lt;/code&gt; command line&#xA;tool is flexible, scriptable, and (once you know how to use it), quicker&#xA;than the console.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Catflap, continued</title>
-      <link>http://localhost:1313/2020/04/catflap-continued/</link>
+      <link>http://www.nephometrics.ch/2020/04/catflap-continued/</link>
       <pubDate>Wed, 15 Apr 2020 13:12:45 +0100</pubDate>
-      <guid>http://localhost:1313/2020/04/catflap-continued/</guid>
+      <guid>http://www.nephometrics.ch/2020/04/catflap-continued/</guid>
       <description>&lt;p&gt;New developments in cat flap automation &amp;ndash; continuing on from &lt;a href=&#34;../2020/03/catflap/&#34;&gt;my first cat flap-related post&lt;/a&gt;.&#xA;In the last post, I described how I installed the Raspberry Pi and camera, and installed&#xA;&lt;a href=&#34;https://github.com/Motion-Project/motion&#34;&gt;motion&lt;/a&gt; on it to capture images when motion is detected.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Catflap</title>
-      <link>http://localhost:1313/2020/03/catflap/</link>
+      <link>http://www.nephometrics.ch/2020/03/catflap/</link>
       <pubDate>Mon, 16 Mar 2020 16:12:45 +0100</pubDate>
-      <guid>http://localhost:1313/2020/03/catflap/</guid>
+      <guid>http://www.nephometrics.ch/2020/03/catflap/</guid>
       <description>&lt;p&gt;I have two cats, and I live in an area that has lots of mice. One of my cats likes to bring live mice inside&#xA;and then she hunts them indoors. Sometimes she loses interest in a mouse, or the mouse manages to hide behind&#xA;the kitchen cupboards, and then I get to catch the mouse. That is not the kind of excitement I want in my life.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Magenta App</title>
-      <link>http://localhost:1313/2019/07/magenta-app/</link>
+      <link>http://www.nephometrics.ch/2019/07/magenta-app/</link>
       <pubDate>Tue, 23 Jul 2019 12:10:58 +0200</pubDate>
-      <guid>http://localhost:1313/2019/07/magenta-app/</guid>
+      <guid>http://www.nephometrics.ch/2019/07/magenta-app/</guid>
       <description>&lt;p&gt;Continuing on from &lt;a href=&#34;../2019/06/serving-magenta/&#34;&gt;Serving Magenta&lt;/a&gt;, I wanted&#xA;to put a little web application together.&lt;/p&gt;&#xA;&lt;p&gt;What I really want is to make my phone play music by whistling into it.&#xA;Basically, I whistle, the phone tries to match the melody against my music&#xA;collection and plays whatever is the closest match. This might be a little&#xA;silly, and I don&amp;rsquo;t know that it&amp;rsquo;ll have mass appeal (I&amp;rsquo;m probably in a minority&#xA;in that I still have most of my music collection in files on my computer),&#xA;but I&amp;rsquo;m not looking to make money from this.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Serving Magenta</title>
-      <link>http://localhost:1313/2019/06/serving-magenta/</link>
+      <link>http://www.nephometrics.ch/2019/06/serving-magenta/</link>
       <pubDate>Wed, 26 Jun 2019 13:43:06 +0200</pubDate>
-      <guid>http://localhost:1313/2019/06/serving-magenta/</guid>
+      <guid>http://www.nephometrics.ch/2019/06/serving-magenta/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://magenta.tensorflow.org/&#34;&gt;Magenta&lt;/a&gt; is an amazing collection of ml&#xA;models, libraries and demos. I&amp;rsquo;m&amp;rsquo; not a machine learning expert, but these&#xA;things are fun to play with.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Spark: many ways to do the same thing</title>
-      <link>http://localhost:1313/2019/06/spark-many-ways-to-do-the-same-thing/</link>
+      <link>http://www.nephometrics.ch/2019/06/spark-many-ways-to-do-the-same-thing/</link>
       <pubDate>Mon, 17 Jun 2019 16:54:41 +0200</pubDate>
-      <guid>http://localhost:1313/2019/06/spark-many-ways-to-do-the-same-thing/</guid>
+      <guid>http://www.nephometrics.ch/2019/06/spark-many-ways-to-do-the-same-thing/</guid>
       <description>&lt;p&gt;Spark lets you do things in many different ways &amp;ndash; Scala, Python, or Java;&#xA;RDDs, Dataframes, Datasets, SparkSQL each have their own APIs and idioms;&#xA;you can fiddle with a bunch of parameters, and of course you can decide to&#xA;pre-process your data. And that&amp;rsquo;s not a full list.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Unit testing Spark Scala code</title>
-      <link>http://localhost:1313/2019/05/unit-testing-spark-scala-code/</link>
+      <link>http://www.nephometrics.ch/2019/05/unit-testing-spark-scala-code/</link>
       <pubDate>Thu, 16 May 2019 12:23:24 +0200</pubDate>
-      <guid>http://localhost:1313/2019/05/unit-testing-spark-scala-code/</guid>
+      <guid>http://www.nephometrics.ch/2019/05/unit-testing-spark-scala-code/</guid>
       <description>&lt;p&gt;Unit tests. They&amp;rsquo;re a good thing. I use them even in single-person projects,&#xA;because I like being able to double-check my own logic, and because&#xA;it&amp;rsquo;s less effort to run a couple tests than to remember the way my code&#xA;interacts with my other code every time I make a change.&lt;/p&gt;</description>
     </item>
     <item>
       <title>CMake, OpenCV, and Unit tests</title>
-      <link>http://localhost:1313/2019/05/cmake-opencv-and-unit-tests/</link>
+      <link>http://www.nephometrics.ch/2019/05/cmake-opencv-and-unit-tests/</link>
       <pubDate>Tue, 07 May 2019 10:41:44 +0200</pubDate>
-      <guid>http://localhost:1313/2019/05/cmake-opencv-and-unit-tests/</guid>
+      <guid>http://www.nephometrics.ch/2019/05/cmake-opencv-and-unit-tests/</guid>
       <description>&lt;p&gt;For my ongoing &lt;a href=&#34;./music-ocr-introducing-the-idea/&#34;&gt;Music OCR hobby project&lt;/a&gt;,&#xA;I use &lt;a href=&#34;https://opencv.org&#34;&gt;OpenCV&lt;/a&gt; and&#xA;C++. For inline text, I&amp;rsquo;ve been experimenting with OpenCV&amp;rsquo;s Tesseract support,&#xA;which relies on the&#xA;&lt;a href=&#34;https://docs.opencv.org/3.4/d7/ddc/classcv_1_1text_1_1OCRTesseract.html&#34;&gt;OCRTesseract class&lt;/a&gt;&#xA;from OpenCV&amp;rsquo;s cv::text package. And of course I want to use unit tests; I chose&#xA;&lt;a href=&#34;https://github.com/google/googletest/blob/master/googletest/docs/primer.md&#34;&gt;Googletest&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Music OCR: introducing the idea</title>
-      <link>http://localhost:1313/2019/04/music-ocr-introducing-the-idea/</link>
+      <link>http://www.nephometrics.ch/2019/04/music-ocr-introducing-the-idea/</link>
       <pubDate>Wed, 10 Apr 2019 09:47:22 +0200</pubDate>
-      <guid>http://localhost:1313/2019/04/music-ocr-introducing-the-idea/</guid>
+      <guid>http://www.nephometrics.ch/2019/04/music-ocr-introducing-the-idea/</guid>
       <description>&lt;p&gt;Sometimes I write my own music. I play the piano (badly), and I&amp;rsquo;ll&#xA;never be a great composer, but I find it interesting to play around&#xA;with melody and chords.&lt;/p&gt;</description>
     </item>
     <item>
       <title>OpenSuSE update to Leap</title>
-      <link>http://localhost:1313/2019/03/opensuse-update-to-leap/</link>
+      <link>http://www.nephometrics.ch/2019/03/opensuse-update-to-leap/</link>
       <pubDate>Fri, 22 Mar 2019 09:10:36 +0100</pubDate>
-      <guid>http://localhost:1313/2019/03/opensuse-update-to-leap/</guid>
+      <guid>http://www.nephometrics.ch/2019/03/opensuse-update-to-leap/</guid>
       <description>&lt;p&gt;My home computer runs OpenSuSE. Recently, it needed an upgrade that turned&#xA;into a new installation. Oh well, but at least now I&amp;rsquo;m running OpenSuSE Leap.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Intro blog post</title>
-      <link>http://localhost:1313/2019/03/intro-blog-post/</link>
+      <link>http://www.nephometrics.ch/2019/03/intro-blog-post/</link>
       <pubDate>Thu, 14 Mar 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/2019/03/intro-blog-post/</guid>
+      <guid>http://www.nephometrics.ch/2019/03/intro-blog-post/</guid>
       <description>&lt;p&gt;I&amp;rsquo;m going to write a little about my experiences developing software.&lt;/p&gt;&#xA;&lt;p&gt;I&amp;rsquo;ve been keeping an informal &amp;lsquo;scrap book&amp;rsquo; for a long time, where I record&#xA;commandlines I&amp;rsquo;ve tried, paste links to interesting things I&amp;rsquo;ve found,&#xA;summarise what I&amp;rsquo;ve learned. This comes in handy occasionally when I need to&#xA;reconstruct what exactly I did to make something work or why I decided to write&#xA;my code in a particular way.&lt;/p&gt;</description>
     </item>
   </channel>
