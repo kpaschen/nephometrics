@@ -4,7 +4,7 @@
     <title>Linux on www.paschen.ch</title>
     <link>http://localhost:1313/tags/linux/</link>
     <description>Recent content in Linux on www.paschen.ch</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Fri, 22 Mar 2019 09:10:36 +0100</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/linux/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,7 @@
       <link>http://localhost:1313/2019/03/opensuse-update-to-leap/</link>
       <pubDate>Fri, 22 Mar 2019 09:10:36 +0100</pubDate>
       <guid>http://localhost:1313/2019/03/opensuse-update-to-leap/</guid>
-      <description>My home computer runs OpenSuSE. Recently, it needed an upgrade that turned into a new installation. Oh well, but at least now I&amp;rsquo;m running OpenSuSE Leap.</description>
+      <description>&lt;p&gt;My home computer runs OpenSuSE. Recently, it needed an upgrade that turned&#xA;into a new installation. Oh well, but at least now I&amp;rsquo;m running OpenSuSE Leap.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

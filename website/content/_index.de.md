@@ -3,8 +3,7 @@ title: SRE als Service
 keywords: DevOps, Cloud, Software, Kubernetes, Automatisierung, Observability
 ---
 
-Meine Firma bietet Unterst&uuml;tzung bei der Planung, Umsetzung und Wartung von
-Cloud-Umgebungen an.
+Nephometrics bietet Unterst&uuml;tzung bei der Planung, Umsetzung und Wartung von Cloud-Umgebungen.
 
 Auf dieser Seite finden Sie eine (nicht abschliessende) Liste von Dingen, die ich
 f&uuml;r Sie tun kann. Bitte [kontaktieren Sie mich](contact), falls Sie mehr
@@ -21,5 +20,5 @@ wissen m&ouml;chten.
 * Performance verbessern
 * Stabiliti&auml;tspr&uuml;fung: kann Ihr System ausfallsicherer sein? K&ouml;nnen wir die Wartung so gestalten, dass sie Ihre Angestellten weniger belastet?
 
-Ich habe Erfahrung mit Google Cloud und AWS; die meisten meiner Kunden bisher haben allerdings kleinere Cloud-Provider oder on-premise-Umgebungen gehabt. Baremetal und airgapped Kubernetes Cluster habe ich ebenfalls schon aufgesetzt.
+Meine langj&auml;hrige Erfahrung mit dem Design, der Entwicklung und dem Betrieb von Cloud-Anwendungen hilft mir dabei, f&uuml;r meine Kunden stabile und produktive Umgebungen zu erstellen.
 

@@ -49,13 +49,19 @@
       
         
 	        <li class="MenuItem">
-		        <a href="http://localhost:1313/blog">Blog</a>
+		        <a href="http://localhost:1313/blog/">Blog</a>
            </li>
         
       
         
 	        <li class="MenuItem">
-		        <a href="http://localhost:1313/contact">Contact</a>
+		        <a href="http://localhost:1313/skills/">Skills</a>
+           </li>
+        
+      
+        
+	        <li class="MenuItem">
+		        <a href="http://localhost:1313/contact/">Contact</a>
            </li>
         
       
@@ -63,7 +69,7 @@
 </nav>
 </div>
 
-  <article class="content textblock">
+  <article class="content textblock-narrow">
     <h2>Spark: many ways to do the same thing</h2>
 
     
@@ -86,7 +92,7 @@ evaluation (and because frankly, the posting is already way too long).</p>
 <a href="https://github.com/kpaschen/spark/tree/master/dblp">my github</a>.</p>
 <h3 id="background-for-the-code">Background for the code</h3>
 <p>As before, I use a data dump obtained from
-<a href="http://dblp.uni-trier.de\"">dblp</a>. <a href="https://dblp.uni-trier.de/faq/1474677.html">DBLP make their data available</a> under an Open Data Commons ODC-By 1.0 License.</p>
+<a href="http://dblp.uni-trier.de%22">dblp</a>. <a href="https://dblp.uni-trier.de/faq/1474677.html">DBLP make their data available</a> under an Open Data Commons ODC-By 1.0 License.</p>
 <p>I got the data in json format. There&rsquo;s about 4.1 GB of it, split into four files.
 The fields I use are:</p>
 <ul>
@@ -175,28 +181,28 @@ afraid I have become used to that.</p>
 <h4 id="performance">Performance</h4>
 <p>Here is a table with the running times I measured (in minutes):</p>
 <table>
-<thead>
-<tr>
-<th></th>
-<th>Scala</th>
-<th>Python RDD</th>
-<th>Python DF</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>json</td>
-<td>4.4</td>
-<td>8.4</td>
-<td>5.4</td>
-</tr>
-<tr>
-<td>parquet</td>
-<td>3.9</td>
-<td>7.2</td>
-<td>4.2</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th></th>
+          <th>Scala</th>
+          <th>Python RDD</th>
+          <th>Python DF</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>json</td>
+          <td>4.4</td>
+          <td>8.4</td>
+          <td>5.4</td>
+      </tr>
+      <tr>
+          <td>parquet</td>
+          <td>3.9</td>
+          <td>7.2</td>
+          <td>4.2</td>
+      </tr>
+  </tbody>
 </table>
 <p>I used the spark history server to evaluate overall running times and to
 investigate where time was being spent. Of course the actual numbers are
@@ -497,7 +503,10 @@ to trying a larger workload next.</p>
       <b>See also:</b>
       	
           <a class="text-body" href="../../../2019/05/unit-testing-spark-scala-code/">Unit testing Spark Scala code</a>
-          <div>Unit tests. They’re a good thing. I use them even in single-person projects, because I like being able to double-check my own logic, and because it’s less effort to run a couple tests than to remember the way my code interacts with my other code every time I make a change.
+          <div>Unit tests. They&rsquo;re a good thing. I use them even in single-person projects,
+because I like being able to double-check my own logic, and because
+it&rsquo;s less effort to run a couple tests than to remember the way my code
+interacts with my other code every time I make a change.
 		    <br /><a href="../../../2019/06/spark-many-ways-to-do-the-same-thing/">...</a>
 	  </div>
         

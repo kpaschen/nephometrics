@@ -4,7 +4,7 @@
     <title>Scala on www.paschen.ch</title>
     <link>http://localhost:1313/tags/scala/</link>
     <description>Recent content in Scala on www.paschen.ch</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Thu, 16 May 2019 12:23:24 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/scala/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,7 @@
       <link>http://localhost:1313/2019/05/unit-testing-spark-scala-code/</link>
       <pubDate>Thu, 16 May 2019 12:23:24 +0200</pubDate>
       <guid>http://localhost:1313/2019/05/unit-testing-spark-scala-code/</guid>
-      <description>Unit tests. They&amp;rsquo;re a good thing. I use them even in single-person projects, because I like being able to double-check my own logic, and because it&amp;rsquo;s less effort to run a couple tests than to remember the way my code interacts with my other code every time I make a change.</description>
+      <description>&lt;p&gt;Unit tests. They&amp;rsquo;re a good thing. I use them even in single-person projects,&#xA;because I like being able to double-check my own logic, and because&#xA;it&amp;rsquo;s less effort to run a couple tests than to remember the way my code&#xA;interacts with my other code every time I make a change.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

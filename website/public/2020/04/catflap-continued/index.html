@@ -49,13 +49,19 @@
       
         
 	        <li class="MenuItem">
-		        <a href="http://localhost:1313/blog">Blog</a>
+		        <a href="http://localhost:1313/blog/">Blog</a>
            </li>
         
       
         
 	        <li class="MenuItem">
-		        <a href="http://localhost:1313/contact">Contact</a>
+		        <a href="http://localhost:1313/skills/">Skills</a>
+           </li>
+        
+      
+        
+	        <li class="MenuItem">
+		        <a href="http://localhost:1313/contact/">Contact</a>
            </li>
         
       
@@ -63,7 +69,7 @@
 </nav>
 </div>
 
-  <article class="content textblock">
+  <article class="content textblock-narrow">
     <h2>Catflap, continued</h2>
 
     
@@ -142,7 +148,7 @@ many cv algorithms require greyscale.</p>
 <p>As you can see, the code just waits for a key press, updates the image and shows it. I have added a few controls
 using <code>cv2.createTrackbar</code> for the Canny aperture or various settings for the Hough line finding
 algorithm.</p>
-<p><img alt="Image explorer" src="../../../images/cv-explorer1.png"></p>
+<p><img src="../../../images/cv-explorer1.png" alt="Image explorer"></p>
 <p>In order to find the motion area, if I want to go with detecting lines, probably the easiest way is to
 use <a href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_houghlines/py_houghlines.html">the hough transform</a>. This works best on a pre-processed image; a regular greyscale image like the one above will
 get way too many lines. I used the shell I made above to experiment with settings and settled on:</p>
@@ -161,7 +167,7 @@ worried about CPU, I&rsquo;d try harder to use the coordinates supplied by motio
 a max value for pixels exceeding the threshold (255). So pixels whose greyscale value is &lt; 127 get set to 0,
 and those at 127 or above get set to 255. <code>THRESH_BINARY</code> is the basic thresholding algorithm;
 <a href="https://docs.opencv.org/master/d7/d4d/tutorial_py_thresholding.html">others are available</a>.</p>
-<p><img alt="Threshold applied" src="../../../images/cv-explorer1-threshold.png"></p>
+<p><img src="../../../images/cv-explorer1-threshold.png" alt="Threshold applied"></p>
 <h4 id="canny">Canny</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">cv2</span><span class="o">.</span><span class="n">Canny</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span></span></span></code></pre></div>
 <p><a href="https://en.wikipedia.org/wiki/Canny_edge_detector">Canny</a> computes gradients across your image and then applies thresholds to those. The second and
@@ -178,10 +184,10 @@ with a binary thresholding operation. If you skip the thresholding, you can see 
 clearly.</p>
 <p>There&rsquo;s some noise in the lower right corner; some of that is because I forgot to tell motion not to print
 the date and time onto the image.</p>
-<p><img alt="Canny applied" src="../../../images/cv-explorer1-canny.png"></p>
+<p><img src="../../../images/cv-explorer1-canny.png" alt="Canny applied"></p>
 <h4 id="probabilistic-hough">Probabilistic Hough</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">cv2</span><span class="o">.</span><span class="n">HoughLinesP</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">35</span><span class="p">)</span></span></span></code></pre></div>
-<p><img alt="Lines found" src="../../../images/cv-explorer1-hough.png"></p>
+<p><img src="../../../images/cv-explorer1-hough.png" alt="Lines found"></p>
 <p>You can see that hough did not find all four lines of the box, but enough for me to locate the cat. This is a matter
 of parameterisation; you can adapt the houghp parameters (and of course canny etc) to find more lines, but then
 you also sometimes find more other lines, such as the edges of the rubbish bin in the background. I settled on

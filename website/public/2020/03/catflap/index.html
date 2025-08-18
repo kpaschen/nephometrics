@@ -49,13 +49,19 @@
       
         
 	        <li class="MenuItem">
-		        <a href="http://localhost:1313/blog">Blog</a>
+		        <a href="http://localhost:1313/blog/">Blog</a>
            </li>
         
       
         
 	        <li class="MenuItem">
-		        <a href="http://localhost:1313/contact">Contact</a>
+		        <a href="http://localhost:1313/skills/">Skills</a>
+           </li>
+        
+      
+        
+	        <li class="MenuItem">
+		        <a href="http://localhost:1313/contact/">Contact</a>
            </li>
         
       
@@ -63,7 +69,7 @@
 </nav>
 </div>
 
-  <article class="content textblock">
+  <article class="content textblock-narrow">
     <h2>Catflap</h2>
 
     
@@ -120,7 +126,7 @@ and e.g. <code>-awb greyworld</code> looked very useful. It isn&rsquo;t availabl
 images are probably good enough.</p>
 <h3 id="motion-sensing">Motion sensing</h3>
 <p>A few projects I looked at used a separate motion sensor (you can buy one for the raspberry pi), while others simply
-kept the camera running and used it to detect motion. Since the camera <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=92372#:~:text=Re%3A%20PiCamera%20Preview%20%2F%20Warm%20Up,-Mon%20Nov%2024&text=b%20So%20you%20need%20a,stop%20video%20recording%20as%20required.">takes about 1-2s to warm up</a>,
+kept the camera running and used it to detect motion. Since the camera <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=92372#:~:text=Re%3A%20PiCamera%20Preview%20%2F%20Warm%20Up,-Mon%20Nov%2024&amp;text=b%20So%20you%20need%20a,stop%20video%20recording%20as%20required.">takes about 1-2s to warm up</a>,
 I figured I&rsquo;d have
 to keep the camera running anyway so might as well skip the separate motion detector.</p>
 <p>Keeping the camera on should be fine &ndash; it takes <a href="https://picamera.readthedocs.io/en/release-1.10/faq.html">250mA</a> but
@@ -158,7 +164,7 @@ to fix the pi and camera in place for good just yet, but I also didn&rsquo;t wan
 cable, sit on the pi, etc.</p>
 <p>Luckily, the pi&rsquo;s board has four pre-drilled holes in the corners, and so does the camera. So I threaded some twine through
 those and hung the pi and camera from a grille in the ceiling. This looks a bit odd:</p>
-<p><img alt="Raspberry Pi and Camera suspended above cat flap" src="../../../images/starship-pi-small-labelled.png"></p>
+<p><img src="../../../images/starship-pi-small-labelled.png" alt="Raspberry Pi and Camera suspended above cat flap"></p>
 <p>You can see the pi and camera hanging from the ceiling; the pi also has a USB power cord connected to a power strip just above
 the window.</p>
 <p>The spot where I have the camera pointed is quite nice for observing the old table that the cats walk across to get to the flap.
@@ -193,8 +199,8 @@ for an event; I used opencv to show the images because I plan to use this as the
 settings.</p>
 <h3 id="machine-learning">Machine learning</h3>
 <p>Here are two pictures of cats walking towards the flap:</p>
-<p><img alt="Tabby cat coming home" src="../../../images/cirmos1.png"></p>
-<p><img alt="Big tortoiseshell cat coming home" src="../../../images/lala-1.png"></p>
+<p><img src="../../../images/cirmos1.png" alt="Tabby cat coming home"></p>
+<p><img src="../../../images/lala-1.png" alt="Big tortoiseshell cat coming home"></p>
 <p>I need to distinguish four types of images:</p>
 <ol>
 <li>No cat</li>

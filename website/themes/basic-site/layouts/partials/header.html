@@ -29,6 +29,10 @@
 	        <li class="MenuItem">
 		        <a href="{{ $.Site.BaseURL }}{{ .URL }}">{{ .Name }}</a>
            </li>
+        {{ else if (eq .Identifier "skills") }}
+	        <li class="MenuItem">
+		        <a href="{{ $.Site.BaseURL }}{{ .URL }}">{{ .Name }}</a>
+           </li>
         {{ else if (eq .Identifier "contact") }}
 	        <li class="MenuItem">
 		        <a href="{{ $.Site.BaseURL }}{{ .URL }}">{{ .Name }}</a>

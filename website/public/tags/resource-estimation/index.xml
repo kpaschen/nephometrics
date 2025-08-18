@@ -4,7 +4,7 @@
     <title>Resource Estimation on www.paschen.ch</title>
     <link>http://localhost:1313/tags/resource-estimation/</link>
     <description>Recent content in Resource Estimation on www.paschen.ch</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Thu, 18 Mar 2021 13:46:20 +0100</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/resource-estimation/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,7 @@
       <link>http://localhost:1313/2021/03/skus-and-resources/</link>
       <pubDate>Thu, 18 Mar 2021 13:46:20 +0100</pubDate>
       <guid>http://localhost:1313/2021/03/skus-and-resources/</guid>
-      <description>Reading cloud bills is hard. For illustration, below are a few lines from the bill for a small toy project of mine on GCloud.</description>
+      <description>&lt;p&gt;Reading cloud bills is hard.&#xA;For illustration, below are a few lines from the bill for a small toy project of mine on GCloud. I don&amp;rsquo;t want to&#xA;single Google out here&amp;mdash;AWS and Azure bills are also difficult to read. In the following, all details are taken from&#xA;Google Cloud, but I point to related AWS or Azure features when I think it&amp;rsquo;s useful.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

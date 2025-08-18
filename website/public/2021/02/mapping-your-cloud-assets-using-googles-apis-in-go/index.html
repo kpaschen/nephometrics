@@ -49,13 +49,19 @@
       
         
 	        <li class="MenuItem">
-		        <a href="http://localhost:1313/blog">Blog</a>
+		        <a href="http://localhost:1313/blog/">Blog</a>
            </li>
         
       
         
 	        <li class="MenuItem">
-		        <a href="http://localhost:1313/contact">Contact</a>
+		        <a href="http://localhost:1313/skills/">Skills</a>
+           </li>
+        
+      
+        
+	        <li class="MenuItem">
+		        <a href="http://localhost:1313/contact/">Contact</a>
            </li>
         
       
@@ -63,7 +69,7 @@
 </nav>
 </div>
 
-  <article class="content textblock">
+  <article class="content textblock-narrow">
     <h2>Mapping your Cloud Assets using Google&rsquo;s APIs in Go</h2>
 
     
@@ -329,8 +335,8 @@ the Metrics Explorer until I had data that looked useful, then fished
 likely-looking parameters out of the URL.</p>
 <p><code>mpb</code> is for the monitoringpb module. You will also need to import
 durationpb and timestamppb.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="c1">// Set up a TimeInterval for the past day (86400 seconds)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">now</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">Unix</span><span class="p">()</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="c1">// Set up a TimeInterval for the past day (86400 seconds)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">now</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">Unix</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl"><span class="nx">interval</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">mb</span><span class="p">.</span><span class="nx">TimeInterval</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">             <span class="nx">EndTime</span><span class="p">:</span> <span class="o">&amp;</span><span class="nx">timestamppb</span><span class="p">.</span><span class="nx">Timestamp</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">               <span class="nx">Seconds</span><span class="p">:</span> <span class="nx">now</span><span class="p">,</span>
@@ -340,16 +346,16 @@ durationpb and timestamppb.</p>
 </span></span><span class="line"><span class="cl">             <span class="p">},</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// Create filter based on metric type and resource type
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">filter</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Create filter based on metric type and resource type</span>
+</span></span><span class="line"><span class="cl"><span class="nx">filter</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">  <span class="s">`metric.type=&#34;%s&#34; AND
 </span></span></span><span class="line"><span class="cl"><span class="s">   resource.type=&#34;%s&#34;`</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">   <span class="s">&#34;gce_instance&#34;</span><span class="p">,</span> <span class="s">&#34;uptime_total&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nx">groupBy</span> <span class="o">:=</span> <span class="s">&#34;metric.system_labels.region&#34;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// Make the request proto
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">req</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">mpb</span><span class="p">.</span><span class="nx">ListTimeSeriesRequest</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Make the request proto</span>
+</span></span><span class="line"><span class="cl"><span class="nx">req</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">mpb</span><span class="p">.</span><span class="nx">ListTimeSeriesRequest</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">Name</span><span class="p">:</span>     <span class="nx">projectID</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">Filter</span><span class="p">:</span>   <span class="nx">filter</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">Interval</span><span class="p">:</span> <span class="nx">interval</span><span class="p">,</span>
@@ -362,8 +368,8 @@ durationpb and timestamppb.</p>
 </span></span><span class="line"><span class="cl">  <span class="p">},</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// Send the request:
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">it</span> <span class="o">:=</span> <span class="nx">client</span><span class="p">.</span><span class="nf">ListTimeSeries</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">req</span><span class="p">)</span></span></span></code></pre></div>
+</span></span><span class="line"><span class="cl"><span class="c1">// Send the request:</span>
+</span></span><span class="line"><span class="cl"><span class="nx">it</span> <span class="o">:=</span> <span class="nx">client</span><span class="p">.</span><span class="nf">ListTimeSeries</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">req</span><span class="p">)</span></span></span></code></pre></div>
 <p>The time series request is quite difficult to fill in correctly,
 especially if you use aggregation (and you usually have to aggregate
 somehow). I played with the Metrics Explorer to

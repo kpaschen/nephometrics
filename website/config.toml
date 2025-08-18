@@ -5,6 +5,7 @@ relativeUrls = true
 pygmentsCodeFences = true
 pygmentsUseClasses = true
 summaryLength = 20
+buildDrafts = false
 
 [permalinks]
   blog = "/:year/:month/:title/"
@@ -31,6 +32,11 @@ DefaultContentLanguage = "en"
       url = "de/contact/" 
       weight = 200
     [[languages.de.menu.main]]
+      identifier = "skills"
+      name = "Erfahrung"
+      url = "de/skills/" 
+      weight = 180
+    [[languages.de.menu.main]]
       identifier = "blog"
       name = "Blog"
       url = "blog/" 
@@ -47,6 +53,11 @@ DefaultContentLanguage = "en"
       name = "Contact"
       url = "fr/contact/" 
       weight = 200
+    [[languages.fr.menu.main]]
+      identifier = "skills"
+      name = "Expérience"
+      url = "fr/skills/" 
+      weight = 180
     [[languages.fr.menu.main]]
       identifier = "blog"
       name = "Blog"
@@ -66,6 +77,12 @@ DefaultContentLanguage = "en"
     name = "Contact"
     url = "contact/"
     weight = 200
+
+  [[menu.main]]
+    identifier = "skills"
+    name = "Skills"
+    url = "skills/"
+    weight = 180
 
   [[menu.main]]
     identifier = "blog"

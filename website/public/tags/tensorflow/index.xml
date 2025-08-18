@@ -4,7 +4,7 @@
     <title>Tensorflow on www.paschen.ch</title>
     <link>http://localhost:1313/tags/tensorflow/</link>
     <description>Recent content in Tensorflow on www.paschen.ch</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Wed, 26 Jun 2019 13:43:06 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/tensorflow/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,7 @@
       <link>http://localhost:1313/2019/06/serving-magenta/</link>
       <pubDate>Wed, 26 Jun 2019 13:43:06 +0200</pubDate>
       <guid>http://localhost:1313/2019/06/serving-magenta/</guid>
-      <description>Magenta is an amazing collection of ml models, libraries and demos. I&amp;rsquo;m&amp;rsquo; not a machine learning expert, but these things are fun to play with.</description>
+      <description>&lt;p&gt;&lt;a href=&#34;https://magenta.tensorflow.org/&#34;&gt;Magenta&lt;/a&gt; is an amazing collection of ml&#xA;models, libraries and demos. I&amp;rsquo;m&amp;rsquo; not a machine learning expert, but these&#xA;things are fun to play with.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

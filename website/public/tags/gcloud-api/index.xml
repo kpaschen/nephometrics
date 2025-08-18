@@ -4,7 +4,7 @@
     <title>Gcloud Api on www.paschen.ch</title>
     <link>http://localhost:1313/tags/gcloud-api/</link>
     <description>Recent content in Gcloud Api on www.paschen.ch</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Thu, 11 Feb 2021 16:35:53 +0100</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/gcloud-api/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,7 @@
       <link>http://localhost:1313/2021/02/mapping-your-cloud-assets-using-googles-apis-in-go/</link>
       <pubDate>Thu, 11 Feb 2021 16:35:53 +0100</pubDate>
       <guid>http://localhost:1313/2021/02/mapping-your-cloud-assets-using-googles-apis-in-go/</guid>
-      <description>If you&amp;rsquo;ve used Google&amp;rsquo;s Cloud, you&amp;rsquo;ve probably encountered their commandline tool. While you can achieve many things using just the web cloud console, the gcloud command line tool is flexible, scriptable, and (once you know how to use it), quicker than the console.</description>
+      <description>&lt;p&gt;If you&amp;rsquo;ve used Google&amp;rsquo;s Cloud, you&amp;rsquo;ve probably encountered their commandline tool. While you can achieve many things using just the&#xA;&lt;a href=&#34;https://console.cloud.google.com/&#34;&gt;web cloud console&lt;/a&gt;, the &lt;code&gt;gcloud&lt;/code&gt; command line&#xA;tool is flexible, scriptable, and (once you know how to use it), quicker&#xA;than the console.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

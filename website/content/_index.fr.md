@@ -5,12 +5,10 @@ keywords: DevOps, Kubernetes, Software, Nuage, Cloud, Informatique
 
 Bienvenus sur le site Nephometrics!
 
-Mon entreprise offre  de l'assistance avec la planification,
-la conception et la gestion de services nuage.
+Mon entreprise offre de l'assistance avec la planification, la conception et la gestion de services nuage.
 
 Veuillez trouver ci-dessous une liste (non exhaustive) de mes services. Pour en
-savoir plus, je vous prie de [me contacter](contact). Je vous pr&eacute;viens cependant
-que j'ai un accent assez affreux en parlant Fran&ccedil;ais.
+savoir plus, je vous prie de [me contacter](contact).
 
 **DevOps**
 * Conception, gestion, d&eacute;pannage de Clusters Kubernetes

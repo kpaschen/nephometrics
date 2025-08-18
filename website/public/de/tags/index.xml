@@ -4,7 +4,7 @@
     <title>Tags on www.paschen.ch</title>
     <link>http://localhost:1313/de/tags/</link>
     <description>Recent content in Tags on www.paschen.ch</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>de</language>
     <atom:link href="http://localhost:1313/de/tags/index.xml" rel="self" type="application/rss+xml" />
   </channel>

@@ -4,7 +4,7 @@
     <title>Cost on www.paschen.ch</title>
     <link>http://localhost:1313/tags/cost/</link>
     <description>Recent content in Cost on www.paschen.ch</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Tue, 09 May 2023 11:55:04 +0100</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/cost/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,7 @@
       <link>http://localhost:1313/2023/05/running-mattermost-in-aws-how-much-will-it-cost/</link>
       <pubDate>Tue, 09 May 2023 11:55:04 +0100</pubDate>
       <guid>http://localhost:1313/2023/05/running-mattermost-in-aws-how-much-will-it-cost/</guid>
-      <description>This post summarises results of an internship project that Quang Cao completed February 2023.&#xA;Summary Mattermost is a chat service similar to Slack, but it allows customers to self-host their instance.</description>
+      <description>&lt;p&gt;This post summarises results of an internship project that &lt;a href=&#34;https://github.com/Quangcaow&#34;&gt;Quang Cao&lt;/a&gt; completed February 2023.&lt;/p&gt;&#xA;&lt;h3 id=&#34;summary&#34;&gt;Summary&lt;/h3&gt;&#xA;&lt;p&gt;Mattermost is a chat service similar to Slack, but it allows customers to self-host their instance. This is nice if you have, e.g. data residency concerns; moreover, the basic version is &lt;a href=&#34;https://mattermost.com/pricing/&#34;&gt;free&lt;/a&gt;. To be clear, &lt;em&gt;free&lt;/em&gt; refers to the licensing costs, not the hosting.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

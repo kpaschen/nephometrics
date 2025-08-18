@@ -4,7 +4,7 @@
     <title>Lilypond on www.paschen.ch</title>
     <link>http://localhost:1313/tags/lilypond/</link>
     <description>Recent content in Lilypond on www.paschen.ch</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Wed, 10 Apr 2019 09:47:22 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/lilypond/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,7 @@
       <link>http://localhost:1313/2019/04/music-ocr-introducing-the-idea/</link>
       <pubDate>Wed, 10 Apr 2019 09:47:22 +0200</pubDate>
       <guid>http://localhost:1313/2019/04/music-ocr-introducing-the-idea/</guid>
-      <description>Sometimes I write my own music. I play the piano (badly), and I&amp;rsquo;ll never be a great composer, but I find it interesting to play around with melody and chords.</description>
+      <description>&lt;p&gt;Sometimes I write my own music. I play the piano (badly), and I&amp;rsquo;ll&#xA;never be a great composer, but I find it interesting to play around&#xA;with melody and chords.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

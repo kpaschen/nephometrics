@@ -4,7 +4,7 @@
     <title>Express on www.paschen.ch</title>
     <link>http://localhost:1313/tags/express/</link>
     <description>Recent content in Express on www.paschen.ch</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Tue, 23 Jul 2019 12:10:58 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/express/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,7 @@
       <link>http://localhost:1313/2019/07/magenta-app/</link>
       <pubDate>Tue, 23 Jul 2019 12:10:58 +0200</pubDate>
       <guid>http://localhost:1313/2019/07/magenta-app/</guid>
-      <description>Continuing on from Serving Magenta, I wanted to put a little web application together.&#xA;What I really want is to make my phone play music by whistling into it.</description>
+      <description>&lt;p&gt;Continuing on from &lt;a href=&#34;../../2019/06/serving-magenta/&#34;&gt;Serving Magenta&lt;/a&gt;, I wanted&#xA;to put a little web application together.&lt;/p&gt;&#xA;&lt;p&gt;What I really want is to make my phone play music by whistling into it.&#xA;Basically, I whistle, the phone tries to match the melody against my music&#xA;collection and plays whatever is the closest match. This might be a little&#xA;silly, and I don&amp;rsquo;t know that it&amp;rsquo;ll have mass appeal (I&amp;rsquo;m probably in a minority&#xA;in that I still have most of my music collection in files on my computer),&#xA;but I&amp;rsquo;m not looking to make money from this.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

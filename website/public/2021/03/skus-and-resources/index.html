@@ -49,13 +49,19 @@
       
         
 	        <li class="MenuItem">
-		        <a href="http://localhost:1313/blog">Blog</a>
+		        <a href="http://localhost:1313/blog/">Blog</a>
            </li>
         
       
         
 	        <li class="MenuItem">
-		        <a href="http://localhost:1313/contact">Contact</a>
+		        <a href="http://localhost:1313/skills/">Skills</a>
+           </li>
+        
+      
+        
+	        <li class="MenuItem">
+		        <a href="http://localhost:1313/contact/">Contact</a>
            </li>
         
       
@@ -63,7 +69,7 @@
 </nav>
 </div>
 
-  <article class="content textblock">
+  <article class="content textblock-narrow">
     <h2>SKUs and Resources</h2>
 
     
@@ -166,7 +172,7 @@ they have a pretty comprehensive <a href="https://docs.microsoft.com/en-us/azure
 month, I wouldn&rsquo;t rely on all the costs related to that VM for that month having the label.</p>
 <h2 id="skus-and-prices">SKUs and prices</h2>
 <p>Once you have a SKU, you can look up how much you&rsquo;ll get charged. Google have a
-<a href="https://cloud.google.com/skus/?currency=USD&filter=9431-52B1-2C4F">SKU explorer</a> that shows you the
+<a href="https://cloud.google.com/skus/?currency=USD&amp;filter=9431-52B1-2C4F">SKU explorer</a> that shows you the
 description (<em>N1 Predefined Instance Core running in EMEA</em>), the price (0.034773 USD per hour) and the regions
 (<em>europe-west1</em> &ndash; this means the description should really be &ldquo;in Belgium&rdquo; rather than &ldquo;in EMEA&rdquo;, since
 there are other SKUs for N1 Cores running in the Netherlands for example).</p>
@@ -220,7 +226,7 @@ and that&rsquo;s about <code>8 * 1.34</code> Gigabyte hours.</p>
 <p>Maybe this means that Google supports billing for licenses based on RAM usage, vCPU usage, VM count, or
 a combination of those, and they simply created SKUs for all billing modes even though some of them always
 have a zero price?</p>
-<p>However, I could not find all of these SKUs in the <a href="https://cloud.google.com/skus/?currency=USD&filter=F9BE-F344-D1B6">explorer</a>.
+<p>However, I could not find all of these SKUs in the <a href="https://cloud.google.com/skus/?currency=USD&amp;filter=F9BE-F344-D1B6">explorer</a>.
 I have a SKU on my bill for March that&rsquo;s labeled
 <em>Licensing Fee for Fedora CoreOS Stable (CPU cost)</em> with an id of <code>F9BE-F344-D1B6</code> but the SKU explorer claims
 that this SKU does not exist. Maybe there&rsquo;s some kind of migration or update in progress? Then again,
@@ -285,7 +291,10 @@ has bothered to change them because the charges are always zero anyway?</p>
       <b>See also:</b>
       	
           <a class="text-body" href="../../../2021/02/mapping-your-cloud-assets-using-googles-apis-in-go/">Mapping your Cloud Assets using Google&rsquo;s APIs in Go</a>
-          <div>If you’ve used Google’s Cloud, you’ve probably encountered their commandline tool. While you can achieve many things using just the web cloud console, the gcloud command line tool is flexible, scriptable, and (once you know how to use it), quicker than the console.
+          <div>If you&rsquo;ve used Google&rsquo;s Cloud, you&rsquo;ve probably encountered their commandline tool. While you can achieve many things using just the
+<a href="https://console.cloud.google.com/">web cloud console</a>, the <code>gcloud</code> command line
+tool is flexible, scriptable, and (once you know how to use it), quicker
+than the console.
 		    <br /><a href="../../../2021/03/skus-and-resources/">...</a>
 	  </div>
         
