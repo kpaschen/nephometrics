@@ -1,33 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>magenta on www.paschen.ch</title>
-    <link>http://www.nephometrics.ch/tags/magenta/</link>
-    <description>Recent content in magenta on www.paschen.ch</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <title>Magenta on www.paschen.ch</title>
+    <link>http://localhost:1313/tags/magenta/</link>
+    <description>Recent content in Magenta on www.paschen.ch</description>
+    <generator>Hugo</generator>
+    <language>en</language>
     <lastBuildDate>Tue, 23 Jul 2019 12:10:58 +0200</lastBuildDate>
-    
-	<atom:link href="http://www.nephometrics.ch/tags/magenta/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="http://localhost:1313/tags/magenta/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Magenta App</title>
-      <link>http://www.nephometrics.ch/2019/07/magenta-app/</link>
+      <link>http://localhost:1313/2019/07/magenta-app/</link>
       <pubDate>Tue, 23 Jul 2019 12:10:58 +0200</pubDate>
-      
-      <guid>http://www.nephometrics.ch/2019/07/magenta-app/</guid>
-      <description>Continuing on from Serving Magenta, I wanted to put a little web application together.
-What I really want is to make my phone play music by whistling into it.</description>
+      <guid>http://localhost:1313/2019/07/magenta-app/</guid>
+      <description>&lt;p&gt;Continuing on from &lt;a href=&#34;../../2019/06/serving-magenta/&#34;&gt;Serving Magenta&lt;/a&gt;, I wanted&#xA;to put a little web application together.&lt;/p&gt;&#xA;&lt;p&gt;What I really want is to make my phone play music by whistling into it.&#xA;Basically, I whistle, the phone tries to match the melody against my music&#xA;collection and plays whatever is the closest match. This might be a little&#xA;silly, and I don&amp;rsquo;t know that it&amp;rsquo;ll have mass appeal (I&amp;rsquo;m probably in a minority&#xA;in that I still have most of my music collection in files on my computer),&#xA;but I&amp;rsquo;m not looking to make money from this.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Serving Magenta</title>
-      <link>http://www.nephometrics.ch/2019/06/serving-magenta/</link>
+      <link>http://localhost:1313/2019/06/serving-magenta/</link>
       <pubDate>Wed, 26 Jun 2019 13:43:06 +0200</pubDate>
-      
-      <guid>http://www.nephometrics.ch/2019/06/serving-magenta/</guid>
-      <description>Magenta is an amazing collection of ml models, libraries and demos. I&amp;rsquo;m&amp;rsquo; not a machine learning expert, but these things are fun to play with.</description>
+      <guid>http://localhost:1313/2019/06/serving-magenta/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://magenta.tensorflow.org/&#34;&gt;Magenta&lt;/a&gt; is an amazing collection of ml&#xA;models, libraries and demos. I&amp;rsquo;m&amp;rsquo; not a machine learning expert, but these&#xA;things are fun to play with.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

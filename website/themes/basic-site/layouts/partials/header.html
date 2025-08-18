@@ -20,36 +20,23 @@
 </div>
 <nav class="navbar">
     <ul class="MenuRow">
-      {{ $currentPage := . }}
       {{ range .Site.Menus.main }}
-        {{ if not (or (eq .Identifier "tags") (eq .Identifier "blog") )}}
-          <li class="MenuItem {{if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} active{{end}}">
-		  <a href="{{ .URL | relURL }}" title="{{ .Title }}">{{ .Name }}</a>
-          </li>
-	  {{ else if (eq .Identifier "blog") }}
-	    <li class="MenuItem">
-		    <a href="{{ .URL | relURL }}">{{ .Name }}</a>
-            </li>
-        {{ else }}
-	{{ $scratch := newScratch }}
-	{{ $scratch.Set "hasTags" 0 }}
-	  {{ range $name, $taxonomy := $.Site.Taxonomies.tags }}
-	    {{ $scratch.Set "hasTags" 1 }}
-	    {{ end }}
-	 {{ if gt ($scratch.Get "hasTags") 0 }}
-         <li class="MenuItem">
-           <div class="dropdown">
-             <button class="dropdown-button">{{ .Name }}&nbsp;&#9662;</button>
-             <div class="dropdown-content">
-              {{ range $name, $taxonomy := $.Site.Taxonomies.tags }}
-                {{ with $.Site.GetPage (printf "/tags/%s" $name) }}
-                  <a href="{{ .URL | relURL }}">{{ $name }}</a>
-                {{ end }}
-              {{ end }}
-             </div>
-           </div>
-         </li>
-	 {{ end }}
+        {{ if (eq .Identifier "blog") }}
+	        <li class="MenuItem">
+		        <a href="{{ $.Site.BaseURL }}{{ .URL }}">{{ .Name }}</a>
+           </li>
+        {{ else if (eq .Identifier "home") }}
+	        <li class="MenuItem">
+		        <a href="{{ $.Site.BaseURL }}{{ .URL }}">{{ .Name }}</a>
+           </li>
+        {{ else if (eq .Identifier "skills") }}
+	        <li class="MenuItem">
+		        <a href="{{ $.Site.BaseURL }}{{ .URL }}">{{ .Name }}</a>
+           </li>
+        {{ else if (eq .Identifier "contact") }}
+	        <li class="MenuItem">
+		        <a href="{{ $.Site.BaseURL }}{{ .URL }}">{{ .Name }}</a>
+           </li>
         {{ end }}
       {{ end }}
     </ul>

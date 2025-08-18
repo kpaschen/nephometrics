@@ -14,33 +14,7 @@ e-mail &agrave; [contact@paschen.ch](mailto:contact@paschen.ch).
 
 <hr />
 
-Je suis d&eacute;veloppeur de software avec plusieurs ann&eacute;es d'exp&eacute;rience SRE. J'aime assister des gens en d&eacute;eveloppant des syst&egrave;mes faciles &agrave;
-g&eacute;rer, resilients et &eacute;volutives.
-
-<h3> Comp&eacute;tences </h3>
-
-<h4> Langages de programmation </h4>
-
-<ol>
-<li> Python: plus de 10 ans d'exp&eacute;rience
-<li> C++: plus de 10 ans d'exp&eacute;rience
-<li> autres langues selon besoin: je me suis servie de Java, JavaScript, Spark et Go, par exemple.
-</ol>
-
-<h4> Technologies </h4>
-
-<ol>
-<li> Bases de donn&eacute;es: SQL (MySQL, quelquefois Oracle ou Sybase), NoSQL (Spanner, BigTable, MongoDB). Dessein de
-sch&eacute;mas, optimisation.
-<li> Pipelines de donn&eacute;es (MapReduce, Spark): implementation, maintenance, optimisation.
-<li> CI/CD: Jenkins, plusieurs syst&egrave;mes idiosyncratiques
-<li> Automation/orchestration: Kubernetes, Terraform
-<li> Outils: Git, Docker, Bazel
-<li> Environnements nuage: principalement GCP (GKE), un peu de AWS.
-</ol>
-
-<hr />
-<h3>Impressum</h3>
+### Impressum
 
 Entreprise: Nephometrics GmbH <br />
 Adresse: c/o ImpactHub Z&uuml;rich, Sihlquai 131, 8005 Z&uuml;rich <br />

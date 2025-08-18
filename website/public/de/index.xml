@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>SRE als Service on www.paschen.ch</title>
-    <link>http://www.nephometrics.ch/de/</link>
+    <link>http://localhost:1313/de/</link>
     <description>Recent content in SRE als Service on www.paschen.ch</description>
-    <generator>Hugo -- gohugo.io</generator>
-    
-	<atom:link href="http://www.nephometrics.ch/de/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <generator>Hugo</generator>
+    <language>de</language>
+    <atom:link href="http://localhost:1313/de/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Administratives</title>
-      <link>http://www.nephometrics.ch/de/contact/</link>
+      <link>http://localhost:1313/de/contact/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.nephometrics.ch/de/contact/</guid>
-      <description>Ich arbeite wahlweise auf Aufwandsbasis (Abrechnung nach Stunden- oder Tagess&amp;auml;tzen) oder auf Festpreisbasis.
-F&amp;uuml;r Eins&amp;auml;tze, die mehrmals pro Woche Anwesenheit beim Kunden erfordern, bevorzuge ich die Region Z&amp;uuml;rich/Winterthur.</description>
+      <guid>http://localhost:1313/de/contact/</guid>
+      <description>&lt;p&gt;Ich arbeite wahlweise auf Aufwandsbasis (Abrechnung nach Stunden- oder Tagessätzen) oder auf Festpreisbasis.&lt;/p&gt;&#xA;&lt;p&gt;Für Einsätze, die mehrmals pro Woche Anwesenheit beim Kunden erfordern, bevorzuge ich die Region&#xA;Zürich/Winterthur.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Datenschutzerklärung</title>
-      <link>http://www.nephometrics.ch/de/privacy/</link>
+      <link>http://localhost:1313/de/privacy/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.nephometrics.ch/de/privacy/</guid>
-      <description>Meine Webseiten sind mittels Hugo statisch erzeugt und setzen keine Cookies. Ich verwende keine Social Media-Einbindung und schalte keine Anzeigen.</description>
+      <guid>http://localhost:1313/de/privacy/</guid>
+      <description>&lt;p&gt;Meine Webseiten sind mittels &lt;a href=&#34;https://gohugo.io&#34;&gt;Hugo&lt;/a&gt; statisch erzeugt und&#xA;setzen keine Cookies. Ich verwende keine Social Media-Einbindung und schalte&#xA;keine Anzeigen. Dementsprechend erhebe ich auch selbst keine personenbezogenen&#xA;Daten.&lt;/p&gt;</description>
     </item>
-    
+    <item>
+      <title>Erfahrung</title>
+      <link>http://localhost:1313/de/skills/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/de/skills/</guid>
+      <description>&lt;p&gt;Ich habe langjährige Erfahrung als SRE, DevOps und Software-Entwicklerin. Gerne helfe ich Firmen und Teams dabei, robuste, wartbare und skalierbare Systeme zu entwickeln.&lt;/p&gt;</description>
+    </item>
   </channel>
 </rss>

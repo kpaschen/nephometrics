@@ -1,5 +1,5 @@
 {{ define "main" }}
-  <article class="content textblock">
+  <article class="content textblock-narrow">
     <h2>{{ .Title | markdownify}}</h2>
 
     {{ if .Params.Subtitle }}
@@ -14,17 +14,17 @@
     </p>
   </article>
   <aside class="sidebar">
-    {{ if or .PrevPage .NextPage }}
+    {{ if or .Prev .Next }}
         <div class="container">
           <div class="row">
-              {{ if .PrevPage }}
+              {{ if .Prev }}
 	      <p><b>Previous Post:</b><br />
-                <a href="{{ .PrevPage.Permalink | relURL}}">{{ .PrevPage.Title | markdownify }}</a>
+                <a href="{{ .Prev.Permalink | relURL}}">{{ .Prev.Title | markdownify }}</a>
 	      </p>
               {{ end }}
-              {{ if .NextPage }}
+              {{ if .Next }}
 	        <p><b>Next Post:</b><br />
-                <a href="{{ .NextPage.Permalink | relURL }}">{{ .NextPage.Title | markdownify }}</a>
+                <a href="{{ .Next.Permalink | relURL }}">{{ .Next.Title | markdownify }}</a>
 	        </p>
               {{ else }}
 	        <p><b>Stay tuned for the next post</b></p>
@@ -39,7 +39,7 @@
       	{{ range . }}
           <a class="text-body" href="{{ .RelPermalink }}">{{ .Title | markdownify}}</a>
           <div>{{.Summary | markdownify}}
-		    <br /><a href="{{  .NextPage.Permalink | relURL }}">...</a>
+		    <br /><a href="{{  .Next.Permalink | relURL }}">...</a>
 	  </div>
         {{ end }}
     </div>

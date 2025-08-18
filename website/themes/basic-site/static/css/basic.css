@@ -104,7 +104,8 @@ body {
 .MenuRow {
   list-style: none;
   display: flex;
-  justify-content: space-between;
+  # justify-content: space-between;
+  justify-content: flex-begin;
   margin: 0;
   padding: 0;
 
@@ -129,17 +130,6 @@ body {
 }
 
 .Menu-item--title {
-}
-
-.Offeringsbox {
-	display: flex;
-	flex-direction: column;
-}
-
-.Offering {
-	margin: 0;
-	border: 0;
-	padding: 0px;
 }
 
 .dropdown {
@@ -193,8 +183,9 @@ h1 {
   font-size: 2.0em;
 }
 
-.textblock {
+.textblock-narrow {
   padding-left: 0.5em;
+  padding-right: 1.0em;
 }
 
 .wrapper {
@@ -217,7 +208,6 @@ pre {
 @media screen and (min-width: 800px) {
   .content {
     float: left;
-    max-width: 720px;
   }
 
   .sidebar {
@@ -233,6 +223,12 @@ pre {
   .header, .footer {
     max-width: 1050px;
     grid-column: 1 / -1;
+    clear: both;
+  }
+ 
+  .jumbotron, .textblock {
+    grid-column: 1 / -1;
+    max-width: 1050px;
     clear: both;
   }
 }
@@ -277,7 +273,7 @@ pre {
   .wrapper {
     padding: 0.5em;
   }
-  .textblock {
+  .textblock-narrow {
     padding-left: 0.0em;
   }
 }

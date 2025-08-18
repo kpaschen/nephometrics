@@ -5,9 +5,15 @@ relativeUrls = true
 pygmentsCodeFences = true
 pygmentsUseClasses = true
 summaryLength = 20
+buildDrafts = false
 
 [permalinks]
   blog = "/:year/:month/:title/"
+
+[markup]
+  defaultMarkdownHandler = 'goldmark'
+  [markup.goldmark.renderer]
+    unsafe = true
 
 DefaultContentLanguage = "en"
 [languages]
@@ -16,67 +22,71 @@ DefaultContentLanguage = "en"
   [languages.de]
     languageName = "DE"
     [[languages.de.menu.main]]
-      url = "/de/"
+      identifier = "home"
+      url = "de/"
       name = "Startseite"
       weight = 100
     [[languages.de.menu.main]]
+      identifier = "contact"
       name = "Kontakt"
-      url = "/de/contact/" 
+      url = "de/contact/" 
       weight = 200
+    [[languages.de.menu.main]]
+      identifier = "skills"
+      name = "Erfahrung"
+      url = "de/skills/" 
+      weight = 180
     [[languages.de.menu.main]]
       identifier = "blog"
       name = "Blog"
-      url = "/blog/" 
+      url = "blog/" 
       weight = 110
-    [[languages.de.menu.main]]
-      identifier = "tags"
-      name = "Tags"
-      url = "/tags/"
-      weight = 120
   [languages.fr]
     languageName = "FR"
     [[languages.fr.menu.main]]
-      url = "/fr/"
+      identifier = "home"
+      url = "fr/"
       name = "Page d'Accueil"
       weight = 100
     [[languages.fr.menu.main]]
+      identifier = "contact"
       name = "Contact"
-      url = "/fr/contact/" 
+      url = "fr/contact/" 
       weight = 200
+    [[languages.fr.menu.main]]
+      identifier = "skills"
+      name = "Expérience"
+      url = "fr/skills/" 
+      weight = 180
     [[languages.fr.menu.main]]
       identifier = "blog"
       name = "Blog"
-      url = "/blog/" 
+      url = "blog/" 
       weight = 110
-    [[languages.fr.menu.main]]
-      identifier = "tags"
-      name = "Tags"
-      url = "/tags/"
-      weight = 120
 
 
 [menu]
   [[menu.main]]
     identifier = "home"
     name = "Home"
-    url = "/"
+    url = ""
     weight = 100
 
   [[menu.main]]
     identifier = "contact"
     name = "Contact"
-    url = "/contact/"
+    url = "contact/"
     weight = 200
+
+  [[menu.main]]
+    identifier = "skills"
+    name = "Skills"
+    url = "skills/"
+    weight = 180
 
   [[menu.main]]
     identifier = "blog"
     name = "Blog"
-    url = "/blog/"
+    url = "blog/"
     weight = 110
-
-  [[menu.main]]
-    identifier = "tags"
-    name = "Tags"
-    url = "/tags/"
-    weight = 120 
 
