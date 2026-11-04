@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Lilypond on www.paschen.ch</title>
-    <link>http://www.nephometrics.ch/tags/lilypond/</link>
-    <description>Recent content in Lilypond on www.paschen.ch</description>
-    <generator>Hugo</generator>
-    <language>en</language>
-    <lastBuildDate>Wed, 10 Apr 2019 09:47:22 +0200</lastBuildDate>
-    <atom:link href="http://www.nephometrics.ch/tags/lilypond/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Music OCR: introducing the idea</title>
-      <link>http://www.nephometrics.ch/2019/04/music-ocr-introducing-the-idea/</link>
-      <pubDate>Wed, 10 Apr 2019 09:47:22 +0200</pubDate>
-      <guid>http://www.nephometrics.ch/2019/04/music-ocr-introducing-the-idea/</guid>
-      <description>&lt;p&gt;Sometimes I write my own music. I play the piano (badly), and I&amp;rsquo;ll&#xA;never be a great composer, but I find it interesting to play around&#xA;with melody and chords.&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Lilypond on www.paschen.ch</title>
+		<link>http://localhost:1313/tags/lilypond/</link>
+		<description>Recent content in Lilypond on www.paschen.ch</description>
+		<generator>Hugo</generator>
+		<language>en</language>
+		
+		
+		
+		
+			<lastBuildDate>Wed, 10 Apr 2019 09:47:22 +0200</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/tags/lilypond/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Music OCR: introducing the idea</title>
+				<link>http://localhost:1313/2019/04/music-ocr-introducing-the-idea/</link>
+				<pubDate>Wed, 10 Apr 2019 09:47:22 +0200</pubDate>
+				<guid>http://localhost:1313/2019/04/music-ocr-introducing-the-idea/</guid>
+				<description>&lt;p&gt;Sometimes I write my own music. I play the piano (badly), and I&amp;rsquo;ll&#xA;never be a great composer, but I find it interesting to play around&#xA;with melody and chords.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

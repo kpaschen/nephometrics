@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html><head>
+<html><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <title>Magenta App</title>
   
   <meta charset="utf-8">
@@ -15,15 +15,15 @@
 <ul class="LanguageRow">
   
  <li class="LanguageItem">
-	 <a href="http://www.nephometrics.ch/">EN</a>
+	 <a href="http://localhost:1313/">EN</a>
     </li>
   
  <li class="LanguageItem">
-	 <a href="http://www.nephometrics.ch/fr/">FR</a>
+	 <a href="http://localhost:1313/fr/">FR</a>
     </li>
   
  <li class="LanguageItem">
-	 <a href="http://www.nephometrics.ch/de/">DE</a>
+	 <a href="http://localhost:1313/de/">DE</a>
     </li>
   
 </ul>
@@ -43,25 +43,25 @@
       
         
 	        <li class="MenuItem">
-		        <a href="http://www.nephometrics.ch/">Home</a>
+		        <a href="http://localhost:1313/">Home</a>
            </li>
         
       
         
 	        <li class="MenuItem">
-		        <a href="http://www.nephometrics.ch/blog/">Blog</a>
+		        <a href="http://localhost:1313/blog/">Blog</a>
            </li>
         
       
         
 	        <li class="MenuItem">
-		        <a href="http://www.nephometrics.ch/skills/">Skills</a>
+		        <a href="http://localhost:1313/skills/">Skills</a>
            </li>
         
       
         
 	        <li class="MenuItem">
-		        <a href="http://www.nephometrics.ch/contact/">Contact</a>
+		        <a href="http://localhost:1313/contact/">Contact</a>
            </li>
         
       
@@ -75,7 +75,7 @@
     
 
     <p>
-      <a href="http://www.nephometrics.ch/2019/07/magenta-app/">Published July 23, 2019</a>
+      <a href="http://localhost:1313/2019/07/magenta-app/">Published July 23, 2019</a>
     </p>
     <p>
       <p>Continuing on from <a href="../../../2019/06/serving-magenta/">Serving Magenta</a>, I wanted
@@ -139,7 +139,7 @@ to obtain the <code>config.json</code> files for the models separately.</p>
 <p>You need the user&rsquo;s consent to access the microphone:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">navigator</span><span class="p">.</span><span class="nx">mediaDevices</span><span class="p">.</span><span class="nx">getUserMedia</span><span class="p">({</span> <span class="nx">audio</span><span class="o">:</span> <span class="kc">true</span> <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">stream</span> <span class="p">=&gt;</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">// ... do things with the stream
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">});</span></span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl"><span class="p">});</span></span></span></code></pre></div>
 <p>That&rsquo;s clearly a good thing. Who would want web pages to just access the microphone?
 However, at least in Chrome, navigator.mediaDevices.getUserMedia is usable only if the
 page is served over https or if it comes from localhost. So I got surprised by this

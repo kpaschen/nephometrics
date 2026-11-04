@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html><head>
+<html><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <title>Spark: many ways to do the same thing</title>
   
   <meta charset="utf-8">
@@ -15,15 +15,15 @@
 <ul class="LanguageRow">
   
  <li class="LanguageItem">
-	 <a href="http://www.nephometrics.ch/">EN</a>
+	 <a href="http://localhost:1313/">EN</a>
     </li>
   
  <li class="LanguageItem">
-	 <a href="http://www.nephometrics.ch/fr/">FR</a>
+	 <a href="http://localhost:1313/fr/">FR</a>
     </li>
   
  <li class="LanguageItem">
-	 <a href="http://www.nephometrics.ch/de/">DE</a>
+	 <a href="http://localhost:1313/de/">DE</a>
     </li>
   
 </ul>
@@ -43,25 +43,25 @@
       
         
 	        <li class="MenuItem">
-		        <a href="http://www.nephometrics.ch/">Home</a>
+		        <a href="http://localhost:1313/">Home</a>
            </li>
         
       
         
 	        <li class="MenuItem">
-		        <a href="http://www.nephometrics.ch/blog/">Blog</a>
+		        <a href="http://localhost:1313/blog/">Blog</a>
            </li>
         
       
         
 	        <li class="MenuItem">
-		        <a href="http://www.nephometrics.ch/skills/">Skills</a>
+		        <a href="http://localhost:1313/skills/">Skills</a>
            </li>
         
       
         
 	        <li class="MenuItem">
-		        <a href="http://www.nephometrics.ch/contact/">Contact</a>
+		        <a href="http://localhost:1313/contact/">Contact</a>
            </li>
         
       
@@ -75,7 +75,7 @@
     
 
     <p>
-      <a href="http://www.nephometrics.ch/2019/06/spark-many-ways-to-do-the-same-thing/">Published June 17, 2019</a>
+      <a href="http://localhost:1313/2019/06/spark-many-ways-to-do-the-same-thing/">Published June 17, 2019</a>
     </p>
     <p>
       <p>Spark lets you do things in many different ways &ndash; Scala, Python, or Java;
@@ -181,28 +181,28 @@ afraid I have become used to that.</p>
 <h4 id="performance">Performance</h4>
 <p>Here is a table with the running times I measured (in minutes):</p>
 <table>
-  <thead>
-      <tr>
-          <th></th>
-          <th>Scala</th>
-          <th>Python RDD</th>
-          <th>Python DF</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>json</td>
-          <td>4.4</td>
-          <td>8.4</td>
-          <td>5.4</td>
-      </tr>
-      <tr>
-          <td>parquet</td>
-          <td>3.9</td>
-          <td>7.2</td>
-          <td>4.2</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th></th>
+					<th>Scala</th>
+					<th>Python RDD</th>
+					<th>Python DF</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>json</td>
+					<td>4.4</td>
+					<td>8.4</td>
+					<td>5.4</td>
+			</tr>
+			<tr>
+					<td>parquet</td>
+					<td>3.9</td>
+					<td>7.2</td>
+					<td>4.2</td>
+			</tr>
+	</tbody>
 </table>
 <p>I used the spark history server to evaluate overall running times and to
 investigate where time was being spent. Of course the actual numbers are
@@ -314,7 +314,7 @@ Dataframes.</p>
 </span></span></span><span class="line"><span class="cl"><span class="c1">// cast &#39;year&#39; to an Int because I didn&#39;t want it to be a Long. With the
 </span></span></span><span class="line"><span class="cl"><span class="c1">// json data this can be done by specifying a schema to the read; with
 </span></span></span><span class="line"><span class="cl"><span class="c1">// parquet, I use a `withColumn` statement.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">val</span> <span class="n">publications</span> <span class="k">=</span> <span class="n">baseData</span><span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="s">&#34;id&#34;</span><span class="o">,</span> <span class="s">&#34;references&#34;</span><span class="o">,</span> <span class="s">&#34;year&#34;</span><span class="o">)</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">val</span> <span class="n">publications</span> <span class="k">=</span> <span class="n">baseData</span><span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="s">&#34;id&#34;</span><span class="o">,</span> <span class="s">&#34;references&#34;</span><span class="o">,</span> <span class="s">&#34;year&#34;</span><span class="o">)</span>
 </span></span><span class="line"><span class="cl">  <span class="o">.</span><span class="n">filter</span><span class="o">(</span><span class="s">&#34;references is not NULL&#34;</span><span class="o">).</span><span class="n">as</span><span class="o">[</span><span class="kt">BasePublication</span><span class="o">]</span></span></span></code></pre></div>
 <p>I use a case class for the publication data I extract from the raw source
 because why not &ndash; it adds a small amount of readability and self-documentation.</p>
@@ -454,7 +454,7 @@ pairsToArray function to each row).</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="line"><span class="cl"><span class="c1">// Map publication id to a list of citation counts by age.
 </span></span></span><span class="line"><span class="cl"><span class="c1">// The ith entry in the history is the number of citations i years after
 </span></span></span><span class="line"><span class="cl"><span class="c1">// publication.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">case</span> <span class="k">class</span> <span class="nc">CitationHistory</span><span class="o">(</span><span class="n">id</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">history</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">Int</span><span class="o">])</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">case</span> <span class="k">class</span> <span class="nc">CitationHistory</span><span class="o">(</span><span class="n">id</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">history</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">Int</span><span class="o">])</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">val</span> <span class="n">tmp</span> <span class="k">=</span> <span class="n">idAgeCount</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">row</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">row</span><span class="o">.</span><span class="n">id</span><span class="o">,</span> <span class="n">row</span><span class="o">.</span><span class="n">count</span> <span class="k">match</span> <span class="o">{</span>
 </span></span><span class="line"><span class="cl">      <span class="k">case</span> <span class="nc">Some</span><span class="o">(</span><span class="n">x</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nc">Array</span><span class="o">[</span><span class="kt">Tuple2</span><span class="o">[</span><span class="kt">Int</span>, <span class="kt">Int</span><span class="o">]]((</span><span class="n">row</span><span class="o">.</span><span class="n">age</span> <span class="n">getOrElse</span> <span class="mi">0</span><span class="o">,</span> <span class="n">x</span><span class="o">))</span>

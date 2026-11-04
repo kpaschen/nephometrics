@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html><head>
+<html><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <title>Mapping your Cloud Assets using Google&#39;s APIs in Go</title>
   
   <meta charset="utf-8">
@@ -15,15 +15,15 @@
 <ul class="LanguageRow">
   
  <li class="LanguageItem">
-	 <a href="http://www.nephometrics.ch/">EN</a>
+	 <a href="http://localhost:1313/">EN</a>
     </li>
   
  <li class="LanguageItem">
-	 <a href="http://www.nephometrics.ch/fr/">FR</a>
+	 <a href="http://localhost:1313/fr/">FR</a>
     </li>
   
  <li class="LanguageItem">
-	 <a href="http://www.nephometrics.ch/de/">DE</a>
+	 <a href="http://localhost:1313/de/">DE</a>
     </li>
   
 </ul>
@@ -43,25 +43,25 @@
       
         
 	        <li class="MenuItem">
-		        <a href="http://www.nephometrics.ch/">Home</a>
+		        <a href="http://localhost:1313/">Home</a>
            </li>
         
       
         
 	        <li class="MenuItem">
-		        <a href="http://www.nephometrics.ch/blog/">Blog</a>
+		        <a href="http://localhost:1313/blog/">Blog</a>
            </li>
         
       
         
 	        <li class="MenuItem">
-		        <a href="http://www.nephometrics.ch/skills/">Skills</a>
+		        <a href="http://localhost:1313/skills/">Skills</a>
            </li>
         
       
         
 	        <li class="MenuItem">
-		        <a href="http://www.nephometrics.ch/contact/">Contact</a>
+		        <a href="http://localhost:1313/contact/">Contact</a>
            </li>
         
       
@@ -75,7 +75,7 @@
     
 
     <p>
-      <a href="http://www.nephometrics.ch/2021/02/mapping-your-cloud-assets-using-googles-apis-in-go/">Published February 11, 2021</a>
+      <a href="http://localhost:1313/2021/02/mapping-your-cloud-assets-using-googles-apis-in-go/">Published February 11, 2021</a>
     </p>
     <p>
       <p>If you&rsquo;ve used Google&rsquo;s Cloud, you&rsquo;ve probably encountered their commandline tool. While you can achieve many things using just the
@@ -134,7 +134,7 @@ only be using <code>v1</code> features here.</p>
 existing ones, but I am only looking at retrieval for now.</p>
 <h3 id="google-apis-client-library-computev1">Google APIs Client Library: compute/v1</h3>
 <p>Import the library like this:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;google.golang.org/api/compute/v1&#34;</span></span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="s">&#34;google.golang.org/api/compute/v1&#34;</span></span></span></code></pre></div>
 <p>You will also need to import &ldquo;context&rdquo; and &ldquo;fmt&rdquo;.</p>
 <p>In order to find the functions and how to call them, I browsed the generated code for the compute API. It contains several service declarations.
 One of them is <code>MachineTypesService</code>; I looked for functions declared on
@@ -168,57 +168,57 @@ in which zone, but I&rsquo;ll take what I can get. You can actually get lists
 of Regions and Zones from the Compute API if you want to get all the
 machine type/zone combinations.</p>
 <p>In order to call an API (API flavour), here is what I do:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">ListMachineTypes</span><span class="p">(</span><span class="nx">project</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">zone</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">ctx</span> <span class="o">:=</span> <span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">client</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">compute</span><span class="p">.</span><span class="nf">NewService</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">err</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="kd">const</span> <span class="nx">pageSize</span> <span class="kt">int64</span> <span class="p">=</span> <span class="mi">100</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">resp</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">MachineTypes</span><span class="p">.</span><span class="nf">List</span><span class="p">(</span><span class="nx">project</span><span class="p">,</span> <span class="nx">zone</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">                     <span class="p">.</span><span class="nf">MaxResults</span><span class="p">(</span><span class="nx">pageSize</span><span class="p">).</span><span class="nf">Do</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">err</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">machineType</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">Items</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Found a machine type: %+v\n&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">               <span class="nx">machineType</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="kc">nil</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="nf">ListMachineTypes</span><span class="p">(</span><span class="nx">project</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">zone</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">client</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">compute</span><span class="p">.</span><span class="nf">NewService</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">pageSize</span><span class="w"> </span><span class="kt">int64</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">100</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">resp</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">MachineTypes</span><span class="p">.</span><span class="nf">List</span><span class="p">(</span><span class="nx">project</span><span class="p">,</span><span class="w"> </span><span class="nx">zone</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                     </span><span class="p">.</span><span class="nf">MaxResults</span><span class="p">(</span><span class="nx">pageSize</span><span class="p">).</span><span class="nf">Do</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">machineType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">resp</span><span class="p">.</span><span class="nx">Items</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Found a machine type: %+v\n&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">               </span><span class="nx">machineType</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
 <p>About the <code>pageSize</code> constant: the API can return paginated results,
 which is useful when there are a lot of them. Machine types are not so bad,
 but if you query the Monitoring API for metrics, you can get a lot.</p>
 <p>With code like the above, you will only get the first 100 results. If you want
 all of them, you need to look at the <code>pageToken</code> contained in the response.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">ListMachineTypes</span><span class="p">(</span><span class="nx">project</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">zone</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">ctx</span> <span class="o">:=</span> <span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">client</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">compute</span><span class="p">.</span><span class="nf">NewService</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">err</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="kd">const</span> <span class="nx">pageSize</span> <span class="kt">int64</span> <span class="p">=</span> <span class="mi">100</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">nextPageToken</span> <span class="o">:=</span> <span class="s">&#34;&#34;</span>
-</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">resp</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">MachineTypes</span><span class="p">.</span><span class="nf">List</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">                        <span class="nx">project</span><span class="p">,</span> <span class="nx">zone</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	               <span class="p">.</span><span class="nf">MaxResults</span><span class="p">(</span><span class="nx">pageSize</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	               <span class="p">.</span><span class="nf">PageToken</span><span class="p">(</span><span class="nx">nextPageToken</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">		       <span class="p">.</span><span class="nf">Do</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="nx">err</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">machineType</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">Items</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Found a machine type: %+v\n&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">		 <span class="nx">machineType</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">      <span class="p">}</span>
-</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">NextPageToken</span> <span class="o">==</span> <span class="s">&#34;&#34;</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">break</span>
-</span></span><span class="line"><span class="cl">      <span class="p">}</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">nextPageToken</span> <span class="p">=</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">NextPageToken</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="kc">nil</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="nf">ListMachineTypes</span><span class="p">(</span><span class="nx">project</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">zone</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">client</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">compute</span><span class="p">.</span><span class="nf">NewService</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">pageSize</span><span class="w"> </span><span class="kt">int64</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">100</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">nextPageToken</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&#34;&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">resp</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">MachineTypes</span><span class="p">.</span><span class="nf">List</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                        </span><span class="nx">project</span><span class="p">,</span><span class="w"> </span><span class="nx">zone</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	               </span><span class="p">.</span><span class="nf">MaxResults</span><span class="p">(</span><span class="nx">pageSize</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	               </span><span class="p">.</span><span class="nf">PageToken</span><span class="p">(</span><span class="nx">nextPageToken</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		       </span><span class="p">.</span><span class="nf">Do</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">machineType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">resp</span><span class="p">.</span><span class="nx">Items</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Found a machine type: %+v\n&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		 </span><span class="nx">machineType</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="nx">resp</span><span class="p">.</span><span class="nx">NextPageToken</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&#34;&#34;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">break</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nx">nextPageToken</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">resp</span><span class="p">.</span><span class="nx">NextPageToken</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
 <p>The generated code lets you see the return types for all API calls.
 They are protocol buffers (of course). The documentation in the code
 is quite good, but you can also just print some or all of the items
@@ -268,39 +268,39 @@ generated source code on github.</p>
 I also hardcoded the metric and resource type parameters. I found these
 parameters via the Metrics Explorer; you can obtain lists via the monitoring
 API, but there are a lot of metrics and resource types to scroll through.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">GetMetricDescriptors</span><span class="p">(</span><span class="nx">project</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">ctx</span> <span class="o">:=</span> <span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">client</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">monitoring</span><span class="p">.</span><span class="nf">NewMetricClient</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">nextPageToken</span> <span class="o">:=</span> <span class="s">&#34;&#34;</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">filter</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">`metric.type=starts_with(&#34;%s&#34;)
-</span></span></span><span class="line"><span class="cl"><span class="s">	AND resource.type=starts_with(&#34;%s&#34;)`</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">	<span class="s">&#34;gce_instance&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">	<span class="s">&#34;compute.googleapis.com/instance/uptime&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">req</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">pb</span><span class="p">.</span><span class="nx">ListMetricDescriptorsRequest</span><span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">Name</span><span class="p">:</span> <span class="nx">project</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">Filter</span><span class="p">:</span> <span class="nx">filter</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">PageSize</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">PageToken</span><span class="p">:</span> <span class="nx">nextPageToken</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">it</span> <span class="o">:=</span> <span class="nx">client</span><span class="p">.</span><span class="nf">ListMetricDescriptors</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">req</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">resp</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">it</span><span class="p">.</span><span class="nf">Next</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="nx">err</span> <span class="o">==</span> <span class="nx">iterator</span><span class="p">.</span><span class="nf">Done</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">break</span>
-</span></span><span class="line"><span class="cl">      <span class="p">}</span>
-</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">err</span>
-</span></span><span class="line"><span class="cl">      <span class="p">}</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;response: %+v\n&#34;</span><span class="p">,</span> <span class="nx">resp</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="nx">it</span><span class="p">.</span><span class="nf">PageInfo</span><span class="p">().</span><span class="nx">Token</span> <span class="o">==</span> <span class="s">&#34;&#34;</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">break</span>
-</span></span><span class="line"><span class="cl">      <span class="p">}</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">nextPageToken</span> <span class="p">=</span> <span class="nx">it</span><span class="p">.</span><span class="nf">PageInfo</span><span class="p">().</span><span class="nx">Token</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>	 
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="kc">nil</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="nf">GetMetricDescriptors</span><span class="p">(</span><span class="nx">project</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">client</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">monitoring</span><span class="p">.</span><span class="nf">NewMetricClient</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">nextPageToken</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&#34;&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">filter</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">`metric.type=starts_with(&#34;%s&#34;)
+</span></span></span><span class="line"><span class="cl"><span class="s">	AND resource.type=starts_with(&#34;%s&#34;)`</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="s">&#34;gce_instance&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="s">&#34;compute.googleapis.com/instance/uptime&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">req</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">pb</span><span class="p">.</span><span class="nx">ListMetricDescriptorsRequest</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="nx">project</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">Filter</span><span class="p">:</span><span class="w"> </span><span class="nx">filter</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">PageSize</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">PageToken</span><span class="p">:</span><span class="w"> </span><span class="nx">nextPageToken</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">it</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nf">ListMetricDescriptors</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nx">resp</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">it</span><span class="p">.</span><span class="nf">Next</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">iterator</span><span class="p">.</span><span class="nf">Done</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">break</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;response: %+v\n&#34;</span><span class="p">,</span><span class="w"> </span><span class="nx">resp</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="nx">it</span><span class="p">.</span><span class="nf">PageInfo</span><span class="p">().</span><span class="nx">Token</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&#34;&#34;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">break</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nx">nextPageToken</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">it</span><span class="p">.</span><span class="nf">PageInfo</span><span class="p">().</span><span class="nx">Token</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">	 
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
 <p>This finds two metrics, <code>uptime</code> and <code>uptime_total</code> because of the
 <code>starts_with</code> clause in the Filter. It retrieves metadata about these
 metrics. It looks like this (I added linebreaks to make it more readable):</p>
@@ -335,41 +335,41 @@ the Metrics Explorer until I had data that looked useful, then fished
 likely-looking parameters out of the URL.</p>
 <p><code>mpb</code> is for the monitoringpb module. You will also need to import
 durationpb and timestamppb.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="c1">// Set up a TimeInterval for the past day (86400 seconds)</span>
-</span></span><span class="line"><span class="cl"><span class="nx">now</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">Unix</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="nx">interval</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">mb</span><span class="p">.</span><span class="nx">TimeInterval</span><span class="p">{</span>
-</span></span><span class="line"><span class="cl">             <span class="nx">EndTime</span><span class="p">:</span> <span class="o">&amp;</span><span class="nx">timestamppb</span><span class="p">.</span><span class="nx">Timestamp</span><span class="p">{</span>
-</span></span><span class="line"><span class="cl">               <span class="nx">Seconds</span><span class="p">:</span> <span class="nx">now</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">             <span class="p">},</span>
-</span></span><span class="line"><span class="cl">             <span class="nx">StartTime</span><span class="p">:</span> <span class="o">&amp;</span><span class="nx">timestamppb</span><span class="p">.</span><span class="nx">Timestamp</span><span class="p">{</span>
-</span></span><span class="line"><span class="cl">               <span class="nx">Seconds</span><span class="p">:</span> <span class="nx">now</span> <span class="o">-</span> <span class="mi">86400</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">             <span class="p">},</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// Create filter based on metric type and resource type</span>
-</span></span><span class="line"><span class="cl"><span class="nx">filter</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">  <span class="s">`metric.type=&#34;%s&#34; AND
-</span></span></span><span class="line"><span class="cl"><span class="s">   resource.type=&#34;%s&#34;`</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">   <span class="s">&#34;gce_instance&#34;</span><span class="p">,</span> <span class="s">&#34;uptime_total&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">groupBy</span> <span class="o">:=</span> <span class="s">&#34;metric.system_labels.region&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// Make the request proto</span>
-</span></span><span class="line"><span class="cl"><span class="nx">req</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">mpb</span><span class="p">.</span><span class="nx">ListTimeSeriesRequest</span><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">Name</span><span class="p">:</span>     <span class="nx">projectID</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">Filter</span><span class="p">:</span>   <span class="nx">filter</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">Interval</span><span class="p">:</span> <span class="nx">interval</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">View</span><span class="p">:</span>     <span class="nx">mpb</span><span class="p">.</span><span class="nx">ListTimeSeriesRequest_FULL</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">Aggregation</span><span class="p">:</span> <span class="o">&amp;</span><span class="nx">mpb</span><span class="p">.</span><span class="nx">Aggregation</span><span class="p">{</span>
-</span></span><span class="line"><span class="cl">   <span class="nx">CrossSeriesReducer</span><span class="p">:</span> <span class="nx">mpb</span><span class="p">.</span><span class="nx">Aggregation_REDUCE_SUM</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">   <span class="nx">PerSeriesAligner</span><span class="p">:</span> <span class="nx">mpb</span><span class="p">.</span><span class="nx">Aggregation_ALIGN_MEAN</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">   <span class="nx">AlignmentPeriod</span><span class="p">:</span> <span class="o">&amp;</span><span class="nx">durationpb</span><span class="p">.</span><span class="nx">Duration</span><span class="p">{</span> <span class="nx">Seconds</span><span class="p">:</span> <span class="mi">600</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">   <span class="nx">GroupByFields</span><span class="p">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="nx">groupBy</span><span class="p">},</span>
-</span></span><span class="line"><span class="cl">  <span class="p">},</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// Send the request:</span>
-</span></span><span class="line"><span class="cl"><span class="nx">it</span> <span class="o">:=</span> <span class="nx">client</span><span class="p">.</span><span class="nf">ListTimeSeries</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">req</span><span class="p">)</span></span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="c1">// Set up a TimeInterval for the past day (86400 seconds)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nx">now</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">Unix</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nx">interval</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">mb</span><span class="p">.</span><span class="nx">TimeInterval</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">             </span><span class="nx">EndTime</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">timestamppb</span><span class="p">.</span><span class="nx">Timestamp</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">               </span><span class="nx">Seconds</span><span class="p">:</span><span class="w"> </span><span class="nx">now</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">             </span><span class="p">},</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">             </span><span class="nx">StartTime</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">timestamppb</span><span class="p">.</span><span class="nx">Timestamp</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">               </span><span class="nx">Seconds</span><span class="p">:</span><span class="w"> </span><span class="nx">now</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">86400</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">             </span><span class="p">},</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c1">// Create filter based on metric type and resource type</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nx">filter</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="s">`metric.type=&#34;%s&#34; AND
+</span></span></span><span class="line"><span class="cl"><span class="s">   resource.type=&#34;%s&#34;`</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="s">&#34;gce_instance&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;uptime_total&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nx">groupBy</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&#34;metric.system_labels.region&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c1">// Make the request proto</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nx">req</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">mpb</span><span class="p">.</span><span class="nx">ListTimeSeriesRequest</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">Name</span><span class="p">:</span><span class="w">     </span><span class="nx">projectID</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">Filter</span><span class="p">:</span><span class="w">   </span><span class="nx">filter</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">Interval</span><span class="p">:</span><span class="w"> </span><span class="nx">interval</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">View</span><span class="p">:</span><span class="w">     </span><span class="nx">mpb</span><span class="p">.</span><span class="nx">ListTimeSeriesRequest_FULL</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">Aggregation</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">mpb</span><span class="p">.</span><span class="nx">Aggregation</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="nx">CrossSeriesReducer</span><span class="p">:</span><span class="w"> </span><span class="nx">mpb</span><span class="p">.</span><span class="nx">Aggregation_REDUCE_SUM</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="nx">PerSeriesAligner</span><span class="p">:</span><span class="w"> </span><span class="nx">mpb</span><span class="p">.</span><span class="nx">Aggregation_ALIGN_MEAN</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="nx">AlignmentPeriod</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">durationpb</span><span class="p">.</span><span class="nx">Duration</span><span class="p">{</span><span class="w"> </span><span class="nx">Seconds</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="w"> </span><span class="p">},</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="nx">GroupByFields</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="nx">groupBy</span><span class="p">},</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">},</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c1">// Send the request:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nx">it</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nf">ListTimeSeries</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">)</span></span></span></code></pre></div>
 <p>The time series request is quite difficult to fill in correctly,
 especially if you use aggregation (and you usually have to aggregate
 somehow). I played with the Metrics Explorer to
@@ -451,19 +451,19 @@ flavour. I&rsquo;m no great Go expert, so I cannot really tell. I found the
 first flavour I wrote about (the Client APIs one) easier to use because you don&rsquo;t
 need to import an extra protocol buffer and the iterator module.</p>
 <p>The syntax for specifying the request in the API flavour</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl">  <span class="nx">resp</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">MachineTypes</span><span class="p">.</span><span class="nf">List</span><span class="p">(</span><span class="nx">project</span><span class="p">,</span> <span class="nx">zone</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="p">.</span><span class="nf">MaxResults</span><span class="p">(</span><span class="nx">pageSize</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="p">.</span><span class="nf">PageToken</span><span class="p">(</span><span class="nx">nextPageToken</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="p">.</span><span class="nf">Do</span><span class="p">()</span></span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="w">  </span><span class="nx">resp</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">MachineTypes</span><span class="p">.</span><span class="nf">List</span><span class="p">(</span><span class="nx">project</span><span class="p">,</span><span class="w"> </span><span class="nx">zone</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">.</span><span class="nf">MaxResults</span><span class="p">(</span><span class="nx">pageSize</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">.</span><span class="nf">PageToken</span><span class="p">(</span><span class="nx">nextPageToken</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">.</span><span class="nf">Do</span><span class="p">()</span></span></span></code></pre></div>
 <p>feels a little Java-y compared to the Cloud flavour:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl">  <span class="nx">req</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">pb</span><span class="p">.</span><span class="nx">ListMetricDescriptorsRequest</span><span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">Name</span><span class="p">:</span> <span class="nx">project</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">Filter</span><span class="p">:</span> <span class="nx">filter</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">PageSize</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">PageToken</span><span class="p">:</span> <span class="nx">nextPageToken</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span></span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="w">  </span><span class="nx">req</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">pb</span><span class="p">.</span><span class="nx">ListMetricDescriptorsRequest</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="nx">project</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">Filter</span><span class="p">:</span><span class="w"> </span><span class="nx">filter</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">PageSize</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">PageToken</span><span class="p">:</span><span class="w"> </span><span class="nx">nextPageToken</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span></span></span></code></pre></div>
 <p>On the other hand the API flavour has this:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl">  <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">machineType</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">Items</span></span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">machineType</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">resp</span><span class="p">.</span><span class="nx">Items</span></span></span></code></pre></div>
 <p>compared to the explicit iterator syntax in the GCloud flavour, and I
 find the first more natural in Go.</p>
 <p>On the whole though, I don&rsquo;t particularly mind which flavour I use; I am glad

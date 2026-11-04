@@ -3,7 +3,7 @@
 <ul class="LanguageRow">
   {{ range $.Site.Home.AllTranslations }}
  <li class="LanguageItem">
-	 <a href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>
+	 <a href="{{ .Permalink }}">{{ .Language.Label }}</a>
     </li>
   {{ end }}
 </ul>
