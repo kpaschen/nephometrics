@@ -1,22 +1,55 @@
 ---
 title: "Time series, lots of time series (and how to generate them)"
-date: 2025-08-15T11:39:21+02:00
+date: 2026-11-04T11:39:21+02:00
 draft: true
 ---
 
-My current project is a correlation analysis tool for observability time series. I've written some [code](https://codeberg.org/kpaschen/corrjoin) based on a [paper](todo:doi); my system receives time series through the Prometheus remote write protocol, computes Pearson correlation coefficients on sliding time windows, and publishes the results in otel format. I have been looking at the results and experimenting with different ways of analysing and visualising them, but that will be a topic for a different blog post. Today, I just want to write about how to make sure my system gets a lot of interesting time series to process.
+I've been working on a correlation analysis tool for observability time series.
+I've written some [code](https://codeberg.org/kpaschen/corrjoin) based on a [paper](https://dl.acm.org/doi/10.1145/3626722).
+My system receives time series through the Prometheus remote write protocol, computes Pearson correlation coefficients on sliding time windows, and publishes the results in otel format. I have been looking at the results and experimenting with different ways of analysing and visualising them, but that will be a topic for a different blog post. Today, I just want to write about how to make sure my system gets a lot of interesting time series to process.
 
 The paper authors tested their implementation with up to 5000 time series. They found it difficult to get their hands on large time series data sets; I had no idea that was a problem for people, so this blog post is also a pointer for them---here is how you can generate a lot of time series data, programmatically!
 
-### Making time series
+### Why does correlation matter?
 
-What does it mean for time series to be correlated and why does it matter
+Consider the various metrics that show a container's memory usage. The picture below shows three of them, all for the
+same container. I have chosen `container_memory_rss`, `container_memory_working_set_bytes` and
+`container_memory_usage_bytes`. These all come from cAdvisor and they measure slightly different things,
+ but for a lot of applications, they will 
+move mostly parallel to each other. The algorithm I implemented will find that they are strongly correlated
+with each other.
 
-TODO: picture of two correlated time series
+<img src="../../../images/memoryts-dark.jpg"
+ alt="Three time series recording memory usage of the same container"
+/>
+
+There are many reasons why time series are correlated. Some of them measure the same underlying phenomenon; some
+measure different things, but the things they measure are related to each other. For example, the memory usage of
+a web application may be correlated with the number of incoming requests. That's a direct causal relationship. 
+Sometimes, time series are correlated because they are related to a common underlying cause. This is the case
+with the memory metrics here. 
+
+```
+container_memory_rss = total_rss
+
+container_memory_usage_bytes = total_rss + total_cache + some overhead
+
+container_memory_working_set_bytes = container_memory_usage_bytes - total_inactive_file
+```
+
+You can use the information that two time series are usually correlated to derive information about
+systems interactions. This can be useful in poorly documented or very complex systems.
+
+The other interesting insight you can get from correlation analysis is when time correlations start or stop.
+For example, when `container_memory_rss` and `container_memory_working_set_bytes` stop being correlated,
+usually some i/o is happening: the main difference between these two metrics is that the working set includes
+the active file cache, and rss doesn't. 
+
+### Why do I need a lot of time series?
 
 The algorithm takes the values of time series within a time window, normalizes them, and then applies some quick checks to identify pairs of time series
 that might be correlated. It computes the Pearson coefficient on those pairs. The overall speed of the system depends mainly on the number of these
- pairs. I want to stress test my implementation to make sure it can deal with large Kubernetes clusters, which can have hundreds of thousands or even millions of time series; the easiest way to do this would be to set up such a cluster, but they are expensive to run; the second best way is to create realistic test data.
+ pairs. I want to stress test my implementation to make sure it can deal with large Kubernetes clusters, which can have hundreds of thousands or even millions of time series; the easiest way to do this would be to set up such a cluster, but they are expensive to run. The second best way is to create realistic test data.
 
 It is easy to create time series; just write a service that exports as many metrics as you want and get Prometheus to scrape it; or write a bunch of PromQL rules to generate more data from your existing time series. If you're mainly concerned with stress testing ingestion or storage, this is very good, but the correlation algorithm does not get stressed by random or constant time series; I need data that reflects more closely what happens in a real cluster. How do I get that, without the expense of actually running such a cluster?
 

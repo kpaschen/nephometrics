@@ -10,15 +10,22 @@
 		
 		
 		
-			<lastBuildDate>Fri, 15 Aug 2025 11:39:21 +0200</lastBuildDate>
+			<lastBuildDate>Wed, 18 Nov 2026 08:53:38 +0100</lastBuildDate>
 		
 			<atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
 			<item>
+				<title>Correlating Time Series at Scale</title>
+				<link>http://localhost:1313/2026/11/correlating-time-series-at-scale/</link>
+				<pubDate>Wed, 18 Nov 2026 08:53:38 +0100</pubDate>
+				<guid>http://localhost:1313/2026/11/correlating-time-series-at-scale/</guid>
+				<description>&lt;p&gt;Wouldn&amp;rsquo;t it be nice if you could see pairwise correlation information for all your observability time series? What&amp;rsquo;s correlated with what, which time series have become correlated or uncorrelated? I think this would be useful, both for troubleshooting and for discovering dependencies in complex architectures. Request latency against one endpoint just spiked and became correlated with database query latency? That sounds worth knowing.&lt;/p&gt;</description>
+			</item>
+			<item>
 				<title>Time series, lots of time series (and how to generate them)</title>
-				<link>http://localhost:1313/2025/08/time-series-lots-of-time-series-and-how-to-generate-them/</link>
-				<pubDate>Fri, 15 Aug 2025 11:39:21 +0200</pubDate>
-				<guid>http://localhost:1313/2025/08/time-series-lots-of-time-series-and-how-to-generate-them/</guid>
-				<description>&lt;p&gt;My current project is a correlation analysis tool for observability time series. I&amp;rsquo;ve written some &lt;a href=&#34;https://codeberg.org/kpaschen/corrjoin&#34;&gt;code&lt;/a&gt; based on a &lt;a href=&#34;#ZgotmplZ&#34;&gt;paper&lt;/a&gt;; my system receives time series through the Prometheus remote write protocol, computes Pearson correlation coefficients on sliding time windows, and publishes the results in otel format. I have been looking at the results and experimenting with different ways of analysing and visualising them, but that will be a topic for a different blog post. Today, I just want to write about how to make sure my system gets a lot of interesting time series to process.&lt;/p&gt;</description>
+				<link>http://localhost:1313/2026/11/time-series-lots-of-time-series-and-how-to-generate-them/</link>
+				<pubDate>Wed, 04 Nov 2026 11:39:21 +0200</pubDate>
+				<guid>http://localhost:1313/2026/11/time-series-lots-of-time-series-and-how-to-generate-them/</guid>
+				<description>&lt;p&gt;I&amp;rsquo;ve been working on a correlation analysis tool for observability time series.&#xA;I&amp;rsquo;ve written some &lt;a href=&#34;https://codeberg.org/kpaschen/corrjoin&#34;&gt;code&lt;/a&gt; based on a &lt;a href=&#34;https://dl.acm.org/doi/10.1145/3626722&#34;&gt;paper&lt;/a&gt;.&#xA;My system receives time series through the Prometheus remote write protocol, computes Pearson correlation coefficients on sliding time windows, and publishes the results in otel format. I have been looking at the results and experimenting with different ways of analysing and visualising them, but that will be a topic for a different blog post. Today, I just want to write about how to make sure my system gets a lot of interesting time series to process.&lt;/p&gt;</description>
 			</item>
 			<item>
 				<title>Running Mattermost in AWS: How much will it cost?</title>

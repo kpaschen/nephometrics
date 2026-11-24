@@ -95,13 +95,13 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="de"
-                href="http://localhost:1313/de/tags/"
+                hreflang="fr"
+                href="http://localhost:1313/fr/tags/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="fr"
-                href="http://localhost:1313/fr/tags/"
+                hreflang="de"
+                href="http://localhost:1313/de/tags/"
                 />
   </url>
 </urlset>
