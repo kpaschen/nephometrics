@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
 		<title>Tags on www.paschen.ch</title>
-		<link>http://localhost:1313/tags/</link>
+		<link>http://www.nephometrics.ch/tags/</link>
 		<description>Recent content in Tags on www.paschen.ch</description>
 		<generator>Hugo</generator>
 		<language>en</language>
@@ -12,208 +12,208 @@
 		
 			<lastBuildDate>Tue, 09 May 2023 11:55:04 +0100</lastBuildDate>
 		
-			<atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+			<atom:link href="http://www.nephometrics.ch/tags/index.xml" rel="self" type="application/rss+xml" />
 			<item>
 				<title>Aws</title>
-				<link>http://localhost:1313/tags/aws/</link>
+				<link>http://www.nephometrics.ch/tags/aws/</link>
 				<pubDate>Tue, 09 May 2023 11:55:04 +0100</pubDate>
-				<guid>http://localhost:1313/tags/aws/</guid>
+				<guid>http://www.nephometrics.ch/tags/aws/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Cost</title>
-				<link>http://localhost:1313/tags/cost/</link>
+				<link>http://www.nephometrics.ch/tags/cost/</link>
 				<pubDate>Tue, 09 May 2023 11:55:04 +0100</pubDate>
-				<guid>http://localhost:1313/tags/cost/</guid>
+				<guid>http://www.nephometrics.ch/tags/cost/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Mattermost</title>
-				<link>http://localhost:1313/tags/mattermost/</link>
+				<link>http://www.nephometrics.ch/tags/mattermost/</link>
 				<pubDate>Tue, 09 May 2023 11:55:04 +0100</pubDate>
-				<guid>http://localhost:1313/tags/mattermost/</guid>
+				<guid>http://www.nephometrics.ch/tags/mattermost/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Resources</title>
-				<link>http://localhost:1313/tags/resources/</link>
+				<link>http://www.nephometrics.ch/tags/resources/</link>
 				<pubDate>Tue, 09 May 2023 11:55:04 +0100</pubDate>
-				<guid>http://localhost:1313/tags/resources/</guid>
+				<guid>http://www.nephometrics.ch/tags/resources/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Billing</title>
-				<link>http://localhost:1313/tags/billing/</link>
+				<link>http://www.nephometrics.ch/tags/billing/</link>
 				<pubDate>Thu, 18 Mar 2021 13:46:20 +0100</pubDate>
-				<guid>http://localhost:1313/tags/billing/</guid>
+				<guid>http://www.nephometrics.ch/tags/billing/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Cloud Billing</title>
-				<link>http://localhost:1313/tags/cloud-billing/</link>
+				<link>http://www.nephometrics.ch/tags/cloud-billing/</link>
 				<pubDate>Thu, 18 Mar 2021 13:46:20 +0100</pubDate>
-				<guid>http://localhost:1313/tags/cloud-billing/</guid>
+				<guid>http://www.nephometrics.ch/tags/cloud-billing/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Gcloud</title>
-				<link>http://localhost:1313/tags/gcloud/</link>
+				<link>http://www.nephometrics.ch/tags/gcloud/</link>
 				<pubDate>Thu, 18 Mar 2021 13:46:20 +0100</pubDate>
-				<guid>http://localhost:1313/tags/gcloud/</guid>
+				<guid>http://www.nephometrics.ch/tags/gcloud/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Matching SKUs to Resources</title>
-				<link>http://localhost:1313/tags/matching-skus-to-resources/</link>
+				<link>http://www.nephometrics.ch/tags/matching-skus-to-resources/</link>
 				<pubDate>Thu, 18 Mar 2021 13:46:20 +0100</pubDate>
-				<guid>http://localhost:1313/tags/matching-skus-to-resources/</guid>
+				<guid>http://www.nephometrics.ch/tags/matching-skus-to-resources/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Resource Estimation</title>
-				<link>http://localhost:1313/tags/resource-estimation/</link>
+				<link>http://www.nephometrics.ch/tags/resource-estimation/</link>
 				<pubDate>Thu, 18 Mar 2021 13:46:20 +0100</pubDate>
-				<guid>http://localhost:1313/tags/resource-estimation/</guid>
+				<guid>http://www.nephometrics.ch/tags/resource-estimation/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>SKU</title>
-				<link>http://localhost:1313/tags/sku/</link>
+				<link>http://www.nephometrics.ch/tags/sku/</link>
 				<pubDate>Thu, 18 Mar 2021 13:46:20 +0100</pubDate>
-				<guid>http://localhost:1313/tags/sku/</guid>
+				<guid>http://www.nephometrics.ch/tags/sku/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Gcloud Api</title>
-				<link>http://localhost:1313/tags/gcloud-api/</link>
+				<link>http://www.nephometrics.ch/tags/gcloud-api/</link>
 				<pubDate>Thu, 11 Feb 2021 16:35:53 +0100</pubDate>
-				<guid>http://localhost:1313/tags/gcloud-api/</guid>
+				<guid>http://www.nephometrics.ch/tags/gcloud-api/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Golang</title>
-				<link>http://localhost:1313/tags/golang/</link>
+				<link>http://www.nephometrics.ch/tags/golang/</link>
 				<pubDate>Thu, 11 Feb 2021 16:35:53 +0100</pubDate>
-				<guid>http://localhost:1313/tags/golang/</guid>
+				<guid>http://www.nephometrics.ch/tags/golang/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Express</title>
-				<link>http://localhost:1313/tags/express/</link>
+				<link>http://www.nephometrics.ch/tags/express/</link>
 				<pubDate>Tue, 23 Jul 2019 12:10:58 +0200</pubDate>
-				<guid>http://localhost:1313/tags/express/</guid>
+				<guid>http://www.nephometrics.ch/tags/express/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Magenta</title>
-				<link>http://localhost:1313/tags/magenta/</link>
+				<link>http://www.nephometrics.ch/tags/magenta/</link>
 				<pubDate>Tue, 23 Jul 2019 12:10:58 +0200</pubDate>
-				<guid>http://localhost:1313/tags/magenta/</guid>
+				<guid>http://www.nephometrics.ch/tags/magenta/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Nodejs</title>
-				<link>http://localhost:1313/tags/nodejs/</link>
+				<link>http://www.nephometrics.ch/tags/nodejs/</link>
 				<pubDate>Tue, 23 Jul 2019 12:10:58 +0200</pubDate>
-				<guid>http://localhost:1313/tags/nodejs/</guid>
+				<guid>http://www.nephometrics.ch/tags/nodejs/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Tensorflow</title>
-				<link>http://localhost:1313/tags/tensorflow/</link>
+				<link>http://www.nephometrics.ch/tags/tensorflow/</link>
 				<pubDate>Wed, 26 Jun 2019 13:43:06 +0200</pubDate>
-				<guid>http://localhost:1313/tags/tensorflow/</guid>
+				<guid>http://www.nephometrics.ch/tags/tensorflow/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Dataframe</title>
-				<link>http://localhost:1313/tags/dataframe/</link>
+				<link>http://www.nephometrics.ch/tags/dataframe/</link>
 				<pubDate>Mon, 17 Jun 2019 16:54:41 +0200</pubDate>
-				<guid>http://localhost:1313/tags/dataframe/</guid>
+				<guid>http://www.nephometrics.ch/tags/dataframe/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Dataset</title>
-				<link>http://localhost:1313/tags/dataset/</link>
+				<link>http://www.nephometrics.ch/tags/dataset/</link>
 				<pubDate>Mon, 17 Jun 2019 16:54:41 +0200</pubDate>
-				<guid>http://localhost:1313/tags/dataset/</guid>
+				<guid>http://www.nephometrics.ch/tags/dataset/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Parquet</title>
-				<link>http://localhost:1313/tags/parquet/</link>
+				<link>http://www.nephometrics.ch/tags/parquet/</link>
 				<pubDate>Mon, 17 Jun 2019 16:54:41 +0200</pubDate>
-				<guid>http://localhost:1313/tags/parquet/</guid>
+				<guid>http://www.nephometrics.ch/tags/parquet/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Rdd</title>
-				<link>http://localhost:1313/tags/rdd/</link>
+				<link>http://www.nephometrics.ch/tags/rdd/</link>
 				<pubDate>Mon, 17 Jun 2019 16:54:41 +0200</pubDate>
-				<guid>http://localhost:1313/tags/rdd/</guid>
+				<guid>http://www.nephometrics.ch/tags/rdd/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Spark</title>
-				<link>http://localhost:1313/tags/spark/</link>
+				<link>http://www.nephometrics.ch/tags/spark/</link>
 				<pubDate>Mon, 17 Jun 2019 16:54:41 +0200</pubDate>
-				<guid>http://localhost:1313/tags/spark/</guid>
+				<guid>http://www.nephometrics.ch/tags/spark/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Scala</title>
-				<link>http://localhost:1313/tags/scala/</link>
+				<link>http://www.nephometrics.ch/tags/scala/</link>
 				<pubDate>Thu, 16 May 2019 12:23:24 +0200</pubDate>
-				<guid>http://localhost:1313/tags/scala/</guid>
+				<guid>http://www.nephometrics.ch/tags/scala/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Unittests</title>
-				<link>http://localhost:1313/tags/unittests/</link>
+				<link>http://www.nephometrics.ch/tags/unittests/</link>
 				<pubDate>Thu, 16 May 2019 12:23:24 +0200</pubDate>
-				<guid>http://localhost:1313/tags/unittests/</guid>
+				<guid>http://www.nephometrics.ch/tags/unittests/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Cmake</title>
-				<link>http://localhost:1313/tags/cmake/</link>
+				<link>http://www.nephometrics.ch/tags/cmake/</link>
 				<pubDate>Tue, 07 May 2019 10:41:44 +0200</pubDate>
-				<guid>http://localhost:1313/tags/cmake/</guid>
+				<guid>http://www.nephometrics.ch/tags/cmake/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Musicocr</title>
-				<link>http://localhost:1313/tags/musicocr/</link>
+				<link>http://www.nephometrics.ch/tags/musicocr/</link>
 				<pubDate>Tue, 07 May 2019 10:41:44 +0200</pubDate>
-				<guid>http://localhost:1313/tags/musicocr/</guid>
+				<guid>http://www.nephometrics.ch/tags/musicocr/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Opencv</title>
-				<link>http://localhost:1313/tags/opencv/</link>
+				<link>http://www.nephometrics.ch/tags/opencv/</link>
 				<pubDate>Tue, 07 May 2019 10:41:44 +0200</pubDate>
-				<guid>http://localhost:1313/tags/opencv/</guid>
+				<guid>http://www.nephometrics.ch/tags/opencv/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Tesseract</title>
-				<link>http://localhost:1313/tags/tesseract/</link>
+				<link>http://www.nephometrics.ch/tags/tesseract/</link>
 				<pubDate>Tue, 07 May 2019 10:41:44 +0200</pubDate>
-				<guid>http://localhost:1313/tags/tesseract/</guid>
+				<guid>http://www.nephometrics.ch/tags/tesseract/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Lilypond</title>
-				<link>http://localhost:1313/tags/lilypond/</link>
+				<link>http://www.nephometrics.ch/tags/lilypond/</link>
 				<pubDate>Wed, 10 Apr 2019 09:47:22 +0200</pubDate>
-				<guid>http://localhost:1313/tags/lilypond/</guid>
+				<guid>http://www.nephometrics.ch/tags/lilypond/</guid>
 				<description></description>
 			</item>
 			<item>
 				<title>Linux</title>
-				<link>http://localhost:1313/tags/linux/</link>
+				<link>http://www.nephometrics.ch/tags/linux/</link>
 				<pubDate>Fri, 22 Mar 2019 09:10:36 +0100</pubDate>
-				<guid>http://localhost:1313/tags/linux/</guid>
+				<guid>http://www.nephometrics.ch/tags/linux/</guid>
 				<description></description>
 			</item>
 	</channel>

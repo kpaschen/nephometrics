@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
 		<title>Musicocr on www.paschen.ch</title>
-		<link>http://localhost:1313/tags/musicocr/</link>
+		<link>http://www.nephometrics.ch/tags/musicocr/</link>
 		<description>Recent content in Musicocr on www.paschen.ch</description>
 		<generator>Hugo</generator>
 		<language>en</language>
@@ -12,19 +12,19 @@
 		
 			<lastBuildDate>Tue, 07 May 2019 10:41:44 +0200</lastBuildDate>
 		
-			<atom:link href="http://localhost:1313/tags/musicocr/index.xml" rel="self" type="application/rss+xml" />
+			<atom:link href="http://www.nephometrics.ch/tags/musicocr/index.xml" rel="self" type="application/rss+xml" />
 			<item>
 				<title>CMake, OpenCV, and Unit tests</title>
-				<link>http://localhost:1313/2019/05/cmake-opencv-and-unit-tests/</link>
+				<link>http://www.nephometrics.ch/2019/05/cmake-opencv-and-unit-tests/</link>
 				<pubDate>Tue, 07 May 2019 10:41:44 +0200</pubDate>
-				<guid>http://localhost:1313/2019/05/cmake-opencv-and-unit-tests/</guid>
+				<guid>http://www.nephometrics.ch/2019/05/cmake-opencv-and-unit-tests/</guid>
 				<description>&lt;p&gt;For my ongoing &lt;a href=&#34;./music-ocr-introducing-the-idea/&#34;&gt;Music OCR hobby project&lt;/a&gt;,&#xA;I use &lt;a href=&#34;https://opencv.org&#34;&gt;OpenCV&lt;/a&gt; and&#xA;C++. For inline text, I&amp;rsquo;ve been experimenting with OpenCV&amp;rsquo;s Tesseract support,&#xA;which relies on the&#xA;&lt;a href=&#34;https://docs.opencv.org/3.4/d7/ddc/classcv_1_1text_1_1OCRTesseract.html&#34;&gt;OCRTesseract class&lt;/a&gt;&#xA;from OpenCV&amp;rsquo;s cv::text package. And of course I want to use unit tests; I chose&#xA;&lt;a href=&#34;https://github.com/google/googletest/blob/master/googletest/docs/primer.md&#34;&gt;Googletest&lt;/a&gt;.&lt;/p&gt;</description>
 			</item>
 			<item>
 				<title>Music OCR: introducing the idea</title>
-				<link>http://localhost:1313/2019/04/music-ocr-introducing-the-idea/</link>
+				<link>http://www.nephometrics.ch/2019/04/music-ocr-introducing-the-idea/</link>
 				<pubDate>Wed, 10 Apr 2019 09:47:22 +0200</pubDate>
-				<guid>http://localhost:1313/2019/04/music-ocr-introducing-the-idea/</guid>
+				<guid>http://www.nephometrics.ch/2019/04/music-ocr-introducing-the-idea/</guid>
 				<description>&lt;p&gt;Sometimes I write my own music. I play the piano (badly), and I&amp;rsquo;ll&#xA;never be a great composer, but I find it interesting to play around&#xA;with melody and chords.&lt;/p&gt;</description>
 			</item>
 	</channel>
