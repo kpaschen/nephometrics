@@ -7,7 +7,9 @@
 
  <link rel="stylesheet" href="../../../css/basic.css"/>
  <link rel="stylesheet" href="../../../css/syntax.css"/>
-  <meta name="google-site-verification" content="yHK1RGH0XqN4iPhXZkdWnaRxqjueVNbqgKQ6jKJ_cc4">
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+ <meta name="google-site-verification" content="yHK1RGH0XqN4iPhXZkdWnaRxqjueVNbqgKQ6jKJ_cc4">
 </head>
 <body>
 	<div class="wrapper"><div class="header">
@@ -139,7 +141,7 @@ to obtain the <code>config.json</code> files for the models separately.</p>
 <p>You need the user&rsquo;s consent to access the microphone:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">navigator</span><span class="p">.</span><span class="nx">mediaDevices</span><span class="p">.</span><span class="nx">getUserMedia</span><span class="p">({</span> <span class="nx">audio</span><span class="o">:</span> <span class="kc">true</span> <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">stream</span> <span class="p">=&gt;</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">// ... do things with the stream
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">});</span></span></span></code></pre></div>
+</span></span></span><span class="line"><span class="cl"><span class="p">});</span></span></span></code></pre></div>
 <p>That&rsquo;s clearly a good thing. Who would want web pages to just access the microphone?
 However, at least in Chrome, navigator.mediaDevices.getUserMedia is usable only if the
 page is served over https or if it comes from localhost. So I got surprised by this

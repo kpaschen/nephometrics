@@ -7,7 +7,9 @@
 
  <link rel="stylesheet" href="../../../css/basic.css"/>
  <link rel="stylesheet" href="../../../css/syntax.css"/>
-  <meta name="google-site-verification" content="yHK1RGH0XqN4iPhXZkdWnaRxqjueVNbqgKQ6jKJ_cc4">
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+ <meta name="google-site-verification" content="yHK1RGH0XqN4iPhXZkdWnaRxqjueVNbqgKQ6jKJ_cc4">
 </head>
 <body>
 	<div class="wrapper"><div class="header">
@@ -170,140 +172,140 @@ We also broke down the request latency by api endpoint because some request late
 </ol>
 <h3 id="load-test-evaluation-1">Load test evaluation</h3>
 <table>
-  <thead>
-      <tr>
-          <th style="text-align: center">Setup</th>
-          <th style="text-align: right">Users</th>
-          <th style="text-align: right">Crash?</th>
-          <th style="text-align: right">CPU load</th>
-          <th style="text-align: right">Timeouts</th>
-          <th style="text-align: right">Server error ratio</th>
-          <th style="text-align: right">GET latency</th>
-          <th style="text-align: right">POST latency</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td style="text-align: center">t2.micro</td>
-          <td style="text-align: right">30</td>
-          <td style="text-align: right">N</td>
-          <td style="text-align: right">6%</td>
-          <td style="text-align: right">0</td>
-          <td style="text-align: right">0.6%</td>
-          <td style="text-align: right">4.1ms</td>
-          <td style="text-align: right">31.9ms</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">t2.micro</td>
-          <td style="text-align: right">50</td>
-          <td style="text-align: right">Y</td>
-          <td style="text-align: right">10%</td>
-          <td style="text-align: right">0</td>
-          <td style="text-align: right">0.5%</td>
-          <td style="text-align: right">2.5ms</td>
-          <td style="text-align: right">30.0ms</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">t2.micro</td>
-          <td style="text-align: right">200</td>
-          <td style="text-align: right">Y</td>
-          <td style="text-align: right">85%</td>
-          <td style="text-align: right">50</td>
-          <td style="text-align: right">0.4%</td>
-          <td style="text-align: right">10.4ms</td>
-          <td style="text-align: right">162.0ms</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">t2.micro</td>
-          <td style="text-align: right">250</td>
-          <td style="text-align: right">Y</td>
-          <td style="text-align: right">50%</td>
-          <td style="text-align: right">80</td>
-          <td style="text-align: right">0.4%</td>
-          <td style="text-align: right">18.1ms</td>
-          <td style="text-align: right">218.5ms</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">t2.micro</td>
-          <td style="text-align: right">300</td>
-          <td style="text-align: right">Y</td>
-          <td style="text-align: right">100%</td>
-          <td style="text-align: right">lots</td>
-          <td style="text-align: right">1.0%</td>
-          <td style="text-align: right">1842.5ms</td>
-          <td style="text-align: right">64574.9ms</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">t2.micro dual</td>
-          <td style="text-align: right">50</td>
-          <td style="text-align: right">N</td>
-          <td style="text-align: right">10%</td>
-          <td style="text-align: right">0</td>
-          <td style="text-align: right">0.5%</td>
-          <td style="text-align: right">4.9ms</td>
-          <td style="text-align: right">23.8ms</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">t2.micro dual</td>
-          <td style="text-align: right">200</td>
-          <td style="text-align: right">N</td>
-          <td style="text-align: right">11%</td>
-          <td style="text-align: right">0</td>
-          <td style="text-align: right">0.1%</td>
-          <td style="text-align: right">3.1ms</td>
-          <td style="text-align: right">38.3ms</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">t2.micro dual</td>
-          <td style="text-align: right">300</td>
-          <td style="text-align: right">N</td>
-          <td style="text-align: right">13%</td>
-          <td style="text-align: right">0</td>
-          <td style="text-align: right">3.0%</td>
-          <td style="text-align: right">4.6ms</td>
-          <td style="text-align: right">31.2ms</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">t2.medium</td>
-          <td style="text-align: right">50</td>
-          <td style="text-align: right">N</td>
-          <td style="text-align: right">7%</td>
-          <td style="text-align: right">0</td>
-          <td style="text-align: right">0.5%</td>
-          <td style="text-align: right">1.9ms</td>
-          <td style="text-align: right">17.6ms</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">t2.medium</td>
-          <td style="text-align: right">200</td>
-          <td style="text-align: right">N</td>
-          <td style="text-align: right">11%</td>
-          <td style="text-align: right">0</td>
-          <td style="text-align: right">0.5%</td>
-          <td style="text-align: right">2.2ms</td>
-          <td style="text-align: right">17.5ms</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">t2.medium</td>
-          <td style="text-align: right">300</td>
-          <td style="text-align: right">N</td>
-          <td style="text-align: right">11%</td>
-          <td style="text-align: right">124</td>
-          <td style="text-align: right">0.4%</td>
-          <td style="text-align: right">4.7ms</td>
-          <td style="text-align: right">88.7ms</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">t2.medium</td>
-          <td style="text-align: right">500</td>
-          <td style="text-align: right">Y</td>
-          <td style="text-align: right">96%</td>
-          <td style="text-align: right">lots</td>
-          <td style="text-align: right"></td>
-          <td style="text-align: right"></td>
-          <td style="text-align: right"></td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th style="text-align: center">Setup</th>
+					<th style="text-align: right">Users</th>
+					<th style="text-align: right">Crash?</th>
+					<th style="text-align: right">CPU load</th>
+					<th style="text-align: right">Timeouts</th>
+					<th style="text-align: right">Server error ratio</th>
+					<th style="text-align: right">GET latency</th>
+					<th style="text-align: right">POST latency</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: center">t2.micro</td>
+					<td style="text-align: right">30</td>
+					<td style="text-align: right">N</td>
+					<td style="text-align: right">6%</td>
+					<td style="text-align: right">0</td>
+					<td style="text-align: right">0.6%</td>
+					<td style="text-align: right">4.1ms</td>
+					<td style="text-align: right">31.9ms</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">t2.micro</td>
+					<td style="text-align: right">50</td>
+					<td style="text-align: right">Y</td>
+					<td style="text-align: right">10%</td>
+					<td style="text-align: right">0</td>
+					<td style="text-align: right">0.5%</td>
+					<td style="text-align: right">2.5ms</td>
+					<td style="text-align: right">30.0ms</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">t2.micro</td>
+					<td style="text-align: right">200</td>
+					<td style="text-align: right">Y</td>
+					<td style="text-align: right">85%</td>
+					<td style="text-align: right">50</td>
+					<td style="text-align: right">0.4%</td>
+					<td style="text-align: right">10.4ms</td>
+					<td style="text-align: right">162.0ms</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">t2.micro</td>
+					<td style="text-align: right">250</td>
+					<td style="text-align: right">Y</td>
+					<td style="text-align: right">50%</td>
+					<td style="text-align: right">80</td>
+					<td style="text-align: right">0.4%</td>
+					<td style="text-align: right">18.1ms</td>
+					<td style="text-align: right">218.5ms</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">t2.micro</td>
+					<td style="text-align: right">300</td>
+					<td style="text-align: right">Y</td>
+					<td style="text-align: right">100%</td>
+					<td style="text-align: right">lots</td>
+					<td style="text-align: right">1.0%</td>
+					<td style="text-align: right">1842.5ms</td>
+					<td style="text-align: right">64574.9ms</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">t2.micro dual</td>
+					<td style="text-align: right">50</td>
+					<td style="text-align: right">N</td>
+					<td style="text-align: right">10%</td>
+					<td style="text-align: right">0</td>
+					<td style="text-align: right">0.5%</td>
+					<td style="text-align: right">4.9ms</td>
+					<td style="text-align: right">23.8ms</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">t2.micro dual</td>
+					<td style="text-align: right">200</td>
+					<td style="text-align: right">N</td>
+					<td style="text-align: right">11%</td>
+					<td style="text-align: right">0</td>
+					<td style="text-align: right">0.1%</td>
+					<td style="text-align: right">3.1ms</td>
+					<td style="text-align: right">38.3ms</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">t2.micro dual</td>
+					<td style="text-align: right">300</td>
+					<td style="text-align: right">N</td>
+					<td style="text-align: right">13%</td>
+					<td style="text-align: right">0</td>
+					<td style="text-align: right">3.0%</td>
+					<td style="text-align: right">4.6ms</td>
+					<td style="text-align: right">31.2ms</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">t2.medium</td>
+					<td style="text-align: right">50</td>
+					<td style="text-align: right">N</td>
+					<td style="text-align: right">7%</td>
+					<td style="text-align: right">0</td>
+					<td style="text-align: right">0.5%</td>
+					<td style="text-align: right">1.9ms</td>
+					<td style="text-align: right">17.6ms</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">t2.medium</td>
+					<td style="text-align: right">200</td>
+					<td style="text-align: right">N</td>
+					<td style="text-align: right">11%</td>
+					<td style="text-align: right">0</td>
+					<td style="text-align: right">0.5%</td>
+					<td style="text-align: right">2.2ms</td>
+					<td style="text-align: right">17.5ms</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">t2.medium</td>
+					<td style="text-align: right">300</td>
+					<td style="text-align: right">N</td>
+					<td style="text-align: right">11%</td>
+					<td style="text-align: right">124</td>
+					<td style="text-align: right">0.4%</td>
+					<td style="text-align: right">4.7ms</td>
+					<td style="text-align: right">88.7ms</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">t2.medium</td>
+					<td style="text-align: right">500</td>
+					<td style="text-align: right">Y</td>
+					<td style="text-align: right">96%</td>
+					<td style="text-align: right">lots</td>
+					<td style="text-align: right"></td>
+					<td style="text-align: right"></td>
+					<td style="text-align: right"></td>
+			</tr>
+	</tbody>
 </table>
 <h4 id="everything-on-one-t2micro-instance">Everything on one t2.micro instance</h4>
 <p>In this setup, we deployed the reverse proxy, the database, and the mattermost service on one t2.micro instance (1 CPU, 1 GB RAM). This is below the minimum size recommended by Mattermost.</p>
@@ -358,7 +360,9 @@ Mattermost server is overloaded.</p>
 	      </p>
               
               
-	        <p><b>Stay tuned for the next post</b></p>
+	        <p><b>Next Post:</b><br />
+                <a href="../../../2026/11/correlating-time-series-at-scale/">Correlating Time Series at Scale</a>
+	        </p>
               
           </div>
         </div>

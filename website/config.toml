@@ -18,9 +18,9 @@ buildDrafts = false
 DefaultContentLanguage = "en"
 [languages]
   [languages.en]
-    languageName = "EN"
+    label = "EN"
   [languages.de]
-    languageName = "DE"
+    label = "DE"
     [[languages.de.menu.main]]
       identifier = "home"
       url = "de/"
@@ -42,7 +42,7 @@ DefaultContentLanguage = "en"
       url = "blog/" 
       weight = 110
   [languages.fr]
-    languageName = "FR"
+    label = "FR"
     [[languages.fr.menu.main]]
       identifier = "home"
       url = "fr/"

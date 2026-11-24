@@ -5,6 +5,11 @@
     <loc>http://www.nephometrics.ch/de/contact/</loc>
     <xhtml:link
                 rel="alternate"
+                hreflang="de"
+                href="http://www.nephometrics.ch/de/contact/"
+                />
+    <xhtml:link
+                rel="alternate"
                 hreflang="fr"
                 href="http://www.nephometrics.ch/fr/contact/"
                 />
@@ -13,13 +18,13 @@
                 hreflang="en"
                 href="http://www.nephometrics.ch/contact/"
                 />
+  </url><url>
+    <loc>http://www.nephometrics.ch/de/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="de"
-                href="http://www.nephometrics.ch/de/contact/"
+                href="http://www.nephometrics.ch/de/categories/"
                 />
-  </url><url>
-    <loc>http://www.nephometrics.ch/de/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -30,13 +35,13 @@
                 hreflang="fr"
                 href="http://www.nephometrics.ch/fr/categories/"
                 />
+  </url><url>
+    <loc>http://www.nephometrics.ch/de/privacy/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="de"
-                href="http://www.nephometrics.ch/de/categories/"
+                href="http://www.nephometrics.ch/de/privacy/"
                 />
-  </url><url>
-    <loc>http://www.nephometrics.ch/de/privacy/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -47,11 +52,6 @@
                 hreflang="en"
                 href="http://www.nephometrics.ch/privacy/"
                 />
-    <xhtml:link
-                rel="alternate"
-                hreflang="de"
-                href="http://www.nephometrics.ch/de/privacy/"
-                />
   </url><url>
     <loc>http://www.nephometrics.ch/de/skills/</loc>
     <xhtml:link
@@ -61,13 +61,13 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
-                href="http://www.nephometrics.ch/skills/"
+                hreflang="de"
+                href="http://www.nephometrics.ch/de/skills/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="de"
-                href="http://www.nephometrics.ch/de/skills/"
+                hreflang="en"
+                href="http://www.nephometrics.ch/skills/"
                 />
   </url><url>
     <loc>http://www.nephometrics.ch/de/</loc>
@@ -95,13 +95,13 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="fr"
-                href="http://www.nephometrics.ch/fr/tags/"
+                hreflang="de"
+                href="http://www.nephometrics.ch/de/tags/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="de"
-                href="http://www.nephometrics.ch/de/tags/"
+                hreflang="fr"
+                href="http://www.nephometrics.ch/fr/tags/"
                 />
   </url>
 </urlset>
