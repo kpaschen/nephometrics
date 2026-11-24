@@ -21,13 +21,6 @@
 				<description>&lt;p&gt;For my ongoing &lt;a href=&#34;./music-ocr-introducing-the-idea/&#34;&gt;Music OCR hobby project&lt;/a&gt;,&#xA;I use &lt;a href=&#34;https://opencv.org&#34;&gt;OpenCV&lt;/a&gt; and&#xA;C++. For inline text, I&amp;rsquo;ve been experimenting with OpenCV&amp;rsquo;s Tesseract support,&#xA;which relies on the&#xA;&lt;a href=&#34;https://docs.opencv.org/3.4/d7/ddc/classcv_1_1text_1_1OCRTesseract.html&#34;&gt;OCRTesseract class&lt;/a&gt;&#xA;from OpenCV&amp;rsquo;s cv::text package. And of course I want to use unit tests; I chose&#xA;&lt;a href=&#34;https://github.com/google/googletest/blob/master/googletest/docs/primer.md&#34;&gt;Googletest&lt;/a&gt;.&lt;/p&gt;</description>
 			</item>
 			<item>
-				<title>Developer Shell</title>
-				<link>http://localhost:1313/2019/04/developer-shell/</link>
-				<pubDate>Sun, 21 Apr 2019 11:39:45 +0200</pubDate>
-				<guid>http://localhost:1313/2019/04/developer-shell/</guid>
-				<description>&lt;p&gt;For my ongoing MusicOCR hobby project, I experiment a lot with various&#xA;OpenCV operations and their parameters. In order to make this easier for myself,&#xA;I&amp;rsquo;ve built myself a developer shell where I can load an image and apply processing&#xA;steps to it. So far, I&amp;rsquo;ve adapted and used the shell for the following processing&#xA;steps:&lt;/p&gt;</description>
-			</item>
-			<item>
 				<title>Music OCR: introducing the idea</title>
 				<link>http://localhost:1313/2019/04/music-ocr-introducing-the-idea/</link>
 				<pubDate>Wed, 10 Apr 2019 09:47:22 +0200</pubDate>

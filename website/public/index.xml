@@ -10,22 +10,15 @@
 		
 		
 		
-			<lastBuildDate>Wed, 18 Nov 2026 08:53:38 +0100</lastBuildDate>
+			<lastBuildDate>Tue, 24 Nov 2026 08:53:38 +0100</lastBuildDate>
 		
 			<atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
 			<item>
 				<title>Correlating Time Series at Scale</title>
 				<link>http://localhost:1313/2026/11/correlating-time-series-at-scale/</link>
-				<pubDate>Wed, 18 Nov 2026 08:53:38 +0100</pubDate>
+				<pubDate>Tue, 24 Nov 2026 08:53:38 +0100</pubDate>
 				<guid>http://localhost:1313/2026/11/correlating-time-series-at-scale/</guid>
 				<description>&lt;p&gt;Wouldn&amp;rsquo;t it be nice if you could see pairwise correlation information for all your observability time series? What&amp;rsquo;s correlated with what, which time series have become correlated or uncorrelated? I think this would be useful, both for troubleshooting and for discovering dependencies in complex architectures. Request latency against one endpoint just spiked and became correlated with database query latency? That sounds worth knowing.&lt;/p&gt;</description>
-			</item>
-			<item>
-				<title>Time series, lots of time series (and how to generate them)</title>
-				<link>http://localhost:1313/2026/11/time-series-lots-of-time-series-and-how-to-generate-them/</link>
-				<pubDate>Wed, 04 Nov 2026 11:39:21 +0200</pubDate>
-				<guid>http://localhost:1313/2026/11/time-series-lots-of-time-series-and-how-to-generate-them/</guid>
-				<description>&lt;p&gt;I&amp;rsquo;ve been working on a correlation analysis tool for observability time series.&#xA;I&amp;rsquo;ve written some &lt;a href=&#34;https://codeberg.org/kpaschen/corrjoin&#34;&gt;code&lt;/a&gt; based on a &lt;a href=&#34;https://dl.acm.org/doi/10.1145/3626722&#34;&gt;paper&lt;/a&gt;.&#xA;My system receives time series through the Prometheus remote write protocol, computes Pearson correlation coefficients on sliding time windows, and publishes the results in otel format. I have been looking at the results and experimenting with different ways of analysing and visualising them, but that will be a topic for a different blog post. Today, I just want to write about how to make sure my system gets a lot of interesting time series to process.&lt;/p&gt;</description>
 			</item>
 			<item>
 				<title>Running Mattermost in AWS: How much will it cost?</title>
@@ -103,13 +96,6 @@
 				<pubDate>Tue, 07 May 2019 10:41:44 +0200</pubDate>
 				<guid>http://localhost:1313/2019/05/cmake-opencv-and-unit-tests/</guid>
 				<description>&lt;p&gt;For my ongoing &lt;a href=&#34;./music-ocr-introducing-the-idea/&#34;&gt;Music OCR hobby project&lt;/a&gt;,&#xA;I use &lt;a href=&#34;https://opencv.org&#34;&gt;OpenCV&lt;/a&gt; and&#xA;C++. For inline text, I&amp;rsquo;ve been experimenting with OpenCV&amp;rsquo;s Tesseract support,&#xA;which relies on the&#xA;&lt;a href=&#34;https://docs.opencv.org/3.4/d7/ddc/classcv_1_1text_1_1OCRTesseract.html&#34;&gt;OCRTesseract class&lt;/a&gt;&#xA;from OpenCV&amp;rsquo;s cv::text package. And of course I want to use unit tests; I chose&#xA;&lt;a href=&#34;https://github.com/google/googletest/blob/master/googletest/docs/primer.md&#34;&gt;Googletest&lt;/a&gt;.&lt;/p&gt;</description>
-			</item>
-			<item>
-				<title>Developer Shell</title>
-				<link>http://localhost:1313/2019/04/developer-shell/</link>
-				<pubDate>Sun, 21 Apr 2019 11:39:45 +0200</pubDate>
-				<guid>http://localhost:1313/2019/04/developer-shell/</guid>
-				<description>&lt;p&gt;For my ongoing MusicOCR hobby project, I experiment a lot with various&#xA;OpenCV operations and their parameters. In order to make this easier for myself,&#xA;I&amp;rsquo;ve built myself a developer shell where I can load an image and apply processing&#xA;steps to it. So far, I&amp;rsquo;ve adapted and used the shell for the following processing&#xA;steps:&lt;/p&gt;</description>
 			</item>
 			<item>
 				<title>Music OCR: introducing the idea</title>

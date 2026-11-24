@@ -5,6 +5,11 @@
     <loc>http://localhost:1313/fr/categories/</loc>
     <xhtml:link
                 rel="alternate"
+                hreflang="fr"
+                href="http://localhost:1313/fr/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
                 hreflang="de"
                 href="http://localhost:1313/de/categories/"
                 />
@@ -12,11 +17,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://localhost:1313/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="http://localhost:1313/fr/categories/"
                 />
   </url><url>
     <loc>http://localhost:1313/fr/contact/</loc>
